@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#09111c" />
+<meta name="description" content="Reverse Hackathon 2026 — a DC-themed defensive sprint by The Whitehatians and DEP-CYS. Reverse. Exploit. Defend. Oct 8, 2026." />
+<title>Reverse Hackathon 2026 | Mission Deck</title>
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Reverse Hackathon 2026 | Mission Deck" />
+<meta property="og:description" content="Reverse Hackathon 2026 — a DC-themed defensive sprint by The Whitehatians and DEP-CYS. Reverse. Exploit. Defend." />
+<meta property="og:image" content="og-deck.png" />
+<!-- NOTE: swap og:image for an absolute URL once deployed -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Reverse Hackathon 2026 | Mission Deck" />
+<meta name="twitter:description" content="A DC-themed defensive sprint. Reverse. Exploit. Defend." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2309111c'/%3E%3Cpath d='M32 8 54 18v16c0 12-9.4 19.5-22 23C19.4 53.5 10 46 10 34V18L32 8Z' fill='none' stroke='%2358d5ee' stroke-width='3'/%3E%3Ctext x='32' y='41' font-family='Courier New,monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%23f0b74a'%3ERH%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --ink: #09111c;
+    --navy: #0d1b2a;
+    --paper: #f7f1df;
+    --cream: #fbf6e8;
+    --red: #c8352c;
+    --gold: #f0b74a;
+    --cyan: #58d5ee;
+    --blue: #2b7ff1;
+    --muted: #9caaba;
+    --line: rgba(247,241,223,.18);
+    --serif: Georgia, "Times New Roman", serif;
+    --display: "Courier New", monospace;
+    --ease: cubic-bezier(.23,1,.32,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--display);
+    background: var(--ink);
+    color: var(--muted);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: var(--cyan); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--cyan); outline-offset: 3px;
+  }
+  ::selection { background: var(--cyan); color: var(--ink); }
+  .skip-link { position: fixed; top: -70px; left: 12px; z-index: 300; background: var(--cream); color: var(--navy); padding: 10px 14px; font-size: 12px; text-decoration: none; transition: top .2s ease; }
+  .skip-link:focus { top: 12px; }
+
+  /* ---------- Header ---------- */
+  .dc-nav {
+    z-index: 20; width: min(1240px, 100% - 40px); color: var(--navy);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    background: rgba(247,241,223,.94); border: 1px solid rgba(9,17,28,.14); border-radius: 3px;
+    display: flex; justify-content: space-between; align-items: center; gap: 18px;
+    padding: 10px 13px 10px 17px;
+    position: fixed; top: 18px; left: 50%; transform: translate(-50%);
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+  }
+  .dc-logo-wrap { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .dc-logo-wrap .mark { width: 26px; height: 26px; flex: none; }
+  .dc-logo-wrap span { font-family: var(--display); letter-spacing: .05em; font-size: 9px; font-weight: 700; line-height: .95; color: var(--navy); display: block; }
+  .dc-logo-wrap small { display: block; font-size: 8px; color: #5a6b76; letter-spacing: .12em; margin-top: 3px; }
+  .dc-nav nav { display: flex; gap: 26px; font-size: 11px; }
+  .dc-nav nav a { color: var(--navy); text-decoration: none; position: relative; }
+  .dc-nav nav a:after { content: ""; background: var(--red); height: 2px; position: absolute; bottom: -7px; left: 0; right: 0; transform: scaleX(0); transform-origin: 100%; transition: transform .2s var(--ease); }
+  .dc-nav nav a:hover:after { transform: scaleX(1); transform-origin: 0; }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+    background: var(--navy); color: var(--cream) !important;
+    padding: 9px 13px; font-family: var(--display); font-size: 10px; font-weight: 700;
+  }
+  .nav-cta:hover:after { display: none; }
+  .menu-toggle { display: none; background: none; border: 1px solid var(--navy); color: var(--navy); width: 34px; height: 34px; cursor: pointer; font-size: 17px; }
+  @media (max-width: 820px) {
+    .dc-nav { width: calc(100% - 20px); top: 10px; padding: 8px 10px; }
+    .dc-nav nav, .dc-logo-wrap small { display: none; }
+    .menu-toggle { display: grid; place-items: center; }
+  }
+  .nav-drop {
+    display: none; position: fixed; z-index: 19; top: 54px; left: 10px; right: 10px;
+    background: rgba(247,241,223,.97); border: 1px solid rgba(9,17,28,.14); border-radius: 3px;
+    flex-direction: column; gap: 4px; padding: 10px; box-shadow: 0 20px 44px rgba(0,0,0,.3);
+  }
+  .nav-drop.open { display: flex; }
+  .nav-drop a { color: var(--navy); text-decoration: none; font-size: 12px; padding: 12px 10px; border-bottom: 1px solid rgba(13,27,42,.12); }
+  .nav-drop a:last-child { border-bottom: none; }
+
+  /* ---------- Hero ---------- */
+  .dc-hero {
+    isolation: isolate; position: relative; display: flex; align-items: flex-end;
+    min-height: 860px; padding: 170px max(5vw, 50px) 86px;
+    background: linear-gradient(90deg, rgba(4,10,17,.96), rgba(4,10,17,.74) 43%, rgba(4,10,17,.14));
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; }
+  .hero-grid-fx {
+    position: absolute; inset: 0; z-index: -1; opacity: .16;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    -webkit-mask-image: linear-gradient(90deg, #000, transparent 90%); mask-image: linear-gradient(90deg, #000, transparent 90%);
+    pointer-events: none;
+  }
+  .hero-overlay { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(circle at 72% 40%, rgba(82,213,238,.2), transparent 19%), radial-gradient(circle at 62% 30%, rgba(240,183,74,.14), transparent 15%);
+  }
+  .hero-copy { max-width: 730px; position: relative; z-index: 1; }
+  .eyebrow { display: flex; align-items: center; gap: 10px; color: #9bb0c3; letter-spacing: .15em; font-size: 10px; margin: 0; }
+  .eyebrow span { display: inline-block; width: 26px; height: 1px; background: var(--cyan); }
+  .eyebrow.gold { color: var(--gold); }
+  .eyebrow.gold span { background: var(--gold); }
+  .eyebrow.red { color: #ff786f; }
+  .eyebrow.red span { background: var(--red); }
+  .hero-kicker { color: var(--gold); letter-spacing: .14em; margin: 28px 0 18px; font-size: 10px; }
+  .dc-hero h1 {
+    font-family: var(--serif); letter-spacing: -.08em; text-shadow: 5px 8px rgba(0,0,0,.2);
+    margin: 0; font-size: clamp(70px, 11vw, 170px); line-height: .8; color: var(--cream);
+    font-weight: 400;
+  }
+  .dc-hero h1 em { color: #dbe4f2; font-style: normal; display: block; }
+  .dc-hero h1 b {
+    color: transparent; font-family: var(--display); letter-spacing: .01em; font-weight: 700;
+    -webkit-text-stroke: 2px var(--cyan); font-size: .43em; line-height: 1.08; display: block;
+  }
+  @media (max-width: 620px) {
+    .dc-hero h1 { font-size: clamp(48px, 15.5vw, 62px); line-height: .78; letter-spacing: -.095em; }
+    .dc-hero h1 b { -webkit-text-stroke: 1px var(--cyan); }
+  }
+  .hero-lede { color: var(--gold); letter-spacing: .04em; margin: 34px 0 22px; font-size: 15px; }
+  .hero-lede span { color: #ccd6e0; max-width: 400px; font-family: var(--serif); letter-spacing: 0; margin: 9px 0 0; font-size: 17px; line-height: 1.42; display: block; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 18px; font-family: var(--display); font-size: 11px; font-weight: 700;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+  }
+  .button:hover { transform: translateY(-3px); }
+  .button.primary { background: var(--red); color: #fff; }
+  .button.primary:hover { background: #ef493e; }
+  .button.ghost { background: rgba(4,10,17,.3); border-color: rgba(247,241,223,.3); color: var(--cream); }
+  .button.ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 19px; margin-top: 28px; color: #b4c4d1; font-size: 10px; }
+  .hero-meta span { display: flex; align-items: center; gap: 7px; }
+  .hero-meta svg { color: var(--cyan); flex: none; }
+  .hero-count {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 14px 22px;
+    border-top: 1px solid rgba(88,213,238,.3); padding-top: 15px;
+    position: absolute; bottom: 26px; left: max(5vw, 50px); right: max(5vw, 50px); z-index: 1;
+  }
+  .count-label { color: #9fb1bf; letter-spacing: .12em; font-size: 9px; margin: 0; }
+  .count-grid { display: flex; align-items: flex-start; gap: 8px; }
+  .count-unit { display: flex; flex-direction: column; align-items: center; min-width: 39px; }
+  .count-unit strong { color: var(--gold); font-size: 21px; font-weight: 400; line-height: 1; font-variant-numeric: tabular-nums; }
+  .count-unit span { color: #8396a8; margin-top: 4px; font-size: 7px; letter-spacing: .1em; }
+  .count-grid i { color: var(--gold); font-size: 21px; font-style: normal; line-height: 1; }
+  .hero-hud { display: flex; flex-direction: column; gap: 14px; position: absolute; top: 40%; right: 5vw; z-index: 1; color: #80d9ea; letter-spacing: .1em; font-size: 8px; }
+  .hero-hud b { color: var(--gold); font-weight: 700; }
+  .hero-hud span { width: 1px; height: 40px; background: rgba(88,213,238,.35); }
+
+  /* ---------- Sections ---------- */
+  .section-shell { width: min(1160px, 100% - 90px); margin: 0 auto; padding: 104px 0; }
+  @media (max-width: 820px) { .section-shell { width: calc(100% - 34px); padding: 74px 0; } }
+  .section-intro h2, .section-heading h2, .rules-header h2, .prize-head h2, .register-banner h2 {
+    font-family: var(--serif); letter-spacing: -.05em; margin: 18px 0 0; font-size: clamp(52px, 7vw, 93px); font-weight: 400; line-height: .9; color: var(--paper);
+  }
+  .section-intro h2 em, .section-heading h2 em, .rules-header h2 em, .prize-head h2 em, .register-banner h2 em { color: var(--cyan); font-style: italic; }
+  .section-intro p, .section-heading > p { color: #9eb0bf; font-family: var(--serif); font-size: 16px; line-height: 1.5; margin: 0; }
+  .section-heading { display: grid; grid-template-columns: 1fr .78fr; align-items: end; gap: 50px; }
+  @media (max-width: 820px) { .section-heading { grid-template-columns: 1fr; gap: 16px; } .section-heading h2 { font-size: 57px; } }
+  .mission-section { border-top: 1px solid var(--line); }
+  .featured-domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 46px; }
+  @media (max-width: 900px) { .featured-domain-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Mission cards ---------- */
+  .event-card {
+    background: #101b29; border: 1px solid rgba(247,241,223,.15);
+    cursor: pointer; text-align: left; color: inherit; width: 100%;
+    overflow: hidden; padding: 0;
+    transition: transform .2s var(--ease), border-color .2s var(--ease);
+  }
+  .event-card:hover { border-color: var(--cyan); transform: translateY(-8px); }
+  .event-card:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+  .event-image { height: 220px; position: relative; overflow: hidden; }
+  .event-image svg { width: 100%; height: 100%; }
+  .event-image:after { content: ""; background: linear-gradient(transparent 40%, rgba(4,10,17,.9)); position: absolute; inset: 0; }
+  .event-image .tag { position: absolute; z-index: 2; top: 11px; left: 11px; color: #e1edf5; font-size: 9px; letter-spacing: .12em; }
+  .event-image .file { position: absolute; z-index: 2; bottom: 10px; right: 11px; color: var(--gold); letter-spacing: .1em; font-size: 8px; display: flex; align-items: center; gap: 6px; }
+  .event-card-copy { padding: 16px; }
+  .event-card-copy > span { color: var(--gold); letter-spacing: .07em; font-size: 8px; }
+  .event-card-copy h3 { font-family: var(--serif); color: var(--paper); margin: 11px 0 5px; font-size: 23px; font-weight: 400; line-height: 1; }
+  .event-card-copy p { color: #96a9b8; margin: 0; font-size: 10px; line-height: 1.5; min-height: 30px; }
+  .event-card-copy .sites { color: var(--cyan); display: flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 9px; text-decoration: none; }
+  .view-wrap { margin-top: 34px; text-align: center; }
+
+  /* ---------- Modal ---------- */
+  .mission-overlay { position: fixed; inset: 0; z-index: 40; overflow: auto; }
+  .mission-overlay-backdrop { position: fixed; inset: 0; background: rgba(2,7,13,.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .mission-detail-page {
+    position: relative; z-index: 1; background: linear-gradient(145deg, #132438, #07111d);
+    border: 1px solid rgba(88,213,238,.4); width: min(1100px, 100% - 36px); margin: 55px auto; padding: 32px;
+    box-shadow: 0 30px 90px rgba(0,0,0,.5);
+  }
+  @media (max-width: 700px) { .mission-detail-page { width: calc(100% - 20px); margin: 20px auto; padding: 19px; } }
+  .mission-close { color: #a6bac7; letter-spacing: .08em; cursor: pointer; background: none; border: 0; display: flex; align-items: center; gap: 10px; margin: 0 0 24px auto; font-family: var(--display); font-size: 10px; }
+  .mission-close span { color: var(--gold); font-size: 22px; line-height: 1; }
+  .mission-detail-hero { border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 260px 1fr; align-items: center; gap: 28px; padding-bottom: 30px; }
+  @media (max-width: 700px) { .mission-detail-hero { grid-template-columns: 1fr; gap: 18px; } }
+  .mission-detail-hero .art { height: 260px; overflow: hidden; }
+  .mission-detail-hero .art svg { width: 100%; height: 100%; }
+  .mission-detail-hero h2 { font-family: var(--serif); color: var(--paper); margin: 4px 0 12px; font-size: clamp(40px, 5vw, 62px); font-weight: 400; line-height: .9; }
+  .mission-detail-hero p { color: #a7b8c4; font-family: var(--serif); font-size: 18px; line-height: 1.45; margin: 0; }
+  .mission-register { margin-top: 25px; }
+  .all-domain-head { margin-top: 34px; }
+  .all-domain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 22px; }
+  .all-domain-card { background: #101b29; border: 1px solid rgba(247,241,223,.15); padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .all-domain-card .num { color: var(--gold); letter-spacing: .12em; font-size: 8px; }
+  .all-domain-card h3 { font-family: var(--serif); color: var(--paper); margin: 0; font-size: 21px; font-weight: 400; line-height: 1; }
+  .all-domain-card p { color: #96a9b8; margin: 0; font-size: 10px; line-height: 1.5; flex: 1; }
+  .all-domain-card .sites { color: var(--cyan); font-size: 9px; margin-top: 6px; }
+  .all-domain-card .pick { display: inline-flex; margin-top: 10px; }
+
+  /* ---------- Rules ---------- */
+  .rules-section { border-top: 1px solid var(--line); }
+  .rules-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+  @media (max-width: 820px) { .rules-header { flex-direction: column; align-items: flex-start; } .rules-header h2 { font-size: 57px; } }
+  .rules-badge { border: 1px solid var(--red); color: #ff786f; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; width: 90px; height: 90px; font-size: 8px; text-align: center; letter-spacing: .12em; flex: none; }
+  .rules-list { border-top: 1px solid var(--line); margin-top: 43px; }
+  .rule-row { border-bottom: 1px solid var(--line); }
+  .rule-row button, .faq-row button { width: 100%; text-align: left; cursor: pointer; background: none; border: 0; display: grid; grid-template-columns: 70px 1fr 24px; align-items: center; gap: 16px; padding: 22px 0; font-family: var(--display); color: var(--paper); }
+  .rule-row button > span, .faq-row button > span { color: var(--gold); font-size: 10px; letter-spacing: .14em; }
+  .rule-row button strong, .faq-row button strong { font-family: var(--serif); font-size: 25px; font-weight: 400; }
+  .rule-row button svg, .faq-row button svg { color: var(--muted); transition: transform .2s var(--ease), color .2s var(--ease); }
+  .rule-row.open button svg, .faq-row.open button svg { color: var(--cyan); transform: rotate(180deg); }
+  .rule-row .answer, .faq-row .answer { color: #a5b5c2; font-family: var(--serif); font-size: 15px; line-height: 1.5; margin: -3px 70px 20px; }
+  @media (max-width: 620px) {
+    .rule-row button, .faq-row button { grid-template-columns: 34px 1fr 20px; gap: 8px; }
+    .rule-row button strong, .faq-row button strong { font-size: 20px; }
+    .rule-row .answer, .faq-row .answer { margin-left: 42px; margin-right: 0; }
+    .rules-header h2, .prize-head h2, .register-banner h2 { font-size: 57px; }
+  }
+
+  /* ---------- Playbook ---------- */
+  .prize-section { border-top: 1px solid var(--line); display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; padding: 104px 0; }
+  @media (max-width: 820px) { .prize-section { grid-template-columns: 1fr; gap: 34px; padding: 74px 0; } }
+  .prize-head p { color: #a7b7c3; max-width: 390px; font-family: var(--serif); font-size: 16px; line-height: 1.5; }
+  .prize-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: stretch; }
+  @media (max-width: 820px) { .prize-grid { grid-template-columns: 1fr; max-width: 650px; } }
+  .prize-card { background: linear-gradient(145deg, #2a251a, #101b29); border: 1px solid rgba(240,183,74,.4); display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; min-height: 220px; padding: 18px; }
+  .prize-card svg { color: var(--gold); flex: none; }
+  .prize-card span { color: #b9a26b; letter-spacing: .12em; font-size: 8px; margin-top: 26px; }
+  .prize-card strong { font-family: var(--serif); color: var(--paper); font-size: 46px; font-weight: 400; line-height: .95; display: block; }
+  .prize-card small { color: #9eacb8; font-size: 10px; line-height: 1.4; font-family: var(--display); }
+  .prize-note { color: #7e94a5; font-size: 9px; margin-top: 22px; max-width: 430px; line-height: 1.6; }
+
+  /* ---------- FAQ ---------- */
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-layout { display: grid; grid-template-columns: 1.3fr .7fr; gap: 45px; margin-top: 42px; }
+  @media (max-width: 820px) { .faq-layout { grid-template-columns: 1fr; } }
+  .faq-list { border-top: 1px solid var(--line); }
+  .faq-row { border-bottom: 1px solid var(--line); }
+  .faq-row button strong { font-size: 21px; }
+  .contact-panel { background: var(--cream); color: var(--navy); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 30px; }
+  .contact-panel .mark { width: 30px; height: 30px; }
+  .contact-panel > span { color: #5d6b78; letter-spacing: .11em; font-size: 9px; }
+  .contact-panel h3 { font-family: var(--serif); margin: 18px 0 8px; font-size: 34px; font-weight: 400; color: var(--navy); }
+  .contact-panel p { color: #536575; font-family: var(--serif); font-size: 15px; line-height: 1.45; margin: 0; }
+  .contact-panel strong { color: var(--navy); font-family: var(--display); letter-spacing: .08em; font-size: 9px; margin-top: 16px; }
+  .contact-panel .def { margin-top: 2px; }
+  .contact-panel a { color: var(--red); display: flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 10px; text-decoration: none; }
+
+  /* ---------- Register banner ---------- */
+  .register-banner { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 25px; padding: 104px 0; width: min(1160px, 100% - 90px); margin: 0 auto; }
+  .register-banner p { color: #9eafbd; font-family: var(--serif); font-size: 16px; margin: 0; }
+  @media (max-width: 820px) { .register-banner { width: calc(100% - 34px); padding: 74px 0; flex-direction: column; align-items: flex-start; } .register-banner h2 { font-size: 57px; } }
+  .register-banner .button { flex-shrink: 0; }
+
+  /* ---------- Register ---------- */
+  .register-section { border-top: 1px solid var(--line); }
+  .register-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 25px; }
+  .register-heading p { color: #a6b7c4; max-width: 430px; font-family: var(--serif); font-size: 16px; line-height: 1.5; margin: 0; }
+  @media (max-width: 620px) { .register-heading { flex-direction: column; align-items: flex-start; } }
+  .register-stat { border: 1px solid var(--gold); width: 90px; height: 90px; color: var(--gold); display: flex; flex-direction: column; justify-content: center; align-items: center; flex: none; }
+  .register-stat strong { font-family: var(--serif); font-size: 44px; font-weight: 400; line-height: .8; }
+  .register-stat span { text-align: center; margin-top: 9px; font-size: 8px; line-height: 1.2; letter-spacing: .1em; }
+  @media (max-width: 620px) { .register-stat { width: 72px; height: 72px; } }
+  .mission-form { background: linear-gradient(145deg, rgba(20,42,59,.76), rgba(8,15,24,.72)); border: 1px solid rgba(88,213,238,.25); max-width: 920px; margin-top: 45px; padding: 25px; }
+  @media (max-width: 620px) { .mission-form { padding: 16px; } }
+  .form-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin: 18px 0 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(247,241,223,.15); }
+  .form-section-head:first-child { margin-top: 0; }
+  .form-section-head span { color: var(--gold); letter-spacing: .12em; font-size: 9px; }
+  .form-section-head p { color: #8da2b2; font-family: var(--serif); margin: 0; font-size: 13px; }
+  @media (max-width: 620px) { .form-section-head { flex-direction: column; align-items: flex-start; gap: 5px; } }
+  .mode-toggle { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .mode-toggle button { color: #9fb1be; cursor: pointer; background: #0e1b2a; border: 1px solid rgba(247,241,223,.22); padding: 10px 17px; font-family: var(--display); font-size: 10px; transition: border-color .18s var(--ease), color .18s var(--ease), background .18s var(--ease); }
+  .mode-toggle button.selected { border-color: var(--cyan); color: #fff; background: rgba(88,213,238,.13); }
+  .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width: 620px) { .form-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .field > span { color: #b9c9d5; font-size: 10px; letter-spacing: .08em; }
+  .field > span i { color: #ff8079; font-style: normal; }
+  .field input, .field select { color: #f4f7f8; width: 100%; font: inherit; font-size: 11px; background: #0a1420; border: 1px solid rgba(247,241,223,.2); outline: none; padding: 12px 11px; }
+  .field input::placeholder { color: #64798b; }
+  .field input:focus, .field select:focus { border-color: var(--cyan); }
+  .field small { color: #ff8079; font-size: 9px; display: none; }
+  .field.has-error input, .field.has-error select { border-color: var(--red); }
+  .field.has-error small { display: block; }
+  .panel-note { display: none; color: #a9bac7; font-family: var(--serif); font-size: 14px; margin: 0 0 16px; }
+  .panel-note.on { display: block; }
+  .agree-box { display: flex; align-items: flex-start; gap: 10px; color: #a9bac7; font-family: var(--serif); font-size: 14px; line-height: 1.4; cursor: pointer; margin-top: 18px; }
+  .agree-box input { accent-color: var(--cyan); margin-top: 3px; width: 15px; height: 15px; }
+  .agree-box.has-error { color: #ff8079; }
+  .submit-button { cursor: pointer; margin-top: 22px; }
+  .form-alert { display: none; color: #ff9d97; background: rgba(200,53,44,.12); border: 1px solid rgba(200,53,44,.4); padding: 11px 13px; font-size: 10px; margin-top: 18px; line-height: 1.5; }
+  .form-alert.on { display: block; }
+  .form-footnote { color: #7e94a5; margin: 16px 0 0; font-size: 9px; line-height: 1.5; }
+  .form-footnote strong { color: var(--gold); }
+
+  /* ---------- Success ---------- */
+  .register-success { background: radial-gradient(circle at 80% 10%, rgba(88,213,238,.14), transparent 28%), #0f1b29; border: 1px solid rgba(88,213,238,.35); max-width: 760px; padding: 52px 42px; }
+  @media (max-width: 620px) { .register-success { padding: 32px 22px; } }
+  .success-mark { border: 1px solid var(--cyan); width: 64px; height: 64px; border-radius: 50%; color: var(--cyan); display: flex; justify-content: center; align-items: center; margin-bottom: 28px; }
+  .register-success h2 { font-family: var(--serif); color: var(--paper); margin: 18px 0; font-size: clamp(44px, 7vw, 72px); font-weight: 400; line-height: .9; }
+  .register-success h2 em { color: var(--cyan); font-style: italic; }
+  .register-success p { color: #a4b6c3; font-family: var(--serif); font-size: 16px; line-height: 1.5; max-width: 520px; margin: 0; }
+  .registration-id { border: 1px solid var(--gold); color: var(--gold); display: inline-block; margin: 20px 0; padding: 12px 20px; font-size: 15px; letter-spacing: .14em; background: rgba(240,183,74,.06); }
+  .registration-id span { display: block; font-size: 8px; color: #b9a26b; letter-spacing: .2em; margin-bottom: 6px; }
+  .register-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .register-actions .button { cursor: pointer; }
+  .text-link { cursor: pointer; background: none; border: 0; color: var(--cyan); font-family: var(--display); font-size: 10px; margin-top: 22px; padding: 0; text-decoration: underline; text-underline-offset: 4px; }
+  .detail-text { display: none; white-space: pre-wrap; color: #a4b6c3; font-size: 10px; line-height: 1.6; border: 1px dashed rgba(88,213,238,.4); padding: 12px; margin-top: 18px; font-family: var(--display); }
+  .detail-text.on { display: block; }
+
+  /* ---------- Footer ---------- */
+  .dc-footer { color: #8ea1b0; display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; width: min(1160px, 100% - 90px); margin: auto; padding: 38px 0 52px; font-size: 10px; }
+  .footer-brand { display: flex; align-items: center; gap: 14px; }
+  .footer-brand .mark { width: 26px; height: 26px; flex: none; }
+  .footer-brand .tagline { color: var(--gold); letter-spacing: .04em; }
+  .footer-brand > span small { display: block; color: #8ea1b0; margin-top: 4px; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+  .footer-links a { color: #8ea1b0; text-decoration: none; }
+  .footer-links a:hover { color: var(--cyan); }
+  .footer-social { display: flex; align-items: center; gap: 15px; }
+  .footer-social a { color: #8ea1b0; text-decoration: none; }
+  .footer-social a:hover { color: var(--cyan); }
+  .social-chip.is-live { color: var(--cyan); }
+
+  /* ---------- Reveal / reduced motion ---------- */
+  [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s var(--ease); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    [data-reveal] { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="dc-nav">
+  <a class="dc-logo-wrap" href="#top" aria-label="Reverse Hackathon 2026 — home">
+    <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3 22 7.5v7c0 4.8-3.8 7.9-9 9.5-5.2-1.6-9-4.7-9-9.5v-7L13 3Z" fill="none" stroke="#0d1b2a" stroke-width="1.8"/><text x="13" y="16.5" font-family="Courier New,monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#c8352c">RH</text></svg>
+    <span>THE WHITEHATIANS<small>DEP-CYS · SRM VALLIAMMAI</small></span>
+  </a>
+  <nav aria-label="Primary">
+    <a href="#domains">Domains</a>
+    <a href="#rules">Rules</a>
+    <a href="#playbook">Playbook</a>
+    <a href="#faq">Intel</a>
+  </nav>
+  <button class="menu-toggle" id="menuBtn" type="button" aria-expanded="false" aria-controls="navDrop" aria-label="Toggle menu">☰</button>
+  <a class="nav-cta" href="#register">Register · OM26 ▶</a>
+</header>
+
+<div class="nav-drop" id="navDrop">
+  <a href="#domains">Domains</a>
+  <a href="#rules">Rules</a>
+  <a href="#playbook">Playbook</a>
+  <a href="#faq">Intel</a>
+  <a href="#register">Register</a>
+</div>
+
+<main id="main">
+  <!-- ================= HERO ================= -->
+  <section class="dc-hero" id="top" aria-labelledby="hero-title">
+    <svg class="hero-bg" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dark city silhouette under a searchlight">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b1a2d"/><stop offset=".55" stop-color="#091220"/><stop offset="1" stop-color="#050a13"/>
+        </linearGradient>
+        <radialGradient id="beam" cx=".7" cy=".28" r=".6">
+          <stop offset="0" stop-color="#58d5ee" stop-opacity=".16"/><stop offset="1" stop-color="#58d5ee" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="goldGlow" cx=".6" cy=".25" r=".5">
+          <stop offset="0" stop-color="#f0b74a" stop-opacity=".1"/><stop offset="1" stop-color="#f0b74a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="beamCone" x1=".5" y1="0" x2=".5" y2="1">
+          <stop offset="0" stop-color="#eafffb" stop-opacity=".12"/><stop offset="1" stop-color="#eafffb" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="860" fill="url(#sky)"/>
+      <rect width="1440" height="860" fill="url(#beam)"/>
+      <rect width="1440" height="860" fill="url(#goldGlow)"/>
+      <polygon points="1100,0 1330,0 860,860 700,860" fill="url(#beamCone)"/>
+      <g fill="#0a1420">
+        <rect x="0" y="620" width="120" height="240"/><rect x="130" y="560" width="80" height="300"/>
+        <rect x="250" y="650" width="150" height="210"/><rect x="420" y="520" width="70" height="340"/>
+        <rect x="505" y="600" width="110" height="260"/><rect x="660" y="500" width="60" height="360"/>
+        <rect x="760" y="590" width="140" height="270"/><rect x="940" y="540" width="80" height="320"/>
+        <rect x="1060" y="630" width="170" height="230"/><rect x="1270" y="570" width="90" height="290"/>
+        <rect x="1390" y="650" width="130" height="210"/>
+      </g>
+      <g fill="none" stroke="#7fd6ea" stroke-opacity=".35">
+        <path d="M420 520v-60M455 520v-40M490 520v-70"/><path d="M940 540v-70M980 540v-45M1020 540v-60"/>
+        <path d="M660 500v-80M705 500v-55"/>
+      </g>
+      <circle cx="1305" cy="190" r="4" fill="#58d5ee"/>
+      <circle cx="1305" cy="190" r="18" fill="none" stroke="#58d5ee" stroke-opacity=".4"/>
+    </svg>
+    <div class="hero-grid-fx" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span>THE WHITEHATIANS PRESENT</p>
+      <p class="hero-kicker">A DC-THEMED DEFENSIVE SPRINT · 08 OCTOBER 2026</p>
+      <h1 id="hero-title"><em>REVERSE</em><b>HACKATHON</b></h1>
+      <p class="hero-lede">Reverse. Exploit. Defend.<span>A three-hour mission for people who want to understand the system from the inside out.</span></p>
+      <div class="hero-actions">
+        <a class="button primary" href="#register">Join the operation ▶</a>
+        <a class="button ghost" href="#domains">Load mission deck ▤</a>
+      </div>
+      <p class="hero-meta">
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Oct 08, 2026 · 09:00 IST</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>DEP-CYS Campus</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Doors 08:00 · Ledger seals 07:00</span>
+      </p>
+    </div>
+
+    <aside class="hero-hud" aria-hidden="true">
+      <span>CORE LINK <b>0x2F</b></span>
+      <span></span>
+      <span>THREAT LEVEL: <b>READY</b></span>
+    </aside>
+
+    <div class="hero-count">
+      <p class="count-label">COUNTDOWN TO IGNITION</p>
+      <div class="count-grid" role="timer" aria-label="Countdown to the mission start">
+        <div class="count-unit"><strong id="cd-d">00</strong><span>DAYS</span></div><i>:</i>
+        <div class="count-unit"><strong id="cd-h">00</strong><span>HOURS</span></div><i>:</i>
+        <div class="count-unit"><strong id="cd-m">00</strong><span>MIN</span></div><i>:</i>
+        <div class="count-unit"><strong id="cd-s">00</strong><span>SEC</span></div>
+      </div>
+      <p class="count-label" id="cd-note" aria-live="polite" style="margin-left:auto">CRYPTO CLOCK · IST</p>
+    </div>
+  </section>
+
+  <!-- ================= DOMAINS / MISSION DECK ================= -->
+  <section class="mission-section" id="domains" aria-labelledby="domains-title">
+    <div class="section-shell">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="eyebrow gold"><span></span>FEATURED DOMAINS</p>
+          <h2 id="domains-title">Start with <em>three paths.</em></h2>
+        </div>
+        <p>The mission deck holds fifteen domains, each with its own practice grounds. Pick one at registration — it locks when the sprint starts.</p>
+      </div>
+      <div class="featured-domain-grid" id="featuredGrid" aria-label="Featured mission cards"></div>
+      <div class="view-wrap" data-reveal>
+        <button class="button ghost" type="button" id="viewAllBtn">View all 15 domains ▤</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RULES ================= -->
+  <section class="rules-section" id="rules" aria-labelledby="rules-title">
+    <div class="section-shell">
+      <div class="rules-header" data-reveal>
+        <div>
+          <p class="eyebrow red"><span></span>SECURE CHANNEL</p>
+          <h2 id="rules-title">Ground <em>guidelines.</em></h2>
+        </div>
+        <p class="rules-badge" aria-hidden="true">PUBLIC<br>DOSSIER</p>
+      </div>
+      <div class="rules-list" id="rulesList"></div>
+    </div>
+  </section>
+
+  <!-- ================= PLAYBOOK ================= -->
+  <section class="prize-section" id="playbook" aria-labelledby="playbook-title">
+    <div class="prize-head" data-reveal>
+      <p class="eyebrow gold"><span></span>THE PLAYBOOK</p>
+      <h2 id="playbook-title">Three hours.<br><em>One system.</em></h2>
+      <p style="margin-top:22px">Every pod gets the same compromised playground. Your advantage is how clearly you see it — and how decisively you respond.</p>
+    </div>
+    <div>
+      <div class="prize-grid" id="prizeGrid"></div>
+      <p class="prize-note">Prize allocations stay sealed until the live finale. Every pod that ships a fix earns a Certificate of Participation &amp; Merit, and the strongest defence takes a special mention.</p>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="section-shell">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="eyebrow"><span></span>INTEL BASE</p>
+          <h2 id="faq-title">Questions <em>decoded.</em></h2>
+        </div>
+        <p>Open any dossier to inspect the answer. If your question is missing, send a signal through the registration channel.</p>
+      </div>
+      <div class="faq-layout">
+        <div class="faq-list" id="faqList"></div>
+        <aside class="contact-panel" data-reveal>
+          <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3 22 7.5v7c0 4.8-3.8 7.9-9 9.5-5.2-1.6-9-4.7-9-9.5v-7L13 3Z" fill="none" stroke="#0d1b2a" stroke-width="1.8"/><text x="13" y="16.5" font-family="Courier New,monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#c8352c">RH</text></svg>
+          <span>EVENT CONTACTS</span>
+          <h3>Signal the base</h3>
+          <strong>EVENT ORGANISER</strong>
+          <p class="def">The Whitehatians · Department of Cyber Security</p>
+          <strong style="margin-top:14px">STUDENT HEADS</strong>
+          <p class="def">Registration desk — announced with the committee lineup.</p>
+          <a href="mailto:registration@whitehatians.in">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            registration@whitehatians.in
+          </a>
+          <!-- NOTE: swap the address above for the official event inbox before publishing -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REGISTER ================= -->
+  <div class="register-banner" data-reveal>
+    <div>
+      <p class="eyebrow gold"><span></span>LOCK YOUR SEAT</p>
+      <h2 style="font-size:clamp(40px,6vw,72px)">The ledger <em>closes.</em></h2>
+      <p>Thirty minutes before the doors open, the ledger seals at 07:00 IST. Sign early.</p>
+    </div>
+    <a class="button primary" href="#register">Register now ▶</a>
+  </div>
+
+  <section class="register-section" id="register" aria-labelledby="register-title">
+    <div class="section-shell">
+      <div class="register-heading" data-reveal>
+        <div>
+          <p class="eyebrow gold"><span></span>THE ENTRY POINT</p>
+          <h2 id="register-title">Join the <em>operation.</em></h2>
+          <p>Choose your format, declare your domain, and make sure your details are ready for the room.</p>
+        </div>
+        <div class="register-stat" aria-hidden="true"><strong>2</strong><span>MAX<br>POD</span></div>
+      </div>
+
+      <div id="regFormWrap">
+        <form class="mission-form" id="regForm" novalidate>
+          <div class="form-section-head"><span>01 · CREW</span><p>Solo or a team of exactly two.</p></div>
+          <div class="mode-toggle" role="group" aria-label="Choose solo or team of two">
+            <button type="button" class="mode-btn selected" data-mode="solo" aria-pressed="true">SOLO</button>
+            <button type="button" class="mode-btn" data-mode="team" aria-pressed="false">TEAM OF TWO</button>
+          </div>
+          <p class="panel-note" id="partnerNote">A pod of two. The registrant below is the Capo (team lead); your partner is the Soldato.</p>
+
+          <div id="teamFields" class="form-grid" style="display:none;margin-bottom:18px" hidden>
+            <div class="field">
+              <span>TEAM NAME <i>*</i></span>
+              <input id="f-team" name="team" type="text" autocomplete="off" placeholder="e.g. The Silent Circle" aria-describedby="e-team" />
+              <small id="e-team">Name your two-person pod.</small>
+            </div>
+          </div>
+
+          <div class="form-section-head"><span>02 · IDENTITY</span><p>The person we should contact first.</p></div>
+          <div class="form-grid">
+            <div class="field">
+              <span>FULL NAME <i>*</i></span>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name" aria-describedby="e-name" required />
+              <small id="e-name">Enter the full name of the pod lead (at least 2 characters).</small>
+            </div>
+            <div class="field">
+              <span>EMAIL ID <i>*</i></span>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@college.edu" aria-describedby="e-email" required />
+              <small id="e-email">Enter a valid email address.</small>
+            </div>
+            <div class="field">
+              <span>PHONE <i>*</i></span>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="10-digit number" aria-describedby="e-phone" required />
+              <small id="e-phone">Enter a valid mobile number (10 digits, +91 optional).</small>
+            </div>
+            <div class="field">
+              <span>ROLL NUMBER <i>*</i></span>
+              <input id="f-roll" name="roll" type="text" autocomplete="off" placeholder="Your register number" aria-describedby="e-roll" required />
+              <small id="e-roll">Enter your register number.</small>
+            </div>
+            <div class="field">
+              <span>YEAR <i>*</i></span>
+              <select id="f-year" name="year" aria-describedby="e-year" required>
+                <option value="">Select year…</option>
+                <option value="I">Year I</option>
+                <option value="II">Year II</option>
+                <option value="III">Year III</option>
+              </select>
+              <small id="e-year">Select your year (I, II or III).</small>
+            </div>
+            <div class="field">
+              <span>DOMAIN <i>*</i></span>
+              <select id="f-domain" name="domain" aria-describedby="e-domain" required></select>
+              <small id="e-domain">Pick the single domain for your pod.</small>
+            </div>
+          </div>
+
+          <div id="partnerBlock">
+            <div class="form-section-head"><span>03 · PARTNER</span><p>Exactly one partner per pod.</p></div>
+            <div class="form-grid">
+              <div class="field">
+                <span>PARTNER FULL NAME</span>
+                <input id="f-pname" name="pname" type="text" autocomplete="off" placeholder="Partner full name" aria-describedby="e-pname" />
+                <small id="e-pname">Enter your partner's full name.</small>
+              </div>
+              <div class="field">
+                <span>PARTNER YEAR</span>
+                <select id="f-pyear" name="pyear" aria-describedby="e-pyear">
+                  <option value="">Select year…</option>
+                  <option value="I">Year I</option>
+                  <option value="II">Year II</option>
+                  <option value="III">Year III</option>
+                </select>
+                <small id="e-pyear">Select your partner's year.</small>
+              </div>
+              <div class="field">
+                <span>PARTNER ROLL NUMBER</span>
+                <input id="f-proll" name="proll" type="text" autocomplete="off" placeholder="Partner register number" aria-describedby="e-proll" />
+                <small id="e-proll">Enter your partner's register number.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section-head"><span>04 · COMMITMENT</span><p>Read it once. Respect it always.</p></div>
+          <label class="agree-box" id="agreeWrap" for="f-agree">
+            <input type="checkbox" id="f-agree" name="agree" aria-describedby="e-agree" />
+            <span>I agree to follow the event rules, stay within the provided environment, and respect the code of conduct.</span>
+          </label>
+          <p class="field-agree-err" id="e-agree" style="display:none;color:#ff8079;font-size:9px;margin:8px 0 0">Sign the code — accept the rules to enter the ledger.</p>
+
+          <button class="button primary submit-button" type="submit">Submit registration ▶</button>
+          <p class="form-alert" id="formAlert" role="alert"></p>
+          <p class="form-footnote">This build prepares a registration email and copyable details. Replace <strong>[CONTACT EMAIL]</strong> with the official inbox before publishing.</p>
+        </form>
+      </div>
+
+      <div class="register-success" id="regSuccess" hidden aria-live="polite">
+        <span class="success-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5 5L20 6.5"/></svg>
+        </span>
+        <p class="eyebrow gold"><span></span>REGISTRATION RECEIVED</p>
+        <h2>Welcome to <em>the operation.</em></h2>
+        <p>Your registration is staged. Keep this ID safe and send the details to the official event inbox — that confirms your seat on the ledger.</p>
+        <div class="registration-id"><span>REGISTRATION ID</span><strong id="regId">OM26-XXXX</strong></div>
+        <div class="register-actions">
+          <a class="button primary" id="mailBtn" href="#" aria-label="Send registration email">✉ Send registration email</a>
+          <button class="button ghost" id="copyBtn" type="button">Copy details</button>
+        </div>
+        <button class="text-link" id="copyLink" type="button">copy to clipboard instead</button>
+        <p class="form-footnote" id="copyNote" aria-live="polite">No email app to hand? Copy your details and send them to the inbox above.</p>
+        <div class="detail-text" id="detailText"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= MISSION MODAL ================= -->
+<div class="mission-overlay" id="missionModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="mission-overlay-backdrop" data-close></div>
+  <div class="mission-detail-page">
+    <button class="mission-close" type="button" id="missionClose" aria-label="Close mission file"><span>✕</span>CLOSE FILE</button>
+    <p class="eyebrow gold"><span></span>MISSION FILE</p>
+    <div class="mission-detail-hero">
+      <div class="art" id="modalArt"></div>
+      <div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <div class="sites" id="modalSites"></div>
+        <button class="button primary mission-register" type="button" id="modalRegister">Register for this domain ▶</button>
+      </div>
+    </div>
+    <div class="all-domain-head">
+      <p class="eyebrow"><span></span>ALL 15 DOMAIN DETAILS</p>
+      <p style="color:#9eb0bf;font-family:var(--serif);font-size:15px;margin:10px 0 0">One selected mission opens the complete domain directory. There are <strong style="color:var(--gold)">15 domains total</strong> — choose yours before the sprint locks it.</p>
+      <div class="all-domain-grid" id="allDomainGrid"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="dc-footer">
+  <div class="footer-brand">
+    <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3 22 7.5v7c0 4.8-3.8 7.9-9 9.5-5.2-1.6-9-4.7-9-9.5v-7L13 3Z" fill="none" stroke="#58d5ee" stroke-width="1.8"/><text x="13" y="16.5" font-family="Courier New,monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#f0b74a">RH</text></svg>
+    <span class="tagline">Reverse. Exploit. Defend.<small>The Whitehatians · Department of Cyber Security</small></span>
+  </div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="#domains">Domains</a>
+    <a href="#rules">Rules</a>
+    <a href="#playbook">Playbook</a>
+    <a href="#faq">Intel</a>
+    <a href="#register">Register</a>
+  </nav>
+  <div class="footer-social">
+    <span class="social-chip" data-social="discord">Discord · TBA</span>
+    <span class="social-chip" data-social="instagram">Instagram · TBA</span>
+    <span class="social-chip" data-social="linkedin">LinkedIn · TBA</span>
+  </div>
+  <span>© 2026 The Whitehatians</span>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= SWAP LIST =================
+     1. CONTACT_EMAIL — confirmation mailto + contact panel   [placeholder]
+     2. SOCIALS       — fill URLs; TBA chips go live
+     3. PRIZE amounts — sealed until the live finale
+     4. TEAM names    — committee/student-head lineup
+     5. MODEL/BRAND   — hero + card art is original inline SVG (no DC imagery)
+  =============================================== */
+  var CONTACT_EMAIL = "registration@whitehatians.in";
+  var SOCIALS = { discord: "", instagram: "", linkedin: "" };
+
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  var reduced = false;
+  try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---------- social chips -> live links ---------- */
+  $$(".social-chip").forEach(function (chip) {
+    var url = SOCIALS[chip.dataset.social];
+    if (!url) return;
+    var a = document.createElement("a");
+    a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.className = "social-chip is-live";
+    a.textContent = chip.textContent.replace(" · TBA", "");
+    chip.replaceWith(a);
+  });
+
+  /* ---------- 15 domains ---------- */
+  var DOMAINS = [
+    { num: "I", title: "Ethical Hacking", file: "FILE://ETHICAL", color: "#58d5ee",
+      desc: "Think like an attacker, act like a defender. Find the path in, then close it with intent.",
+      sites: [["TryHackMe", "https://tryhackme.com"], ["Hack The Box", "https://www.hackthebox.com"], ["HackerOne", "https://www.hackerone.com"]] },
+    { num: "II", title: "Penetration Testing", file: "FILE://PENTEST", color: "#2b7ff1",
+      desc: "Scope a target, build a chain, and report the story behind every access point.",
+      sites: [["PortSwigger Academy", "https://portswigger.net/web-security"], ["PentesterLab", "https://pentesterlab.com"], ["VulnHub", "https://www.vulnhub.com"]] },
+    { num: "III", title: "CTF & Capture The Flag", file: "FILE://CTF", color: "#f0b74a",
+      desc: "Race the clock through flags, clues, and creative problem-solving across the full security stack.",
+      sites: [["picoCTF", "https://picoctf.org"], ["CTFtime", "https://ctftime.org"], ["Root Me", "https://www.root-me.org"]] },
+    { num: "IV", title: "Digital Forensics", file: "FILE://FORENSICS", color: "#c8352c",
+      desc: "Reconstruct the incident from the evidence left behind. Every artifact has a timeline.",
+      sites: [["Autopsy", "https://www.autopsy.com"], ["CyberDefenders", "https://cyberdefenders.org"], ["Blue Team Labs", "https://blueteamlabs.online"]] },
+    { num: "V", title: "Reverse Engineering", file: "FILE://BRAINIAC", color: "#58d5ee",
+      desc: "Read the machine. Dismantle binaries, crack challenges and unravel hostile code in your own sandbox.",
+      sites: [["Ghidra", "https://ghidra-sre.org"], ["Crackmes.one", "https://crackmes.one"], ["pwn.college", "https://pwn.college"]] },
+    { num: "VI", title: "Cryptography", file: "FILE://CIPHER", color: "#f0b74a",
+      desc: "Challenge the assumptions behind secure communication, from classical ciphers to modern primitives.",
+      sites: [["CryptoHack", "https://cryptohack.org"], ["Cryptopals", "https://cryptopals.com"], ["CyberChef", "https://gchq.github.io/CyberChef"]] },
+    { num: "VII", title: "Web App Security", file: "FILE://WEB", color: "#2b7ff1",
+      desc: "Trace the request, find the trust boundary, and secure the app from the inside out.",
+      sites: [["PortSwigger Academy", "https://portswigger.net/web-security"], ["OWASP Juice Shop", "https://owasp.org/www-project-juice-shop/"], ["W3Schools HTTP", "https://www.w3schools.com/whatis/whatis_http.asp"]] },
+    { num: "VIII", title: "Network Security", file: "FILE://NET", color: "#58d5ee",
+      desc: "Follow the packets. Protect the paths. Learn how systems reveal their weak points in motion.",
+      sites: [["Wireshark", "https://www.wireshark.org"], ["TryHackMe Networking", "https://tryhackme.com/r/room/introtonetworking"], ["OverTheWire", "https://overthewire.org"]] },
+    { num: "IX", title: "Malware Analysis", file: "FILE://MALWARE", color: "#c8352c",
+      desc: "Understand what a suspicious file does before it gets the chance to do it again.",
+      sites: [["ANY.RUN", "https://any.run"], ["REMnux", "https://remnux.org"], ["Malware Traffic", "https://www.malware-traffic-analysis.net"]] },
+    { num: "X", title: "Binary Exploitation / Pwn", file: "FILE://PWN", color: "#f0b74a",
+      desc: "Find the edge in compiled systems and turn memory behavior into a controlled result.",
+      sites: [["pwn.college", "https://pwn.college"], ["Exploit Education", "https://exploit.education"], ["ROP Emporium", "https://ropemporium.com"]] },
+    { num: "XI", title: "OSINT & Social Engineering", file: "FILE://OSINT", color: "#2b7ff1",
+      desc: "Gather the signal hiding in plain sight — carefully, legally, and with a sharp eye.",
+      sites: [["OSINT Framework", "https://osintframework.com"], ["Bellingcat Toolkit", "https://www.bellingcat.com/resources/how-tos/"], ["Sherlock", "https://github.com/sherlock-project/sherlock"]] },
+    { num: "XII", title: "Cloud Security", file: "FILE://CLOUD", color: "#58d5ee",
+      desc: "Map identity, permissions, and exposed services across the modern cloud perimeter.",
+      sites: [["CloudGoat", "https://github.com/RhinoSecurityLabs/cloudgoat"], ["flAWS.cloud", "http://flaws.cloud"], ["AWS Security Docs", "https://docs.aws.amazon.com/security/"]] },
+    { num: "XIII", title: "Incident Response", file: "FILE://RESPONSE", color: "#c8352c",
+      desc: "Stabilize first. Then investigate, contain, and make the next incident harder to repeat.",
+      sites: [["LetsDefend", "https://letsdefend.io"], ["CyberDefenders", "https://cyberdefenders.org"], ["TheHive Project", "https://thehive-project.org"]] },
+    { num: "XIV", title: "Zero-Day Hunting", file: "FILE://ZERO-DAY", color: "#f0b74a",
+      desc: "Look for the unexpected behavior that no checklist has named yet.",
+      sites: [["Fuzzing101", "https://github.com/antonio-morales/Fuzzing101"], ["OSS-Fuzz", "https://google.github.io/oss-fuzz/"], ["Google Project Zero", "https://googleprojectzero.blogspot.com"]] },
+    { num: "XV", title: "Quantum & Next-Gen Crypto", file: "FILE://QUANTUM", color: "#2b7ff1",
+      desc: "Explore how tomorrow's cryptography survives the quantum age — and what breaks today.",
+      sites: [["Qiskit", "https://qiskit.org"], ["NIST PQC", "https://csrc.nist.gov/projects/post-quantum-cryptography"], ["IBM Quantum", "https://www.ibm.com/quantum"]] }
+  ];
+
+  var ART = {
+    I: "0x1F", II: "><", III: "FC", IV: "!?",
+    V: "@$", VI: "#%", VII: "{}", VIII: "/|",
+    IX: "<*", X: "()", XI: ":;", XII: "=+",
+    XIII: "!]!!", XIV: "?-", XV: "?~"
+  };
+  var TAG = {
+    I: "FIND PATH IN", II: "SECURE CHAIN", III: "FLAG RUSH", IV: "TRACE ARTIFACTS",
+    V: "READ THE MACHINE", VI: "CRACK THE CIPHER", VII: "TRUST BOUNDARY", VIII: "FOLLOW PACKETS",
+    IX: "SANDBOX IT", X: "MEMORY EDGE", XI: "SIGNAL IN PLAIN SIGHT", XII: "MISCONFIGURED BUCKET",
+    XIII: "STABILIZE FIRST", XIV: "NO CHECKLIST YET", XV: "POST-QUANTUM AGE"
+  };
+
+  function artSVG(d) {
+    return '<svg viewBox="0 0 420 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Domain artwork for ' + d.title + '">' +
+      '<defs><linearGradient id="g' + d.num + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#142a3b"/><stop offset="1" stop-color="#09111c"/></linearGradient>' +
+      '<radialGradient id="r' + d.num + '" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="' + d.color + '" stop-opacity=".25"/><stop offset="1" stop-color="' + d.color + '" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="420" height="220" fill="url(#g' + d.num + ')"/>' +
+      '<rect width="420" height="220" fill="url(#r' + d.num + ')"/>' +
+      '<path d="M0 170 C120 120 240 200 420 150 V220 H0 Z" fill="' + d.color + '" opacity=".06"/>' +
+      '<circle cx="318" cy="60" r="3" fill="' + d.color + '"/><circle cx="318" cy="60" r="15" fill="none" stroke="' + d.color + '" opacity=".35"/>' +
+      '<text x="196" y="150" font-family="Georgia,serif" font-size="170" font-weight="700" text-anchor="middle" fill="' + d.color + '" opacity=".16">' + d.num + '</text>' +
+      '<text x="196" y="78" font-family="Courier New,monospace" font-size="22" font-weight="700" text-anchor="middle" fill="' + d.color + '">' + ART[d.num] + '</text>' +
+      '</svg>';
+  }
+
+  /* ---------- build featured cards ---------- */
+  function byNum(num) {
+    for (var i = 0; i < DOMAINS.length; i++) if (DOMAINS[i].num === num) return DOMAINS[i];
+    return null;
+  }
+  var FEATURED = ["V", "I", "VII"];
+  var featuredGrid = $("#featuredGrid");
+  FEATURED.forEach(function (num) {
+    var d = byNum(num);
+    featuredGrid.appendChild(cardNode(d, true));
+  });
+
+  function cardNode(d, featured) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "event-card";
+    btn.setAttribute("aria-haspopup", "dialog");
+    btn.setAttribute("aria-label", "Open mission file for " + d.title);
+    btn.dataset.domain = d.num;
+    btn.innerHTML =
+      '<span class="event-image">' + artSVG(d) +
+        '<span class="tag">' + TAG[d.num] + '</span>' +
+        '<span class="file">' + d.file + ' · OPEN DECK</span></span>' +
+      '<span class="event-card-copy"><span>DOMAIN DETAILS · NO ' + d.num + '</span>' +
+      '<h3>' + d.title + '</h3><p>' + d.desc + '</p>' +
+      '<span class="sites"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>' + d.sites[0][0] + ' · ' + d.sites[1][0] + '</span></span>';
+    return btn;
+  }
+
+  /* ---------- rules ---------- */
+  var RULES = [
+    { id: "elig", label: "ELIGIBILITY", title: "Who gets a seat?", body: "Open to students in Year I, II, or III at SRM Valliammai Engineering College. Carry your college ID to the desk — it is checked at check-in." },
+    { id: "format", label: "FORMAT", title: "Solo or armed wing?", body: "Register solo or as a team of exactly two. Every pod receives the same intentionally vulnerable system, briefed at ignition." },
+    { id: "judge", label: "JUDGING", title: "How does the council score?", body: "We score vulnerabilities fixed, quality of the fix, clarity of reasoning, and the final five-minute live showcase per pod." },
+    { id: "conduct", label: "CONDUCT", title: "The code you sign.", body: "Stay within the provided environment. Do not target systems outside the brief. Respect people, data, and the room." }
+  ];
+  var rulesList = $("#rulesList");
+  RULES.forEach(function (r, i) {
+    rulesList.appendChild(accordion("rule", r.id, "0" + (i + 1), r.label, r.title, r.body, i === 0));
+  });
+
+  /* ---------- playbook ---------- */
+  var STEPS = [
+    { n: "01", t: "Map the surface. Find the first signal.", d: "Recon your playground, inventory the services, and locate the weakest entry point on your plate." },
+    { n: "02", t: "Prove the weakness without losing control.", d: "Confirm the vulnerability, understand its blast radius, and document the chain before you touch a fix." },
+    { n: "03", t: "Patch, document, and present the fix.", d: "Seal the hole, describe the change, and defend it in a five-minute live showcase before the council." }
+  ];
+  var prizeGrid = $("#prizeGrid");
+  STEPS.forEach(function (s) {
+    var c = document.createElement("article");
+    c.className = "prize-card";
+    c.innerHTML =
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 2v4M12 22v-4M2 12h4M22 12h-4M5 5l2.5 2.5M19 5l-2.5 2.5M5 19l2.5-2.5M19 19l-2.5-2.5"/><circle cx="12" cy="12" r="4"/></svg>' +
+      '<span>' + s.n + ' · PHASE</span><strong>' + s.t + '</strong><small>' + s.d + '</small>';
+    prizeGrid.appendChild(c);
+  });
+
+  /* ---------- FAQ ---------- */
+  var FAQS = [
+    { q: "Who can participate?", a: "Only students from Year I, II, or III at SRM Valliammai Engineering College are eligible for this edition. Bring your college ID to check-in." },
+    { q: "Can I register alone?", a: "Yes. You can register as a solo participant or as a team of exactly two participants. The format is built for both." },
+    { q: "What happens during the sprint?", a: "You will receive an intentionally vulnerable or broken system, investigate it, patch what you find, and present a five-minute live showcase per pod." },
+    { q: "Do I need to bring anything?", a: "Bring your laptop, charger, student details, and the willingness to think like both an attacker and a defender." },
+    { q: "How will my registration be confirmed?", a: "The moment you submit, you receive a registration ID. Send the staged email to the official inbox and your seat is confirmed on the ledger." }
+  ];
+  var faqList = $("#faqList");
+  FAQS.forEach(function (f, i) {
+    faqList.appendChild(accordion("faq", "q" + i, "", "", f.q, f.a, i === 0));
+  });
+
+  function accordion(tag, id, num, label, title, body, open) {
+    var wrap = document.createElement("div");
+    wrap.className = tag + "-row" + (open ? " open" : "");
+    wrap.innerHTML =
+      '<button type="button" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="' + tag + '-a-' + id + '">' +
+        '<span>' + label + '</span><strong>' + title + '</strong>' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>' +
+      '<div class="answer" id="' + tag + '-a-' + id + '"' + (open ? "" : ' style="display:none"') + '><p>' + body + '</p></div>';
+    wrap.querySelector("button").addEventListener("click", function () {
+      var isOpen = wrap.classList.toggle("open");
+      this.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      var ans = $("#" + tag + "-a-" + id, wrap);
+      ans.style.display = isOpen ? "block" : "none";
+    });
+    return wrap;
+  }
+
+  /* ---------- domain select options ---------- */
+  var domainSel = $("#f-domain");
+  DOMAINS.forEach(function (d) {
+    var o = document.createElement("option");
+    o.value = d.title; o.textContent = d.title;
+    domainSel.appendChild(o);
+  });
+
+  /* ---------- mission modal ---------- */
+  var modal = $("#missionModal"), modalTitle = $("#modalTitle"), modalDesc = $("#modalDesc"),
+      modalSites = $("#modalSites"), modalArt = $("#modalArt"), modalRegister = $("#modalRegister");
+  var chipGlyph = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+
+  function openModal(num) {
+    var d = byNum(num);
+    modalTitle.textContent = d.title;
+    modalDesc.textContent = d.desc;
+    modalArt.innerHTML = artSVG(d);
+    modalSites.innerHTML = d.sites.map(function (s) {
+      return '<a href="' + s[1] + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:10px;margin-right:16px">' + chipGlyph + s[0] + '</a>';
+    }).join("");
+    modalRegister.textContent = "Register for " + d.title + " ▶";
+    modalRegister.dataset.domain = d.num;
+    buildAllGrid();
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    var f = $("#missionClose");
+    if (f) f.focus();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    var opener = document.querySelector("[data-lastopen]");
+    if (opener) { opener.removeAttribute("data-lastopen"); opener.focus(); }
+  }
+
+  function buildAllGrid() {
+    var grid = $("#allDomainGrid");
+    if (grid.childNodes.length) return;
+    DOMAINS.forEach(function (d) {
+      var c = document.createElement("article");
+      c.className = "all-domain-card";
+      c.innerHTML =
+        '<span class="num">NO ' + d.num + ' · ' + d.file + '</span>' +
+        '<h3>' + d.title + '</h3><p>' + d.desc + '</p>' +
+        '<span class="sites">' + d.sites[0][0] + ' · ' + d.sites[1][0] + '</span>' +
+        '<button type="button" class="button ghost pick" data-pick="' + d.num + '">Pick ' + d.title + ' →</button>';
+      c.querySelector(".pick").addEventListener("click", function () {
+        modalRegister.click();
+      });
+      grid.appendChild(c);
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("[data-domain]") && !e.target.closest("#modalRegister")) {
+      var b = e.target.closest("[data-domain]");
+      b.setAttribute("data-lastopen", "1");
+      openModal(b.dataset.domain);
+    }
+  });
+  $("#viewAllBtn").addEventListener("click", function () {
+    this.setAttribute("data-lastopen", "1");
+    openModal("V");
+  });
+  $("#missionClose").addEventListener("click", closeModal);
+  $$("[data-close]").forEach(function (el) { el.addEventListener("click", closeModal); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+    if (e.key === "Escape" && $("#navDrop").classList.contains("open")) {
+      $("#navDrop").classList.remove("open");
+      $("#menuBtn").setAttribute("aria-expanded", "false");
+    }
+  });
+  modalRegister.addEventListener("click", function () {
+    var d = byNum(this.dataset.domain);
+    if (d) { domainSel.value = d.title; }
+    closeModal();
+    $("#register").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  });
+
+  /* ---------- nav / menu ---------- */
+  var menuBtn = $("#menuBtn"), navDrop = $("#navDrop");
+  menuBtn.addEventListener("click", function () {
+    var open = navDrop.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  $$(".nav-drop a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      navDrop.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* ---------- countdown ---------- */
+  var EVENT_TIME = new Date("2026-10-08T09:00:00+05:30").getTime();
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() {
+    var D = $("#cd-d"), H = $("#cd-h"), M = $("#cd-m"), S = $("#cd-s"), note = $("#cd-note");
+    if (!D) return;
+    var diff = EVENT_TIME - Date.now();
+    if (diff <= 0) {
+      D.textContent = H.textContent = M.textContent = S.textContent = "00";
+      if (note) note.textContent = "IGNITION TIME — BRIEFING AT 09:00 IST · WALK-INS TAKE THE WAITING LIST";
+      return;
+    }
+    D.textContent = pad(Math.floor(diff / 86400000));
+    H.textContent = pad(Math.floor(diff / 3600000) % 24);
+    M.textContent = pad(Math.floor(diff / 60000) % 60);
+    S.textContent = pad(Math.floor(diff / 1000) % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- reveal ---------- */
+  try {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    $$("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } catch (e) {
+    $$("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- registration ---------- */
+  var form = $("#regForm"), confirmPanel = $("#regSuccess");
+  var teamBlock = $("#teamFields"), partnerBlock = $("#partnerBlock"), partnerNote = $("#partnerNote");
+  var modeBtns = $$(".mode-btn");
+  var mode = "solo";
+  var LS_KEY = "om26_registrations";
+  var regs = [];
+  try { regs = JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch (e) { regs = []; }
+
+  var FIELDS = {
+    name: { el: "#f-name", check: function (v) { return v.trim().length >= 2; } },
+    email: { el: "#f-email", check: function (v) { return /^\S+@\S+\.\S+$/.test(v.trim()); } },
+    phone: { el: "#f-phone", check: function (v) { var c = v.replace(/[\s-]/g, ""); return /^(\+91)?[6-9]\d{9}$/.test(c) || /^\+?\d{10,15}$/.test(c); } },
+    year: { el: "#f-year", check: function (v) { return ["I", "II", "III"].indexOf(v) !== -1; } },
+    roll: { el: "#f-roll", check: function (v) { return v.trim().length >= 3; } },
+    domain: { el: "#f-domain", check: function (v) { return DOMAINS.some(function (d) { return d.title === v; }); } },
+    agree: { el: "#f-agree", check: function (v) { return !!v; } },
+    team: { el: "#f-team", check: function (v) { return v.trim().length >= 2; } },
+    pname: { el: "#f-pname", check: function (v) { return v.trim().length >= 2; } },
+    pyear: { el: "#f-pyear", check: function (v) { return ["I", "II", "III"].indexOf(v) !== -1; } },
+    proll: { el: "#f-proll", check: function (v) { return v.trim().length >= 3; } }
+  };
+
+  function setFieldError(el, bad) {
+    var wrap = el.closest(".field");
+    if (wrap) wrap.classList.toggle("has-error", bad);
+    if (el.id === "f-agree") $("#agreeWrap").classList.toggle("has-error", bad);
+    return !bad;
+  }
+  function showAlert(msg) { var a = $("#formAlert"); a.textContent = msg; a.classList.add("on"); }
+  function clearAlert() { $("#formAlert").classList.remove("on"); }
+
+  modeBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      mode = btn.dataset.mode;
+      modeBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); b.classList.toggle("selected", b === btn); });
+      var isTeam = mode === "team";
+      teamBlock.style.display = isTeam ? "grid" : "none";
+      teamBlock.hidden = !isTeam;
+      partnerBlock.style.display = isTeam ? "block" : "none";
+      partnerNote.classList.toggle("on", isTeam);
+    });
+  });
+
+  var agreeWrap = $("#agreeWrap");
+  agreeWrap.addEventListener("click", function () {
+    setFieldError($("#f-agree"), false);
+    $("#e-agree").style.display = "none";
+  });
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    clearAlert();
+    $("#e-agree").style.display = "none";
+
+    var data = {
+      mode: mode,
+      name: $("#f-name").value.trim(),
+      email: $("#f-email").value.trim().toLowerCase(),
+      phone: $("#f-phone").value.trim(),
+      year: $("#f-year").value,
+      roll: $("#f-roll").value.trim(),
+      domain: $("#f-domain").value,
+      agree: $("#f-agree").checked
+    };
+    var team = null;
+    if (mode === "team") {
+      team = {
+        team: $("#f-team").value.trim(),
+        pname: $("#f-pname").value.trim(),
+        pyear: $("#f-pyear").value,
+        proll: $("#f-proll").value.trim()
+      };
+    }
+
+    var ok = true;
+    Object.keys(FIELDS).forEach(function (key) {
+      if (mode === "solo" && (key === "team" || key === "pname" || key === "pyear" || key === "proll")) return;
+      var el = $(FIELDS[key].el);
+      if (!el) return;
+      var chk = FIELDS[key].check(el.type === "checkbox" ? el.checked : el.value);
+      ok = setFieldError(el, !chk) && ok;
+    });
+    if (!$("#f-agree").checked) { $("#e-agree").style.display = "block"; ok = false; }
+    if (!ok) { showAlert("A few fields need attention — the message beneath each one tells you what."); return; }
+
+    if (regs.some(function (r) { return r.email === data.email; })) {
+      showAlert("This email is already on the ledger. Check your inbox for the earlier confirmation, or speak to the committee desk.");
+      return;
+    }
+    if (team && regs.some(function (r) { return r.team && r.team.team && r.team.team.toLowerCase() === team.team.toLowerCase(); })) {
+      showAlert('The team name "' + team.team + '" is already taken. Speak to the committee desk to reclaim it.');
+      return;
+    }
+
+    var id = "OM26-" + Math.random().toString(36).slice(2, 6).toUpperCase();
+    var record = data;
+    record.team = team;
+    record.id = id;
+    record.at = new Date().toISOString();
+    regs.push(record);
+    try { localStorage.setItem(LS_KEY, JSON.stringify(regs)); } catch (e) {}
+
+    var lines = [
+      "REGISTRATION — REVERSE HACKATHON 2026 · MISSION DECK",
+      "= ".repeat(20),
+      "Family ID: " + id,
+      "",
+      "Pod: " + (mode === "solo" ? "SOLO" : "TEAM OF TWO"),
+      "Domain: " + data.domain,
+      "Capo (Team Lead): " + data.name,
+      "Year: " + data.year,
+      "Roll No: " + data.roll,
+      "Email: " + data.email,
+      "Phone: " + data.phone
+    ];
+    if (team) lines.push("", "Team: " + team.team, "Soldato (Partner): " + team.pname + " (Year " + team.pyear + ", " + team.proll + ")");
+    lines.push("", "I confirm the details above and accept The Code of the Reverse Hackathon 2026.");
+
+    var subject = "Registration — Reverse Hackathon 2026 — " + (team ? team.team : data.name);
+    var mail = $("#mailBtn");
+    mail.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"));
+    mail.setAttribute("aria-label", "Send registration email to " + CONTACT_EMAIL);
+
+    $("#regId").textContent = id;
+    $("#detailText").textContent = lines.join("\n");
+
+    form.hidden = true;
+    confirmPanel.hidden = false;
+    try { confirmPanel.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); } catch (e) {}
+  });
+
+  function copyText(txt, done) {
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.left = "-9999px";
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { done(true); }, fallback);
+    } else { fallback(); }
+  }
+
+  function revealDetail() { $("#detailText").classList.add("on"); }
+
+  $("#copyBtn").addEventListener("click", function () {
+    var txt = $("#detailText").textContent;
+    if (!txt) return;
+    revealDetail();
+    copyText(txt, function (ok) {
+      copyBtn.textContent = ok ? "COPIED ✔" : "COPY AGAIN";
+      $("#copyNote").textContent = ok
+        ? "Copied. Send your details to " + CONTACT_EMAIL + " to seal the seat."
+        : "Select the details below and copy them manually.";
+      if (ok) setTimeout(function () { copyBtn.textContent = "Copy details"; }, 2600);
+    });
+  });
+  $("#copyLink").addEventListener("click", function () {
+    var txt = $("#detailText").textContent;
+    if (!txt) return;
+    revealDetail();
+    copyText(txt, function (ok) {
+      $("#copyNote").textContent = ok
+        ? "Copied. Send your details to " + CONTACT_EMAIL + " to seal the seat."
+        : "Select the details below and copy them manually.";
+    });
+  });
+
+  Object.keys(FIELDS).forEach(function (key) {
+    var el = $(FIELDS[key].el);
+    if (el) el.addEventListener("input", function () { setFieldError(el, false); clearAlert(); });
+  });
+})();
+</script>
+</body>
+</html>
