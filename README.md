@@ -87,3 +87,7 @@ Duplicates are blocked by reading this sheet before every append (same team name
 - Storage is Google Sheets by design (simplest for a club to maintain). If you ever prefer a database + admin dashboard, swap `src/lib/gsheets.ts` for a Supabase client and add a password-protected `/admin` route — the form and API contract stay the same.
 - All prices/dates/names shown are working placeholders where marked in `src/lib/site.ts`; the code ships with zero Lorem Ipsum.
 - The design is an original homage to the aesthetic of classic 1970s crime dramas; it is unaffiliated with and unendorsed by any film studio.
+## Deployed Preview
+
+The live site is available at https://reversehack-2cw9n6ya.manus.space/. This repository contains the source used for that deployment.
+
