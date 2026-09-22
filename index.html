@@ -92,7 +92,7 @@
   .dc-hero {
     isolation: isolate; position: relative; display: flex; align-items: flex-end;
     min-height: 860px; padding: 170px max(5vw, 50px) 86px;
-    background: linear-gradient(90deg, rgba(4,10,17,.9), rgba(4,10,17,.74) 43%, rgba(4,10,17,.16)), url('hero-bg.webp') center right / cover no-repeat;
+    background: linear-gradient(90deg, rgba(4,10,17,.9), rgba(4,10,17,.74) 43%, rgba(4,10,17,.16)), url('hero-bg.jpg') center right / cover no-repeat;
     overflow: hidden;
   }
   .hero-bg { display: none; }
@@ -177,6 +177,25 @@
   .hero-hud b { color: var(--gold); font-weight: 700; }
   .hero-hud span { width: 1px; height: 40px; background: rgba(88,213,238,.35); }
 
+
+  .mission-detail-page { --dossier-color: var(--cyan); border-top: 3px solid var(--dossier-color); box-shadow: inset 5px 0 0 color-mix(in srgb, var(--dossier-color), transparent 58%), 0 30px 90px rgba(0,0,0,.5); }
+  .mission-detail-page::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--dossier-color), transparent 82%), transparent 32%); }
+  .mission-detail-page .eyebrow.gold, .mission-detail-page .dossier-meta span { color: color-mix(in srgb, var(--dossier-color), var(--paper) 28%); }
+  .mission-detail-page .eyebrow.gold span { background: var(--dossier-color); opacity: .72; }
+  .mission-detail-page .dossier-meta div { border-color: color-mix(in srgb, var(--dossier-color), transparent 70%); }
+  .mission-detail-page .button.primary { background: color-mix(in srgb, var(--dossier-color), var(--navy) 58%); border-color: color-mix(in srgb, var(--dossier-color), var(--paper) 25%); color: var(--paper); }
+  .mission-detail-page .button.primary:hover { background: color-mix(in srgb, var(--dossier-color), var(--navy) 42%); }
+
+
+  .hero-count { gap: 18px 30px; background: linear-gradient(90deg, rgba(5,12,20,.72), rgba(5,12,20,.3)); padding: 14px 16px 13px; border-top: 1px solid rgba(240,183,74,.38); border-bottom: 1px solid rgba(88,213,238,.12); }
+  .bomb-timer-head { display: flex; align-items: center; gap: 10px; color: var(--gold); min-width: 210px; }
+  .bomb-icon { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(240,183,74,.58); border-radius: 50%; color: var(--gold); box-shadow: 0 0 0 4px rgba(240,183,74,.06); }
+  .bomb-timer-head b { display: block; font-size: 9px; letter-spacing: .13em; font-weight: 400; }
+  .bomb-timer-head small { display: block; color: #8497a8; font-size: 7px; letter-spacing: .12em; margin-top: 4px; }
+  .hero-count .count-grid { padding-left: 16px; border-left: 1px solid rgba(240,183,74,.28); }
+  .hero-count .count-unit strong { text-shadow: 0 0 14px rgba(240,183,74,.22); }
+  @media (max-width: 700px) { .hero-count { align-items: flex-start; gap: 13px 18px; } .bomb-timer-head { min-width: 100%; } .hero-count .count-grid { padding-left: 0; border-left: 0; } .hero-count #cd-note { margin-left: 0 !important; width: 100%; } }
+
   /* ---------- Sections ---------- */
   .section-shell { width: min(1160px, 100% - 90px); margin: 0 auto; padding: 104px 0; }
   @media (max-width: 820px) { .section-shell { width: calc(100% - 34px); padding: 74px 0; } }
@@ -187,7 +206,7 @@
   .section-intro p, .section-heading > p { color: #9eb0bf; font-family: var(--serif); font-size: 16px; line-height: 1.5; margin: 0; }
   .section-heading { display: grid; grid-template-columns: 1fr .78fr; align-items: end; gap: 50px; }
   @media (max-width: 820px) { .section-heading { grid-template-columns: 1fr; gap: 16px; } .section-heading h2 { font-size: 57px; } }
-  .about-section { position: relative; overflow: hidden; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.98) 0%, rgba(4,10,17,.9) 42%, rgba(4,10,17,.52) 100%), url('about-bg.webp') center right / cover no-repeat; }
+  .about-section { position: relative; overflow: hidden; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.98) 0%, rgba(4,10,17,.9) 42%, rgba(4,10,17,.52) 100%), url('about-bg.jpg') center right / cover no-repeat; }
   .about-section::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(4,10,17,.38), transparent 40%, rgba(4,10,17,.25)); }
   .about-section .section-shell { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(290px, .7fr); gap: 70px; align-items: center; }
   .about-copy h2 { max-width: 700px; }
@@ -207,9 +226,9 @@
     .about-copy > p { font-size: 16px; }
     .about-presented { max-width: 560px; }
   }
-  .mission-section { border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.95), rgba(4,10,17,.83) 48%, rgba(4,10,17,.66)), url('hero-bg.webp') center / cover fixed; }
+  .mission-section { border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.95), rgba(4,10,17,.83) 48%, rgba(4,10,17,.66)), url('hero-bg.jpg') center / cover fixed; }
   .featured-domain-grid { display: flex; gap: 0; margin-top: 46px; overflow: hidden; position: relative; padding: 8px 0 18px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
-  .domain-loop { display: flex; gap: 16px; width: max-content; animation: domainReel 68s linear infinite; will-change: transform; }
+  .domain-loop { display: flex; gap: 16px; width: max-content; animation: domainReel 112s linear infinite; will-change: transform; }
   .featured-domain-grid:hover .domain-loop, .featured-domain-grid:focus-within .domain-loop { animation-play-state: paused; }
   @keyframes domainReel { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
   @media (prefers-reduced-motion: reduce) { .domain-loop { animation: none; } }
@@ -242,7 +261,7 @@
   .mission-overlay { position: fixed; inset: 0; z-index: 40; overflow: auto; }
   .mission-overlay-backdrop { position: fixed; inset: 0; background: rgba(2,7,13,.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
   .mission-detail-page {
-    position: relative; z-index: 1; min-height: 100vh; background: linear-gradient(90deg, rgba(4,10,17,.97), rgba(4,10,17,.86) 55%, rgba(4,10,17,.64)), var(--dossier-art, url('hero-bg.webp')) center right / cover no-repeat;
+    position: relative; z-index: 1; min-height: 100vh; background: linear-gradient(90deg, rgba(4,10,17,.97), rgba(4,10,17,.86) 55%, rgba(4,10,17,.64)), var(--dossier-art, url('hero-bg.jpg')) center right / cover no-repeat;
     width: 100%; margin: 0; padding: clamp(26px, 5vw, 72px) max(6vw, 24px);
     box-shadow: 0 30px 90px rgba(0,0,0,.5); overflow: hidden;
   }
@@ -298,7 +317,7 @@
   .all-domain-card .pick { display: inline-flex; margin-top: 10px; }
 
   /* ---------- Rules ---------- */
-  .rules-section { border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.95), rgba(4,10,17,.83) 48%, rgba(4,10,17,.66)), url('hero-bg.webp') center / cover fixed; }
+  .rules-section { border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.95), rgba(4,10,17,.83) 48%, rgba(4,10,17,.66)), url('hero-bg.jpg') center / cover fixed; }
   .rules-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
   @media (max-width: 820px) { .rules-header { flex-direction: column; align-items: flex-start; } .rules-header h2 { font-size: 57px; } }
   .rules-badge { border: 1px solid var(--red); color: #ff786f; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; width: 90px; height: 90px; font-size: 8px; text-align: center; letter-spacing: .12em; flex: none; }
@@ -585,21 +604,18 @@ Error generating stack: `+l.message+`
       </p>
     </div>
 
-    <aside class="hero-hud" aria-hidden="true">
-      <span>CORE LINK <b>0x2F</b></span>
-      <span></span>
-      <span>THREAT LEVEL: <b>READY</b></span>
-    </aside>
-
     <div class="hero-count">
-      <p class="count-label">COUNTDOWN TO IGNITION</p>
+      <div class="bomb-timer-head">
+        <span class="bomb-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"></circle><path d="M12 13V9M12 6V3M16 5l2-2M10 3h4"></path></svg></span>
+        <span><b>COUNTDOWN TO IGNITION</b><small>MISSION START · 09:00 IST</small></span>
+      </div>
       <div class="count-grid" role="timer" aria-label="Countdown to the mission start">
         <div class="count-unit"><strong id="cd-d">15</strong><span>DAYS</span></div><i>:</i>
         <div class="count-unit"><strong id="cd-h">09</strong><span>HOURS</span></div><i>:</i>
         <div class="count-unit"><strong id="cd-m">48</strong><span>MIN</span></div><i>:</i>
         <div class="count-unit"><strong id="cd-s">34</strong><span>SEC</span></div>
       </div>
-      <p class="count-label" id="cd-note" aria-live="polite" style="margin-left:auto">CRYPTO CLOCK · IST</p>
+      <p class="count-label" id="cd-note" aria-live="polite" style="margin-left:auto">SECURE TIMER · IST</p>
     </div>
   </section>
 
@@ -648,12 +664,12 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="rules-header" data-reveal="">
         <div>
-          <p class="eyebrow red"><span></span>SECURE CHANNEL</p>
-          <h2 id="rules-title">Ground <em>guidelines.</em></h2>
+          <p class="eyebrow red"><span></span>EVENT STANDARD</p>
+          <h2 id="rules-title">Built like a <em>serious operation.</em></h2>
         </div>
-        <p class="rules-badge" aria-hidden="true">PUBLIC<br>DOSSIER</p>
+        <p class="rules-badge" aria-hidden="true">CONTROLLED<br>ENVIRONMENT</p>
       </div>
-      <div class="rules-list" id="rulesList"><div class="rule-row open"><button type="button" aria-expanded="true" aria-controls="rule-a-elig" data-manus_clickable="true" data-manus_click_id="42"><span>ELIGIBILITY</span><strong>Who gets a seat?</strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="answer" id="rule-a-elig"><p>Open to students in Year I, II, or III at SRM Valliammai Engineering College. Carry your college ID to the desk — it is checked at check-in.</p></div></div><div class="rule-row"><button type="button" aria-expanded="false" aria-controls="rule-a-format" data-manus_clickable="true" data-manus_click_id="43"><span>FORMAT</span><strong>Solo or armed wing?</strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="answer" id="rule-a-format" style="display:none"><p>Register solo or as a team of exactly two. Every pod receives the same intentionally vulnerable system, briefed at ignition.</p></div></div><div class="rule-row"><button type="button" aria-expanded="false" aria-controls="rule-a-judge" data-manus_clickable="true" data-manus_click_id="44"><span>JUDGING</span><strong>How does the council score?</strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="answer" id="rule-a-judge" style="display:none"><p>We score vulnerabilities fixed, quality of the fix, clarity of reasoning, and the final five-minute live showcase per pod.</p></div></div><div class="rule-row"><button type="button" aria-expanded="false" aria-controls="rule-a-conduct" data-manus_clickable="true" data-manus_click_id="45"><span>CONDUCT</span><strong>The code you sign.</strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="answer" id="rule-a-conduct" style="display:none"><p>Stay within the provided environment. Do not target systems outside the brief. Respect people, data, and the room.</p></div></div></div>
+      <div class="rules-list" id="rulesList"></div>
     </div>
   </section>
 
@@ -1040,10 +1056,10 @@ Error generating stack: `+l.message+`
 
   /* ---------- rules ---------- */
   var RULES = [
-    { id: "elig", label: "ELIGIBILITY", title: "Who gets a seat?", body: "Open to students in Year I, II, or III at SRM Valliammai Engineering College. Carry your college ID to the desk — it is checked at check-in." },
-    { id: "format", label: "FORMAT", title: "Solo or armed wing?", body: "Register solo or as a team of exactly two. Every pod receives the same intentionally vulnerable system, briefed at ignition." },
-    { id: "judge", label: "JUDGING", title: "How does the council score?", body: "We score vulnerabilities fixed, quality of the fix, clarity of reasoning, and the final five-minute live showcase per pod." },
-    { id: "conduct", label: "CONDUCT", title: "The code you sign.", body: "Stay within the provided environment. Do not target systems outside the brief. Respect people, data, and the room." }
+    { id: "elig", label: "ELIGIBILITY", title: "Who can enter the room?", body: "Open to SRM Valliammai Engineering College students in Year I, II, or III across departments. Bring a valid college ID for check-in; registrations without verification do not enter the operating floor." },
+    { id: "format", label: "FORMAT", title: "How is the sprint structured?", body: "Choose solo entry or a team of two. Every pod receives the same intentionally vulnerable system, a three-hour clock, one selected domain, and a defined handover for the final showcase." },
+    { id: "judge", label: "EVALUATION", title: "How is performance evaluated?", body: "The council evaluates the quality of the vulnerability analysis, evidence and reproducibility, effectiveness of the remediation, clarity of the technical explanation, and the discipline of the final five-minute showcase." },
+    { id: "conduct", label: "OPERATING STANDARD", title: "What controls govern the event?", body: "Work only inside the provided environment and approved brief. Do not probe external systems, expose participant data, or bypass the room protocol. Strong work is precise, ethical, documented, and repeatable." }
   ];
   var rulesList = $("#rulesList");
   RULES.forEach(function (r, i) {
@@ -1120,6 +1136,7 @@ Error generating stack: `+l.message+`
     modalRegister.textContent = "Register for " + d.title + " ▶";
     modalRegister.dataset.domain = d.num;
     modal.style.setProperty("--dossier-art", "url('" + ART_IMG[d.num] + "')");
+    modal.style.setProperty("--dossier-color", d.color);
     detailView.hidden = false;
     directoryView.hidden = true;
     modal.hidden = false;
