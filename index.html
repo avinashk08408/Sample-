@@ -389,7 +389,8 @@
   .operations-brief::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(4,10,18,.08), rgba(4,10,18,.16) 42%, rgba(4,10,18,.72)); }
   .operations-brief::after { display: none; }
   .operations-brief > * { position: relative; z-index: 1; }
-  .operations-brief h2 { margin-bottom: 30px; }
+  .operations-brief h2 { margin: 18px 0 30px; color: var(--paper); font-family: var(--serif); font-size: clamp(52px, 7vw, 93px); font-weight: 400; line-height: .9; letter-spacing: -.05em; }
+  .operations-brief h2 em { color: var(--cyan); font-style: italic; }
   .operations-lead { max-width: 620px; color: #e2e7e7; font: 400 clamp(20px, 2.3vw, 30px)/1.28 var(--serif); letter-spacing: -.015em; }
   .operations-copy { max-width: 555px; color: #9db1ba; font: 15px/1.65 var(--serif); margin-top: 26px; }
   .operations-meta { display: flex; flex-wrap: wrap; gap: 9px 16px; margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(247,241,223,.2); color: #9ab0b7; font: 9px var(--display); letter-spacing: .13em; }
@@ -905,14 +906,14 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="operations-layout">
         <div class="operations-brief" data-reveal="">
-          <p class="eyebrow red"><span></span>MISSION PROTOCOL // CONTROLLED ENVIRONMENT</p>
-          <h2 id="rules-title">Mission <em>protocol.</em></h2>
+          <p class="eyebrow red"><span></span>RULES &amp; REGULATIONS // CONTROLLED ENVIRONMENT</p>
+          <h2 id="rules-title">Rules and <em>Regulations</em></h2>
           <p class="operations-lead">A serious security event needs a clear operating model. Every participant enters the same controlled environment, works to the same evidence standard, and leaves a defensible record of what changed.</p>
-          <p class="operations-copy">The mission is designed like a professional incident-response room: establish identity, respect the boundary, document the signal, and communicate the fix. The protocol on the right is the baseline for every pod, from first check-in to final handover.</p>
-          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 field protocols</strong><span>SCROLL THE RAIL</span></div>
+          <p class="operations-copy">The mission is designed like a professional incident-response room: establish identity, respect the boundary, document the signal, and communicate the fix. These rules are the baseline for every pod, from first check-in to final handover.</p>
+          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 field rules</strong><span>SCROLL THE RAIL</span></div>
         </div>
-        <aside class="operations-rail" aria-label="Mission protocol rules">
-          <div class="operations-rail-head"><span>MISSION PROTOCOL</span><small>01—10 / CONTROLLED</small></div>
+        <aside class="operations-rail" aria-label="Rules and Regulations">
+          <div class="operations-rail-head"><span>RULES &amp; REGULATIONS</span><small>01—10 / CONTROLLED</small></div>
           <div class="rules-board">
             <article class="operation-rule"><span>01 / ACCESS</span><strong>Bring your college ID to check-in.</strong><small>Identity verified before entry.</small></article>
             <article class="operation-rule"><span>02 / POD</span><strong>Register solo or as a team of two.</strong><small>One registration record per pod.</small></article>
