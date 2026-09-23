@@ -55,24 +55,24 @@
   .landing-intro.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
   .landing-intro::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 72% 40%, rgba(88,213,238,.13), transparent 30%), linear-gradient(115deg, rgba(5,11,20,.99) 0%, rgba(8,19,32,.96) 55%, rgba(11,31,45,.86) 100%); }
   .landing-intro::after { content: "RH / 2026"; position: absolute; top: 32px; right: 40px; color: rgba(159,180,194,.55); font: 9px var(--display); letter-spacing: .18em; }
-  .landing-intro-shell { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(300px, .88fr) minmax(420px, 1.12fr); align-items: center; gap: clamp(40px, 8vw, 120px); width: min(1280px, calc(100% - 96px)); }
-  .landing-copy { position: relative; padding-left: 28px; border-left: 2px solid var(--cyan); }
-  .landing-kicker { margin: 0 0 22px; color: var(--gold); font-size: 10px; letter-spacing: .24em; }
-  .landing-intro h1 { margin: 0; color: var(--cream); font: 400 clamp(60px, 8.5vw, 124px)/.82 var(--serif); letter-spacing: -.07em; }
+  .landing-intro-shell { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 28px; width: min(920px, calc(100% - 48px)); text-align: center; }
+  .landing-copy { order: 2; display: flex; flex-direction: column; align-items: center; }
+  .landing-kicker { margin: 0 0 18px; color: var(--gold); font-size: 10px; letter-spacing: .24em; }
+  .landing-intro h1 { margin: 0; color: var(--cream); font: 400 clamp(66px, 10vw, 136px)/.8 var(--serif); letter-spacing: -.075em; }
   .landing-intro h1 em { display: block; color: var(--cyan); font-style: italic; }
-  .landing-subtitle { max-width: 390px; margin: 28px 0 0; color: #aebfca; font: 17px/1.5 var(--serif); }
-  .landing-art-frame { position: relative; min-height: min(52vh, 480px); padding: 0; border: 1px solid rgba(88,213,238,.42); background: rgba(7,18,30,.8); box-shadow: 0 24px 70px rgba(0,0,0,.48); overflow: hidden; }
+  .landing-subtitle { max-width: 600px; margin: 21px 0 0; color: #aebfca; font: 17px/1.5 var(--serif); }
+  .landing-art-frame { order: 1; position: relative; width: min(820px, 100%); height: min(34vh, 300px); padding: 0; border: 1px solid rgba(228,184,93,.62); background: rgba(7,18,30,.8); box-shadow: 0 24px 70px rgba(0,0,0,.48); overflow: hidden; }
   .landing-art-frame::before { content: "MISSION VISUAL / 01"; position: absolute; z-index: 1; top: 18px; left: 18px; color: rgba(247,241,223,.85); font: 9px var(--display); letter-spacing: .15em; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
   .landing-art-frame::after { content: "08 OCT 2026"; position: absolute; z-index: 1; right: 18px; bottom: 18px; color: var(--gold); font: 9px var(--display); letter-spacing: .15em; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
-  .landing-art-frame img { width: 100%; height: 100%; min-height: min(52vh, 480px); object-fit: cover; object-position: center; }
-  .landing-status { display: flex; align-items: center; gap: 11px; margin-top: 28px; color: #9fb4c2; font-size: 9px; letter-spacing: .15em; }
+  .landing-art-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .landing-status { display: flex; align-items: center; justify-content: center; gap: 11px; margin-top: 22px; color: #9fb4c2; font-size: 9px; letter-spacing: .15em; }
   .landing-status strong { min-width: 32px; color: var(--gold); font-weight: 400; text-align: left; }
   .landing-loader { width: 13px; height: 13px; border: 1px solid rgba(88,213,238,.25); border-top-color: var(--cyan); border-radius: 50%; animation: landing-spin .8s linear infinite; }
-  .landing-enter { margin-top: 30px; border: 1px solid rgba(88,213,238,.55); background: rgba(88,213,238,.1); color: var(--cream); cursor: pointer; font: 10px var(--display); letter-spacing: .14em; padding: 14px 18px; transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
-  .landing-enter:hover { color: var(--navy); background: var(--cyan); border-color: var(--cyan); transform: translateY(-2px); }
+  .landing-enter { margin-top: 28px; border: 1px solid #e4b85d; background: #e4b85d; color: #08131f; cursor: pointer; font: 700 12px var(--display); letter-spacing: .12em; padding: 16px 28px; box-shadow: 0 12px 30px rgba(228,184,93,.2); transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease); }
+  .landing-enter:hover { color: #08131f; background: #f5d17c; border-color: #f5d17c; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(228,184,93,.32); }
   @keyframes landing-spin { to { transform: rotate(360deg); } }
-  @media (max-width: 820px) { .landing-intro { overflow-y: auto; padding: 76px 0 38px; place-items: start center; } .landing-intro-shell { grid-template-columns: 1fr; gap: 30px; width: min(620px, calc(100% - 42px)); } .landing-copy { padding-left: 18px; } .landing-art-frame, .landing-art-frame img { min-height: 230px; height: 34vh; } .landing-intro h1 { font-size: clamp(56px, 15vw, 88px); } }
-  @media (max-width: 620px) { .landing-intro::after { top: 18px; right: 18px; } .landing-kicker { font-size: 8px; letter-spacing: .17em; } .landing-subtitle { font-size: 15px; } .landing-art-frame, .landing-art-frame img { min-height: 190px; height: 28vh; } .landing-status { font-size: 8px; letter-spacing: .08em; } }
+  @media (max-width: 820px) { .landing-intro { overflow-y: auto; padding: 58px 0 34px; } .landing-intro-shell { gap: 24px; width: min(700px, calc(100% - 34px)); } .landing-art-frame { height: 28vh; min-height: 170px; } .landing-intro h1 { font-size: clamp(58px, 15vw, 92px); } }
+  @media (max-width: 620px) { .landing-intro::after { top: 18px; right: 18px; } .landing-kicker { font-size: 8px; letter-spacing: .17em; } .landing-subtitle { font-size: 15px; } .landing-art-frame { height: 23vh; min-height: 138px; } .landing-status { font-size: 8px; letter-spacing: .08em; } .landing-enter { width: min(270px, 100%); } }
   @media (prefers-reduced-motion: reduce) { .landing-intro { transition: none; } .landing-loader { animation: none; } }
 
   /* ---------- Header ---------- */
