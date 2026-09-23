@@ -207,13 +207,15 @@
   .hero-hud span { width: 1px; height: 40px; background: rgba(88,213,238,.35); }
 
 
-  .mission-detail-page { --dossier-color: var(--cyan); border-top: 3px solid var(--dossier-color); box-shadow: inset 5px 0 0 color-mix(in srgb, var(--dossier-color), transparent 58%), 0 30px 90px rgba(0,0,0,.5); }
-  .mission-detail-page::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--dossier-color), transparent 82%), transparent 32%); }
+  .mission-detail-page { --dossier-color: var(--cyan); border-top: 3px solid var(--dossier-color); background-color: #08131f; box-shadow: inset 5px 0 0 color-mix(in srgb, var(--dossier-color), transparent 58%), 0 30px 90px rgba(0,0,0,.5); }
+  .mission-detail-page::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--dossier-color), transparent 84%), transparent 34%), linear-gradient(135deg, rgba(8,19,31,.7), rgba(8,19,31,.08) 60%, rgba(4,10,18,.5)); }
   .mission-detail-page .eyebrow.gold, .mission-detail-page .dossier-meta span { color: color-mix(in srgb, var(--dossier-color), var(--paper) 28%); }
   .mission-detail-page .eyebrow.gold span { background: var(--dossier-color); opacity: .72; }
-  .mission-detail-page .dossier-meta div { border-color: color-mix(in srgb, var(--dossier-color), transparent 70%); }
+  .mission-detail-page .dossier-meta div { border: 1px solid color-mix(in srgb, var(--dossier-color), transparent 70%); border-top: 2px solid color-mix(in srgb, var(--dossier-color), transparent 26%); padding: 13px 12px 11px; background: rgba(8,19,31,.7); }
   .mission-detail-page .button.primary { background: color-mix(in srgb, var(--dossier-color), var(--navy) 58%); border-color: color-mix(in srgb, var(--dossier-color), var(--paper) 25%); color: var(--paper); }
   .mission-detail-page .button.primary:hover { background: color-mix(in srgb, var(--dossier-color), var(--navy) 42%); }
+  .mission-detail-page .dossier-actions .button.ghost { background: rgba(8,19,31,.72); border-color: rgba(247,241,223,.28); }
+  .mission-detail-page .dossier-actions .button.ghost:hover { border-color: var(--dossier-color); color: var(--paper); }
 
 
   .hero-count { gap: 18px 30px; background: linear-gradient(90deg, rgba(5,12,20,.72), rgba(5,12,20,.3)); padding: 14px 16px 13px; border-top: 1px solid rgba(240,183,74,.38); border-bottom: 1px solid rgba(88,213,238,.12); }
@@ -309,11 +311,11 @@
     width: 100%; margin: 0; padding: clamp(26px, 5vw, 72px) max(6vw, 24px);
     box-shadow: 0 30px 90px rgba(0,0,0,.5); overflow: hidden;
   }
-  .mission-detail-page::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(4,10,17,.55), transparent 40%, rgba(4,10,17,.2)); pointer-events: none; }
-  .mission-close { color: #a6bac7; letter-spacing: .08em; cursor: pointer; background: none; border: 0; display: flex; align-items: center; gap: 10px; margin: 0 0 70px auto; font-family: var(--display); font-size: 10px; }
+  .mission-detail-page::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(4,10,18,.78), transparent 42%, rgba(4,10,18,.28)); pointer-events: none; }
+  .mission-close { color: #b9c9d2; letter-spacing: .08em; cursor: pointer; background: rgba(8,19,31,.58); border: 1px solid rgba(247,241,223,.2); display: flex; align-items: center; gap: 10px; margin: 0 0 70px auto; padding: 10px 13px; font-family: var(--display); font-size: 10px; }
   .mission-close span { color: var(--gold); font-size: 22px; line-height: 1; }
   .mission-detail-hero { max-width: 1080px; border-bottom: 1px solid var(--line); padding-bottom: 40px; }
-  .mission-detail-hero h2 { font-family: var(--serif); color: var(--paper); margin: 4px 0 18px; font-size: clamp(58px, 10vw, 150px); font-weight: 700; line-height: .82; letter-spacing: -.06em; }
+  .mission-detail-hero h2 { font-family: var(--serif); color: var(--paper) !important; margin: 4px 0 18px; font-size: clamp(58px, 10vw, 150px); font-weight: 700; line-height: .82; letter-spacing: -.06em; }
   .mission-detail-hero p { color: #d3dfe7; max-width: 760px; font-family: var(--serif); font-size: clamp(19px, 2vw, 26px); line-height: 1.45; margin: 0 0 16px; }
   .dossier-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
   .dossier-meta div { border-top: 1px solid rgba(247,241,223,.16); padding-top: 9px; }
@@ -482,15 +484,15 @@
   .register-banner .button { flex-shrink: 0; }
 
   /* ---------- Register ---------- */
-  .registration-stage { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr); align-items: stretch; background: #06101b; }
+  .registration-stage { display: block; background: #06101b; }
   .contact-section { position: relative; isolation: isolate; overflow: hidden; border-top: 1px solid rgba(88,213,238,.18); background: linear-gradient(90deg, rgba(4,12,21,.98) 0%, rgba(4,12,21,.91) 46%, rgba(4,12,21,.58) 100%), url('dc-team-form.jpg') center / cover no-repeat; }
   .contact-section::before { content: "CONTACT DESK / 02"; position: absolute; z-index: -1; top: 26px; left: 28px; color: rgba(247,241,223,.72); font: 9px var(--display); letter-spacing: .15em; }
-  .contact-section .section-shell { display: block; padding: 86px 28px 72px; }
-  .contact-heading { display: block; padding-bottom: 32px; }
+  .contact-section .section-shell { display: block; padding: 86px 0 72px; }
+  .contact-heading { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 48px; align-items: end; padding-bottom: 42px; }
   .contact-heading h2 { max-width: 620px; margin-top: 18px; color: var(--paper); font: 400 clamp(48px, 6.5vw, 84px)/.9 var(--serif); letter-spacing: -.055em; }
   .contact-heading h2 em { color: var(--cyan); font-style: italic; }
   .contact-lead { max-width: 500px; margin: 0 0 5px; color: #b9cad3; font: 17px/1.55 var(--serif); }
-  .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(247,241,223,.25); border-bottom: 1px solid rgba(247,241,223,.25); }
+  .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(247,241,223,.25); border-bottom: 1px solid rgba(247,241,223,.25); }
   .contact-card { min-height: 154px; padding: 24px 22px 22px; border-right: 1px solid rgba(247,241,223,.18); background: rgba(4,13,23,.38); }
   .contact-card:first-child { border-left: 2px solid var(--gold); }
   .contact-card:last-child { border-right: 0; }
@@ -503,8 +505,8 @@
   .contact-footer a { color: var(--cyan); font: 10px var(--display); letter-spacing: .11em; text-decoration: none; }
   .contact-footer a:hover { color: var(--paper); }
   .registration-stage > .register-section { border-top: 1px solid rgba(88,213,238,.18); }
-  .registration-stage > .register-section .section-shell { padding: 78px 28px 84px; }
-  @media (max-width: 900px) { .registration-stage { grid-template-columns: 1fr; } .contact-section .section-shell, .registration-stage > .register-section .section-shell { padding: 72px 0; } .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contact-card:nth-child(2) { border-right: 0; } .contact-card:nth-child(n+3) { border-top: 1px solid rgba(247,241,223,.18); } }
+  .registration-stage > .register-section .section-shell { padding: 78px 0 84px; }
+  @media (max-width: 900px) { .contact-heading { grid-template-columns: 1fr; gap: 18px; } .contact-section .section-shell, .registration-stage > .register-section .section-shell { padding: 72px 0; } .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contact-card:nth-child(2) { border-right: 0; } .contact-card:nth-child(n+3) { border-top: 1px solid rgba(247,241,223,.18); } }
   @media (max-width: 520px) { .contact-section .section-shell { padding: 62px 0 56px; } .contact-grid { grid-template-columns: 1fr; } .contact-card, .contact-card:nth-child(2) { border-right: 0; border-left: 0; border-top: 1px solid rgba(247,241,223,.18); } .contact-card:first-child { border-left: 2px solid var(--gold); } .contact-footer { align-items: flex-start; flex-direction: column; } }
   .register-section { border-top: 1px solid var(--line); }
   .register-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 25px; }
@@ -914,24 +916,6 @@ Error generating stack: `+l.message+`
   </section>
 
   <div class="registration-stage">
-  <!-- ================= CONTACT ================= -->
-  <section class="contact-section" id="contact" aria-labelledby="contact-title">
-    <div class="section-shell">
-      <div class="contact-heading" data-reveal="">
-        <p class="eyebrow gold"><span></span>MISSION CONTROL // CONTACT DESK</p>
-        <h2 id="contact-title">Contact <em>details.</em></h2>
-        <p class="contact-lead">For registration support, team changes, venue questions, or anything the mission desk cannot resolve, reach the organiser directly.</p>
-      </div>
-      <div class="contact-grid">
-          <div class="contact-card"><span>EVENT ORGANISER</span><strong>Anesh</strong><a href="tel:+917339614244">+91 73396 14244</a></div>
-          <div class="contact-card"><span>WHATSAPP DESK</span><strong>Direct support</strong><a href="https://wa.me/917339614244" target="_blank" rel="noopener noreferrer">Open WhatsApp →</a></div>
-          <div class="contact-card"><span>REGISTRATION EMAIL</span><strong>Inbox support</strong><a href="mailto:registration@whitehatians.in">registration@whitehatians.in</a></div>
-          <div class="contact-card"><span>WHEN TO REACH US</span><strong>Before the mission</strong><a href="#register">Continue to registration →</a></div>
-      </div>
-      <div class="contact-footer"><span><strong>RESPONSE DESK ACTIVE</strong> · Reach out before the mission begins.</span><a href="#register">PROCEED TO REGISTRATION →</a></div>
-    </div>
-  </section>
-
   <!-- ================= REGISTER ================= -->
   <section class="register-section" id="register" aria-labelledby="register-title">
     <div class="section-shell">
@@ -1084,8 +1068,26 @@ Error generating stack: `+l.message+`
       </div>
     </div>
   </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="section-shell">
+      <div class="contact-heading" data-reveal="">
+        <p class="eyebrow gold"><span></span>MISSION CONTROL // CONTACT DESK</p>
+        <h2 id="contact-title">Contact <em>details.</em></h2>
+        <p class="contact-lead">For registration support, team changes, venue questions, or anything the mission desk cannot resolve, reach the organiser directly.</p>
+      </div>
+      <div class="contact-grid">
+          <div class="contact-card"><span>EVENT ORGANISER</span><strong>Anesh</strong><a href="tel:+917339614244">+91 73396 14244</a></div>
+          <div class="contact-card"><span>WHATSAPP DESK</span><strong>Direct support</strong><a href="https://wa.me/917339614244" target="_blank" rel="noopener noreferrer">Open WhatsApp →</a></div>
+          <div class="contact-card"><span>REGISTRATION EMAIL</span><strong>Inbox support</strong><a href="mailto:registration@whitehatians.in">registration@whitehatians.in</a></div>
+          <div class="contact-card"><span>WHEN TO REACH US</span><strong>Before the mission</strong><a href="#register">Continue to registration →</a></div>
+      </div>
+      <div class="contact-footer"><span><strong>RESPONSE DESK ACTIVE</strong> · Reach out before the mission begins.</span><a href="#register">PROCEED TO REGISTRATION →</a></div>
+    </div>
+  </section>
   </div>
-</main>
+</main>>
 
 <!-- ================= MISSION MODAL ================= -->
 <div class="mission-overlay" id="missionModal" hidden="" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -1305,8 +1307,8 @@ Error generating stack: `+l.message+`
   function openModal(num) {
     var d = byNum(num);
     modalTitle.textContent = d.title;
-    modalTitle.style.color = d.color;
-    modalTitle.setAttribute("data-color", "true");
+    modalTitle.style.removeProperty("color");
+    modalTitle.removeAttribute("data-color");
     modalDesc1.textContent = d.desc;
     modalDesc2.textContent = "During this event, your team will work through a focused " + d.title.toLowerCase() + " challenge, make decisions under the clock, and present the reasoning behind your result to the council.";
     modalRegister.textContent = "Register for " + d.title + " ▶";
