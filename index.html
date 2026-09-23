@@ -92,7 +92,7 @@
   .dc-hero {
     isolation: isolate; position: relative; display: flex; align-items: flex-end;
     min-height: 860px; padding: 170px max(5vw, 50px) 86px;
-    background: linear-gradient(90deg, rgba(4,10,17,.9), rgba(4,10,17,.74) 43%, rgba(4,10,17,.16)), url('hero-bg.jpg') center right / cover no-repeat;
+    background: linear-gradient(90deg, rgba(4,10,17,.9), rgba(4,10,17,.74) 43%, rgba(4,10,17,.16)), url('batman-gotham.jpg') center right / cover no-repeat;
     overflow: hidden;
   }
   .hero-bg { display: none; }
@@ -196,6 +196,19 @@
   .hero-count .count-unit strong { text-shadow: 0 0 14px rgba(240,183,74,.22); }
   @media (max-width: 700px) { .hero-count { align-items: flex-start; gap: 13px 18px; } .bomb-timer-head { min-width: 100%; } .hero-count .count-grid { padding-left: 0; border-left: 0; } .hero-count #cd-note { margin-left: 0 !important; width: 100%; } }
 
+  /* ---------- Live visual corrections ---------- */
+  .dc-hero { background-image: linear-gradient(90deg, rgba(4,10,17,.92), rgba(4,10,17,.70) 43%, rgba(4,10,17,.18)), url('batman-gotham.jpg'); }
+  .rules-section { position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(8,18,22,.86) 0%, rgba(8,18,22,.68) 45%, rgba(8,18,22,.42) 100%), url('batman-standards.png') center right / cover no-repeat; }
+  .rules-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(8,18,22,.48), rgba(8,18,22,.18) 42%, rgba(8,18,22,.58)); }
+  .rules-section .section-shell { position: relative; z-index: 1; }
+  .operations-layout { align-items: start; min-height: 78vh; }
+  .operations-brief { position: sticky; top: 104px; align-self: start; }
+  .operations-rail { max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; padding-right: 10px; scrollbar-width: thin; scrollbar-color: rgba(240,183,74,.72) rgba(247,241,223,.08); }
+  .operations-rail::-webkit-scrollbar { width: 6px; }
+  .operations-rail::-webkit-scrollbar-track { background: rgba(247,241,223,.08); }
+  .operations-rail::-webkit-scrollbar-thumb { background: rgba(240,183,74,.72); border-radius: 999px; }
+  .late-rule { opacity: 1; transform: none; }
+  @media (max-width: 820px) { .operations-brief { position: relative; top: auto; } .operations-rail { max-height: none; overflow: visible; padding-right: 0; } }
   /* ---------- Sections ---------- */
   .section-shell { width: min(1160px, 100% - 90px); margin: 0 auto; padding: 104px 0; }
   @media (max-width: 820px) { .section-shell { width: calc(100% - 34px); padding: 74px 0; } }
@@ -649,7 +662,7 @@ Error generating stack: `+l.message+`
   <a href="#rules">Rules</a>
   <a href="#faq">Questions</a>
   <a href="#faq">Intel</a>
-  <a href="#register">Register</a>
+  <a href="#register">Lock your seat</a>
 </div>
 
 <main id="main">
@@ -706,7 +719,7 @@ Error generating stack: `+l.message+`
       <h1 id="hero-title"><em>REVERSE</em><b>HACKATHON</b></h1>
       <p class="hero-lede">Reverse. Exploit. Defend.<span>A three-hour mission for people who want to understand the system from the inside out.</span></p>
       <div class="hero-actions">
-        <a class="button primary" href="#register" data-manus_clickable="true" data-manus_click_id="9">Register for the event ▶</a>
+        <a class="button primary" href="#register" data-manus_clickable="true" data-manus_click_id="9">Lock your seat ▶</a>
         <a class="button ghost" href="#domains" data-manus_clickable="true" data-manus_click_id="10">Explore all events ▤</a>
       </div>
       <p class="hero-meta">
@@ -777,17 +790,17 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="operations-layout">
         <div class="operations-brief" data-reveal="">
-          <p class="eyebrow red"><span></span>EVENT OPERATIONS // CONTROLLED ENVIRONMENT</p>
-          <h2 id="rules-title">Operational <em>standards.</em></h2>
+          <p class="eyebrow red"><span></span>MISSION STANDARDS // CONTROLLED ENVIRONMENT</p>
+          <h2 id="rules-title">Operation <em>standards.</em></h2>
           <p class="operations-lead">A serious security event needs a clear operating model. Every participant enters the same controlled environment, works to the same evidence standard, and leaves a defensible record of what changed.</p>
           <p class="operations-copy">The mission is designed like a professional incident-response room: establish identity, respect the boundary, document the signal, and communicate the fix. The rules on the right are the baseline for every pod, from first check-in to final handover.</p>
-          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 operating directives</strong><span>READ DOWN THE RAIL</span></div>
+          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 operating standards</strong><span>READ DOWN THE RAIL</span></div>
         </div>
         <aside class="operations-rail" aria-label="Event rules">
-          <div class="operations-rail-head"><span>RULES OF THE EVENT</span><small>01—10 / CONTROLLED</small></div>
+          <div class="operations-rail-head"><span>OPERATION STANDARDS</span><small>01—10 / CONTROLLED</small></div>
           <div class="rules-board">
             <article class="operation-rule"><span>01 / ACCESS</span><strong>Bring your college ID to check-in.</strong><small>Identity verified before entry.</small></article>
-            <article class="operation-rule"><span>02 / POD</span><strong>Enter solo or as a team of two.</strong><small>One registration record per pod.</small></article>
+            <article class="operation-rule"><span>02 / POD</span><strong>Register solo or as a team of two.</strong><small>One registration record per pod.</small></article>
             <article class="operation-rule"><span>03 / SCOPE</span><strong>Work only inside the assigned environment.</strong><small>External systems remain out of scope.</small></article>
             <article class="operation-rule"><span>04 / CONDUCT</span><strong>Respect the scope, the system, and every participant.</strong><small>Professional conduct is non-negotiable.</small></article>
             <article class="operation-rule"><span>05 / BOUNDARY</span><strong>Do not probe external systems or other teams.</strong><small>Stay within the approved mission boundary.</small></article>
@@ -871,11 +884,11 @@ Error generating stack: `+l.message+`
           </div>
           <p class="panel-note" id="partnerNote">A pod of two. The registrant below is the Capo (team lead); your partner is the Soldato.</p>
 
-          <div id="teamFields" class="form-grid" style="display:none;margin-bottom:18px" hidden="">
+          <div id="teamFields" class="form-grid" style="display:grid;margin-bottom:18px">
             <div class="field">
-              <span>TEAM NAME <i>*</i></span>
-              <input id="f-team" name="team" type="text" autocomplete="off" placeholder="e.g. The Silent Circle" aria-describedby="e-team">
-              <small id="e-team">Name your two-person pod.</small>
+              <span>TEAM NAME / SOLO ALIAS <i>*</i></span>
+              <input id="f-team" name="team" type="text" autocomplete="off" placeholder="e.g. Batman_01 or The Silent Circle" aria-describedby="e-team">
+              <small id="e-team">Required for every entry. Solo participants can use any unique alias.</small>
             </div>
           </div>
 
@@ -1462,8 +1475,8 @@ Error generating stack: `+l.message+`
       mode = btn.dataset.mode;
       modeBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); b.classList.toggle("selected", b === btn); });
       var isTeam = mode === "team";
-      teamBlock.style.display = isTeam ? "grid" : "none";
-      teamBlock.hidden = !isTeam;
+      teamBlock.style.display = "grid";
+      teamBlock.hidden = false;
       partnerBlock.style.display = isTeam ? "block" : "none";
       partnerBlock.hidden = !isTeam;
       partnerNote.classList.toggle("on", isTeam);
@@ -1493,19 +1506,16 @@ Error generating stack: `+l.message+`
       domain: $("#f-domain").value,
       agree: $("#f-agree").checked
     };
-    var team = null;
+    var team = { team: $("#f-team").value.trim() };
     if (mode === "team") {
-      team = {
-        team: $("#f-team").value.trim(),
-        pname: $("#f-pname").value.trim(),
-        pyear: $("#f-pyear").value,
-        proll: $("#f-proll").value.trim()
-      };
+      team.pname = $("#f-pname").value.trim();
+      team.pyear = $("#f-pyear").value;
+      team.proll = $("#f-proll").value.trim();
     }
 
     var ok = true;
     Object.keys(FIELDS).forEach(function (key) {
-      if (mode === "solo" && (key === "team" || key === "pname" || key === "pyear" || key === "proll")) return;
+      if (mode === "solo" && (key === "pname" || key === "pyear" || key === "proll")) return;
       var el = $(FIELDS[key].el);
       if (!el) return;
       var chk = FIELDS[key].check(el.type === "checkbox" ? el.checked : el.value);
@@ -1546,10 +1556,11 @@ Error generating stack: `+l.message+`
       "Email: " + data.email,
       "Phone: " + data.phone
     ];
-    if (team) lines.push("", "Team: " + team.team, "Soldato (Partner): " + team.pname + " (Year " + team.pyear + ", " + team.proll + ")");
+    lines.push("", (mode === "solo" ? "Solo alias: " : "Team: ") + team.team);
+    if (mode === "team") lines.push("Soldato (Partner): " + team.pname + " (Year " + team.pyear + ", " + team.proll + ")");
     lines.push("", "I confirm the details above and accept The Code of the Reverse Hackathon 2026.");
 
-    var subject = "Registration — Reverse Hackathon 2026 — " + (team ? team.team : data.name);
+    var subject = "Registration — Reverse Hackathon 2026 — " + team.team;
     var mail = $("#mailBtn");
     mail.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(lines.join("\n"));
