@@ -637,7 +637,7 @@
   .social-chip.is-live { color: var(--cyan); }
 
   /* ---------- Reveal / reduced motion ---------- */
-  [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s var(--ease); }
+  [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .55s ease var(--reveal-delay, 0ms), transform .55s var(--ease) var(--reveal-delay, 0ms); will-change: opacity, transform; }
   [data-reveal].in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -1180,6 +1180,13 @@ Error generating stack: `+l.message+`
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
   var reduced = false;
   try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---------- global minimalist scroll reveal ---------- */
+  var globalRevealTargets = $$('main section:not(.landing-intro) .section-shell > *, main section:not(.landing-intro) .mission-form > *, .dc-footer > *');
+  globalRevealTargets.forEach(function (el, index) {
+    if (!el.hasAttribute('data-reveal')) el.setAttribute('data-reveal', '');
+    if (!el.classList.contains('in')) el.style.setProperty('--reveal-delay', (index % 5) * 55 + 'ms');
+  });
 
   /* ---------- social chips -> live links ---------- */
   $$(".social-chip").forEach(function (chip) {
