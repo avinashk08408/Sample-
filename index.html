@@ -851,6 +851,33 @@ Error generating stack: `+l.message+`
               <small id="e-year">Select your year (I, II or III).</small>
             </div>
             <div class="field">
+              <span>DEPARTMENT <i>*</i></span>
+              <select id="f-department" name="department" aria-describedby="e-department" required="" data-manus_clickable="true" data-manus_click_id="61">
+                <option value="">Select department…</option>
+                <option value="Cyber Security">Cyber Security</option>
+                <option value="Computer Science & Engineering">Computer Science &amp; Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Artificial Intelligence & Data Science">Artificial Intelligence &amp; Data Science</option>
+                <option value="Electronics & Communication Engineering">Electronics &amp; Communication Engineering</option>
+                <option value="Electrical & Electronics Engineering">Electrical &amp; Electronics Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Other">Other</option>
+              </select>
+              <small id="e-department">Select your department.</small>
+            </div>
+            <div class="field">
+              <span>GENDER <i>*</i></span>
+              <select id="f-gender" name="gender" aria-describedby="e-gender" required="" data-manus_clickable="true" data-manus_click_id="62">
+                <option value="">Select gender…</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+              <small id="e-gender">Select an option or choose prefer not to say.</small>
+            </div>
+            <div class="field">
               <span>DOMAIN <i>*</i></span>
               <select id="f-domain" name="domain" aria-describedby="e-domain" required="" data-manus_clickable="true" data-manus_click_id="60"><option value="Ethical Hacking">Ethical Hacking</option><option value="Penetration Testing">Penetration Testing</option><option value="CTF &amp; Capture The Flag">CTF &amp; Capture The Flag</option><option value="Digital Forensics">Digital Forensics</option><option value="Reverse Engineering">Reverse Engineering</option><option value="Cryptography">Cryptography</option><option value="Web App Security">Web App Security</option><option value="Network Security">Network Security</option><option value="Malware Analysis">Malware Analysis</option><option value="Binary Exploitation / Pwn">Binary Exploitation / Pwn</option><option value="OSINT &amp; Social Engineering">OSINT &amp; Social Engineering</option><option value="Cloud Security">Cloud Security</option><option value="Incident Response">Incident Response</option><option value="Zero-Day Hunting">Zero-Day Hunting</option><option value="Quantum &amp; Next-Gen Crypto">Quantum &amp; Next-Gen Crypto</option></select>
               <small id="e-domain">Pick the single domain for your pod.</small>
@@ -1337,6 +1364,8 @@ Error generating stack: `+l.message+`
     email: { el: "#f-email", check: function (v) { return /^\S+@\S+\.\S+$/.test(v.trim()); } },
     phone: { el: "#f-phone", check: function (v) { var c = v.replace(/[\s-]/g, ""); return /^(\+91)?[6-9]\d{9}$/.test(c) || /^\+?\d{10,15}$/.test(c); } },
     year: { el: "#f-year", check: function (v) { return ["I", "II", "III"].indexOf(v) !== -1; } },
+    department: { el: "#f-department", check: function (v) { return v.trim().length > 0; } },
+    gender: { el: "#f-gender", check: function (v) { return ["Female", "Male", "Non-binary", "Prefer not to say"].indexOf(v) !== -1; } },
     roll: { el: "#f-roll", check: function (v) { return v.trim().length >= 3; } },
     domain: { el: "#f-domain", check: function (v) { return DOMAINS.some(function (d) { return d.title === v; }); } },
     agree: { el: "#f-agree", check: function (v) { return !!v; } },
@@ -1384,6 +1413,8 @@ Error generating stack: `+l.message+`
       email: $("#f-email").value.trim().toLowerCase(),
       phone: $("#f-phone").value.trim(),
       year: $("#f-year").value,
+      department: $("#f-department").value,
+      gender: $("#f-gender").value,
       roll: $("#f-roll").value.trim(),
       domain: $("#f-domain").value,
       agree: $("#f-agree").checked
@@ -1435,6 +1466,8 @@ Error generating stack: `+l.message+`
       "Domain: " + data.domain,
       "Capo (Team Lead): " + data.name,
       "Year: " + data.year,
+      "Department: " + data.department,
+      "Gender: " + data.gender,
       "Roll No: " + data.roll,
       "Email: " + data.email,
       "Phone: " + data.phone
