@@ -317,7 +317,16 @@
   .all-domain-card .pick { display: inline-flex; margin-top: 10px; }
 
   /* ---------- Rules ---------- */
-  .rules-section { border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.95), rgba(4,10,17,.83) 48%, rgba(4,10,17,.66)), url('hero-bg.jpg') center / cover fixed; }
+  .rules-section { position: relative; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.985) 0%, rgba(4,10,17,.94) 42%, rgba(4,10,17,.62) 100%), url('standards-bg.jpg') center right / cover fixed; }
+  .rules-section::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgba(4,10,17,.72), transparent 36%, rgba(4,10,17,.28)); }
+  .rules-section .section-shell { position: relative; z-index: 1; }
+  .rules-section .rules-header > div { max-width: 780px; }
+  .rules-subtitle { max-width: 650px; color: #b8c8d3; font-family: var(--serif); font-size: 17px; line-height: 1.5; margin: 24px 0 0; }
+  .rules-section .rules-list { max-width: 980px; }
+  .rules-section .rule-row { background: rgba(4,10,17,.2); }
+  .rules-section .rule-row button { padding-left: 14px; padding-right: 14px; }
+  .rules-section .rule-row .answer { padding-right: 20px; }
+  @media (max-width: 820px) { .rules-section { background-position: 68% center; } .rules-subtitle { font-size: 15px; } }
   .rules-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
   @media (max-width: 820px) { .rules-header { flex-direction: column; align-items: flex-start; } .rules-header h2 { font-size: 57px; } }
   .rules-badge { border: 1px solid var(--red); color: #ff786f; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; width: 90px; height: 90px; font-size: 8px; text-align: center; letter-spacing: .12em; flex: none; }
@@ -664,10 +673,11 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="rules-header" data-reveal="">
         <div>
-          <p class="eyebrow red"><span></span>EVENT STANDARD</p>
-          <h2 id="rules-title">Built like a <em>serious operation.</em></h2>
+          <p class="eyebrow red"><span></span>EVENT OPERATIONS // CONTROLLED ENVIRONMENT</p>
+          <h2 id="rules-title">Industry-grade <em>operation.</em></h2>
+          <p class="rules-subtitle">A clear operating standard for a serious defensive sprint — who may enter, how the mission runs, and the rules that keep every decision ethical, measurable, and professional.</p>
         </div>
-        <p class="rules-badge" aria-hidden="true">CONTROLLED<br>ENVIRONMENT</p>
+        <p class="rules-badge" aria-hidden="true">OPERATIONAL<br>STANDARD</p>
       </div>
       <div class="rules-list" id="rulesList"></div>
     </div>
@@ -1056,10 +1066,10 @@ Error generating stack: `+l.message+`
 
   /* ---------- rules ---------- */
   var RULES = [
-    { id: "elig", label: "ELIGIBILITY", title: "Who can enter the room?", body: "Open to SRM Valliammai Engineering College students in Year I, II, or III across departments. Bring a valid college ID for check-in; registrations without verification do not enter the operating floor." },
-    { id: "format", label: "FORMAT", title: "How is the sprint structured?", body: "Choose solo entry or a team of two. Every pod receives the same intentionally vulnerable system, a three-hour clock, one selected domain, and a defined handover for the final showcase." },
-    { id: "judge", label: "EVALUATION", title: "How is performance evaluated?", body: "The council evaluates the quality of the vulnerability analysis, evidence and reproducibility, effectiveness of the remediation, clarity of the technical explanation, and the discipline of the final five-minute showcase." },
-    { id: "conduct", label: "OPERATING STANDARD", title: "What controls govern the event?", body: "Work only inside the provided environment and approved brief. Do not probe external systems, expose participant data, or bypass the room protocol. Strong work is precise, ethical, documented, and repeatable." }
+    { id: "elig", label: "01 // ELIGIBILITY", title: "Who is cleared for the mission?", body: "Open to SRM Valliammai Engineering College students in Year I, II, or III across departments. A valid college ID is required at check-in; only verified participants enter the operating floor." },
+    { id: "format", label: "02 // FORMAT", title: "How does the operation run?", body: "Enter solo or as a team of two. Every pod receives the same intentionally vulnerable system, a three-hour controlled sprint, one selected domain, a technical handover, and a five-minute final showcase." },
+    { id: "conduct", label: "03 // RULES & REGULATIONS", title: "What governs the operating floor?", body: "Work only inside the assigned environment and approved brief. Do not probe external systems, access another pod's work, expose participant data, or bypass event controls. Every action must be ethical, scoped, documented, and repeatable." },
+    { id: "judge", label: "04 // EVALUATION", title: "How is performance measured?", body: "The council evaluates analysis quality, evidence and reproducibility, remediation effectiveness, technical communication, operational discipline, and the clarity of the final five-minute showcase." }
   ];
   var rulesList = $("#rulesList");
   RULES.forEach(function (r, i) {
