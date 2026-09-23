@@ -523,29 +523,30 @@
   @media (max-width: 620px) { .mission-form { padding: 22px 16px; } .form-console-bar { flex-direction: column; gap: 12px; } .form-console-bar strong { font-size: 23px; } .mode-toggle { max-width: none; } .form-grid { grid-template-columns: 1fr; } }
 
   /* ---------- Registration visual identity ---------- */
-  .register-section { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(90deg, rgba(5,13,22,.98) 0%, rgba(5,13,22,.91) 52%, rgba(5,13,22,.72) 100%), url('standards-bg.jpg') right center / cover no-repeat; background-blend-mode: multiply; }
-  .register-section::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(5,13,22,.56), rgba(5,13,22,.93)); }
+  .register-section { position: relative; isolation: isolate; overflow: hidden; border-top: 0; background: linear-gradient(90deg, rgba(4,10,18,.96) 0%, rgba(4,10,18,.82) 42%, rgba(4,10,18,.54) 100%), url('superman-hero.jpg') center / cover no-repeat; }
+  .register-section::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(4,10,18,.42), rgba(4,10,18,.82)); }
   .register-section .section-shell { position: relative; z-index: 1; }
-  .register-heading h2 { color: #f1e6c9; font-size: clamp(58px, 9vw, 112px); letter-spacing: -.045em; }
-  .register-heading h2 em { color: #72d3d2; }
-  .register-heading p { color: #b8d1d0; font-size: 18px; }
-  .register-heading .eyebrow { color: #d6ad5c; }
-  .mission-form { max-width: 1040px; margin-top: 38px; padding: 38px 40px 34px; background: rgba(7,20,31,.88); border: 1px solid rgba(114,211,210,.38); border-top: 3px solid #72d3d2; box-shadow: 0 25px 70px rgba(0,0,0,.38); }
-  .form-section-head { margin-top: 30px; padding-bottom: 13px; border-bottom-color: rgba(214,173,92,.34); }
-  .form-section-head span { color: #d6ad5c; font-size: 11px; letter-spacing: .18em; }
-  .form-section-head p { color: #a8c2c7; font-size: 15px; }
-  .mode-toggle { margin-top: 20px; }
-  .mode-toggle button { min-height: 58px; color: #a9bec4; background: rgba(9,29,43,.88); border-color: rgba(114,211,210,.28); font-size: 12px; letter-spacing: .07em; }
-  .mode-toggle button::before { color: #718d98; }
-  .mode-toggle button.selected { color: #f1e6c9; border-color: #72d3d2; background: rgba(114,211,210,.16); box-shadow: inset 4px 0 0 #d6ad5c; }
-  .field > span { color: #d2c39e; font-size: 11px; letter-spacing: .14em; }
-  .field input, .field select { min-height: 50px; color: #f5efe0; background: rgba(8,25,38,.95); border-color: rgba(168,194,199,.32); font-size: 14px; padding: 14px 13px; }
-  .field input::placeholder { color: #78929a; }
-  .field input:focus, .field select:focus { border-color: #72d3d2; box-shadow: 0 0 0 3px rgba(114,211,210,.12); }
-  .panel-note { color: #b8d1d0; background: rgba(214,173,92,.08); border-left-color: #d6ad5c; font-size: 15px; }
-  .agree-box { color: #b8d1d0; font-size: 15px; }
-  .submit-button { color: #06111a; background: #72d3d2; border-color: #72d3d2; font-size: 12px; padding: 15px 21px; }
-  .submit-button:hover { background: #d6ad5c; border-color: #d6ad5c; }
+  .register-section .section-shell { padding: 78px 0 84px; }
+  .register-heading h2 { color: #f4f7fb; font-size: clamp(58px, 8vw, 104px); letter-spacing: -.045em; }
+  .register-heading h2 em { color: #70d5e6; }
+  .register-heading p { color: #c1d0da; font-size: 17px; margin-top: 16px; }
+  .register-heading .eyebrow { color: #e4b85d; }
+  .mission-form { max-width: 1040px; margin-top: 28px; padding: 30px 32px 28px; background: rgba(5,16,28,.9); border: 1px solid rgba(112,213,230,.28); border-top: 2px solid #70d5e6; box-shadow: 0 22px 58px rgba(0,0,0,.34); }
+  .form-section-head { margin-top: 22px; padding-bottom: 0; border-bottom: 0; }
+  .form-section-head span { color: #e4b85d; font-size: 10px; letter-spacing: .16em; }
+  .form-section-head p { color: #aebfca; font-size: 13px; }
+  .mode-toggle { margin-top: 14px; }
+  .mode-toggle button { min-height: 52px; color: #b4c7d0; background: rgba(9,29,43,.88); border-color: rgba(112,213,230,.24); font-size: 11px; letter-spacing: .07em; }
+  .mode-toggle button::before { color: #72909e; }
+  .mode-toggle button.selected { color: #f4f7fb; border-color: #70d5e6; background: rgba(112,213,230,.14); box-shadow: inset 3px 0 0 #e4b85d; }
+  .field > span { color: #dbe7ed; font-size: 10px; letter-spacing: .13em; }
+  .field input, .field select { min-height: 46px; color: #f4f7fb; background: rgba(6,19,32,.96); border-color: rgba(174,197,208,.3); font-size: 13px; padding: 12px 13px; }
+  .field input::placeholder { color: #78909e; }
+  .field input:focus, .field select:focus { border-color: #70d5e6; box-shadow: 0 0 0 3px rgba(112,213,230,.1); }
+  .panel-note { color: #c0d0d8; background: rgba(228,184,93,.07); border-left-color: #e4b85d; font-size: 14px; }
+  .agree-box { border-top: 0; padding-top: 0; color: #c0d0d8; font-size: 14px; }
+  .submit-button { color: #06111a; background: #70d5e6; border-color: #70d5e6; font-size: 11px; padding: 14px 20px; }
+  .submit-button:hover { background: #e4b85d; border-color: #e4b85d; }
   .form-footnote { color: #819ba3; font-size: 10px; }
   @media (max-width: 620px) { .mission-form { padding: 26px 18px 24px; } .register-heading h2 { font-size: 61px; } .register-heading p { font-size: 16px; } }
 
@@ -660,8 +661,6 @@ Error generating stack: `+l.message+`
     <a href="#about" data-manus_clickable="true" data-manus_click_id="3">About</a>
     <a href="#domains" data-manus_clickable="true" data-manus_click_id="4">Domains</a>
     <a href="#rules" data-manus_clickable="true" data-manus_click_id="5">Rules</a>
-    <a href="#faq" data-manus_clickable="true" data-manus_click_id="6">Questions</a>
-    <a href="#faq" data-manus_clickable="true" data-manus_click_id="7">Intel</a>
   </nav>
   <button class="menu-toggle" id="menuBtn" type="button" aria-expanded="false" aria-controls="navDrop" aria-label="Toggle menu">☰</button>
   <a class="nav-cta" href="#register" data-manus_clickable="true" data-manus_click_id="8">Register · OM26 ▶</a>
@@ -671,8 +670,6 @@ Error generating stack: `+l.message+`
   <a href="#about">About</a>
   <a href="#domains">Domains</a>
   <a href="#rules">Rules</a>
-  <a href="#faq">Questions</a>
-  <a href="#faq">Intel</a>
   <a href="#register">Lock your seat</a>
 </div>
 
@@ -822,55 +819,6 @@ Error generating stack: `+l.message+`
             <article class="operation-rule late-rule"><span>10 / STANDARD</span><strong>Think like an attacker. Finish like a defender.</strong><small>The operating principle of Reverse Hackathon.</small></article>
           </div>
         </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= QUESTIONS / SUPPORT CONSOLE ================= -->
-  <section class="faq-section" id="faq" aria-labelledby="faq-title">
-    <div class="section-shell">
-      <div class="section-heading" data-reveal="">
-        <div>
-          <p class="eyebrow"><span></span>INTEL BASE // SUPPORT DESK</p>
-          <h2 id="faq-title">Questions <em>decoded.</em></h2>
-        </div>
-        <p>Browse the verified answers or ask the mission assistant. For anything specific to your registration, contact the organiser directly.</p>
-      </div>
-      <div class="faq-layout">
-        <div class="faq-list" id="faqList" aria-label="Frequently asked questions"></div>
-        <div class="faq-support-stack">
-          <section class="chatbot-panel" aria-labelledby="chatbot-title">
-            <div class="chatbot-head">
-              <div><span class="chatbot-orb" aria-hidden="true">RH</span><span><strong id="chatbot-title">MISSION ASSIST</strong><small>LOCAL EVENT KNOWLEDGE BASE</small></span></div>
-              <span class="chatbot-status">ONLINE</span>
-            </div>
-            <div class="chatbot-messages" id="chatMessages" role="log" aria-live="polite">
-              <div class="chat-message bot">Ask me about eligibility, the event format, domains, judging, registration, or what to bring.</div>
-            </div>
-            <div class="chat-quick" aria-label="Suggested questions">
-              <button type="button" data-chat-question="Who is eligible?">Eligibility</button>
-              <button type="button" data-chat-question="What is the format?">Format</button>
-              <button type="button" data-chat-question="How are teams judged?">Judging</button>
-              <button type="button" data-chat-question="What should I bring?">Checklist</button>
-            </div>
-            <form class="chat-form" id="chatForm">
-              <input id="chatInput" type="text" autocomplete="off" placeholder="Ask the mission assistant…" aria-label="Ask the mission assistant" required>
-              <button type="submit">SEND ▶</button>
-            </form>
-          </section>
-          <aside class="contact-panel" data-reveal="">
-            <svg class="mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3 22 7.5v7c0 4.8-3.8 7.9-9 9.5-5.2-1.6-9-4.7-9-9.5v-7L13 3Z" fill="none" stroke="#0d1b2a" stroke-width="1.8"></path><text x="13" y="16.5" font-family="Courier New,monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#c8352c">RH</text></svg>
-            <span>ORGANISER CONTACT</span>
-            <h3>Signal Anesh.</h3>
-            <p>For registration help, team changes, venue questions, or anything the assistant cannot resolve.</p>
-            <div class="contact-person"><strong>ANESH · EVENT ORGANISER</strong><p>Direct support line · +91 73396 14244</p></div>
-            <div class="contact-actions">
-              <a href="tel:+917339614244"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"></path></svg>CALL ANESH</a>
-              <a href="https://wa.me/917339614244" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4a10 10 0 0 0-15.5 12.2L3 21l4.9-1.5A10 10 0 1 0 20 4Z"></path><path d="M8.5 8.5c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c.6 1.2 1.5 2.1 2.7 2.7l.7-.6c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5v.5c0 .3 0 .6-.6.9-.5.3-1.8.4-3.6-.7-1.4-.9-2.5-2-3.4-3.4-1.1-1.8-1-3.1-.7-3.6Z"></path></svg>WHATSAPP</a>
-              <a href="mailto:registration@whitehatians.in"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>EMAIL DESK</a>
-            </div>
-          </aside>
-        </div>
       </div>
     </div>
   </section>
@@ -1077,7 +1025,6 @@ Error generating stack: `+l.message+`
     <a href="#domains" data-manus_clickable="true" data-manus_click_id="68">Domains</a>
     <a href="#rules" data-manus_clickable="true" data-manus_click_id="69">Rules</a>
     <a href="#playbook" data-manus_clickable="true" data-manus_click_id="70">Playbook</a>
-    <a href="#faq" data-manus_clickable="true" data-manus_click_id="71">Intel</a>
     <a href="#register" data-manus_clickable="true" data-manus_click_id="72">Register</a>
   </nav>
   <div class="footer-social">
@@ -1230,72 +1177,6 @@ Error generating stack: `+l.message+`
       '<span class="sites"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>' + d.sites[0][0] + ' · ' + d.sites[1][0] + '</span></span>';
     return btn;
   }
-
-  /* ---------- FAQ ---------- */
-  var FAQS = [
-    { q: "Who can participate?", a: "Only students from Year I, II, or III at SRM Valliammai Engineering College are eligible for this edition. Bring your college ID to check-in." },
-    { q: "Can I register alone?", a: "Yes. You can register as a solo participant or as a team of exactly two participants. The format is built for both." },
-    { q: "What happens during the sprint?", a: "You will receive an intentionally vulnerable or broken system, investigate it, patch what you find, and present a five-minute live showcase per pod." },
-    { q: "Do I need to bring anything?", a: "Bring your laptop, charger, student details, and the willingness to think like both an attacker and a defender." },
-    { q: "How will my registration be confirmed?", a: "The moment you submit, you receive a registration ID. Send the staged email to the official inbox and your seat is confirmed on the ledger." }
-  ];
-  var faqList = $("#faqList");
-  FAQS.forEach(function (f, i) {
-    faqList.appendChild(accordion("faq", "q" + i, "", "", f.q, f.a, i === 0));
-  });
-
-  function accordion(tag, id, num, label, title, body, open) {
-    var wrap = document.createElement("div");
-    wrap.className = tag + "-row" + (open ? " open" : "");
-    wrap.innerHTML =
-      '<button type="button" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="' + tag + '-a-' + id + '">' +
-        '<span>' + label + '</span><strong>' + title + '</strong>' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>' +
-      '<div class="answer" id="' + tag + '-a-' + id + '"' + (open ? "" : ' style="display:none"') + '><p>' + body + '</p></div>';
-    wrap.querySelector("button").addEventListener("click", function () {
-      var isOpen = wrap.classList.toggle("open");
-      this.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      var ans = $("#" + tag + "-a-" + id, wrap);
-      ans.style.display = isOpen ? "block" : "none";
-    });
-    return wrap;
-  }
-
-
-  /* ---------- mission assistant ---------- */
-  var chatForm = $("#chatForm"), chatInput = $("#chatInput"), chatMessages = $("#chatMessages");
-  var chatAnswers = [
-    { keys: ["eligible", "eligibility", "who can", "student"], answer: "Eligibility: SRM Valliammai Engineering College students in Year I, II, or III may participate. Bring a valid college ID for check-in." },
-    { keys: ["format", "team", "solo", "duo", "two"], answer: "Format: enter solo or as a team of two. Each pod receives the same system, one selected domain, a three-hour sprint, and a five-minute final showcase." },
-    { keys: ["judge", "judging", "score", "evaluation", "winner"], answer: "Judging covers analysis quality, evidence, reproducibility, remediation effectiveness, technical communication, operating discipline, and the final showcase." },
-    { keys: ["bring", "laptop", "checklist", "need"], answer: "Bring a laptop, charger, student details, valid college ID, and the focus to reason like both an attacker and a defender." },
-    { keys: ["register", "registration", "confirm", "seat"], answer: "Use the registration form below to choose solo or team format and select your domain. For changes or confirmation help, contact Anesh directly." },
-    { keys: ["domain", "domains", "topic", "challenge"], answer: "There are 15 security domains, including ethical hacking, penetration testing, CTF, forensics, reverse engineering, cryptography, cloud security, and more." },
-    { keys: ["when", "date", "time", "october", "oct 8"], answer: "The event is scheduled for October 8, 2026. Doors open at 08:00 IST and the mission begins at 09:00 IST." },
-    { keys: ["contact", "anesh", "organizer", "organiser", "phone", "whatsapp"], answer: "You can contact Anesh, the event organiser, at +91 73396 14244 by phone or WhatsApp." }
-  ];
-  function addChatMessage(text, kind) {
-    var el = document.createElement("div");
-    el.className = "chat-message " + kind;
-    el.textContent = text;
-    chatMessages.appendChild(el);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-  function getChatAnswer(question) {
-    var q = question.toLowerCase();
-    for (var i = 0; i < chatAnswers.length; i++) {
-      for (var j = 0; j < chatAnswers[i].keys.length; j++) if (q.indexOf(chatAnswers[i].keys[j]) !== -1) return chatAnswers[i].answer;
-    }
-    return "I can answer questions about eligibility, format, domains, judging, registration, the event date, and what to bring. For a specific case, contact Anesh at +91 73396 14244.";
-  }
-  function askAssistant(question) {
-    var clean = question.trim();
-    if (!clean) return;
-    addChatMessage(clean, "user");
-    window.setTimeout(function () { addChatMessage(getChatAnswer(clean), "bot"); }, 180);
-  }
-  chatForm.addEventListener("submit", function (e) { e.preventDefault(); askAssistant(chatInput.value); chatInput.value = ""; chatInput.focus(); });
-  $$('[data-chat-question]').forEach(function (btn) { btn.addEventListener("click", function () { askAssistant(btn.dataset.chatQuestion); }); });
 
   /* ---------- domain select options ---------- */
   var domainSel = $("#f-domain");
