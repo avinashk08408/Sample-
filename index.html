@@ -482,15 +482,15 @@
   .register-banner .button { flex-shrink: 0; }
 
   /* ---------- Register ---------- */
-  .registration-stage { display: block; background: #06101b; }
+  .registration-stage { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr); align-items: stretch; background: #06101b; }
   .contact-section { position: relative; isolation: isolate; overflow: hidden; border-top: 1px solid rgba(88,213,238,.18); background: linear-gradient(90deg, rgba(4,12,21,.98) 0%, rgba(4,12,21,.91) 46%, rgba(4,12,21,.58) 100%), url('dc-team-form.jpg') center / cover no-repeat; }
   .contact-section::before { content: "CONTACT DESK / 02"; position: absolute; z-index: -1; top: 26px; left: 28px; color: rgba(247,241,223,.72); font: 9px var(--display); letter-spacing: .15em; }
-  .contact-section .section-shell { display: block; padding: 86px 0 72px; }
-  .contact-heading { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 48px; align-items: end; padding-bottom: 42px; }
+  .contact-section .section-shell { display: block; padding: 86px 28px 72px; }
+  .contact-heading { display: block; padding-bottom: 32px; }
   .contact-heading h2 { max-width: 620px; margin-top: 18px; color: var(--paper); font: 400 clamp(48px, 6.5vw, 84px)/.9 var(--serif); letter-spacing: -.055em; }
   .contact-heading h2 em { color: var(--cyan); font-style: italic; }
   .contact-lead { max-width: 500px; margin: 0 0 5px; color: #b9cad3; font: 17px/1.55 var(--serif); }
-  .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(247,241,223,.25); border-bottom: 1px solid rgba(247,241,223,.25); }
+  .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(247,241,223,.25); border-bottom: 1px solid rgba(247,241,223,.25); }
   .contact-card { min-height: 154px; padding: 24px 22px 22px; border-right: 1px solid rgba(247,241,223,.18); background: rgba(4,13,23,.38); }
   .contact-card:first-child { border-left: 2px solid var(--gold); }
   .contact-card:last-child { border-right: 0; }
@@ -503,9 +503,8 @@
   .contact-footer a { color: var(--cyan); font: 10px var(--display); letter-spacing: .11em; text-decoration: none; }
   .contact-footer a:hover { color: var(--paper); }
   .registration-stage > .register-section { border-top: 1px solid rgba(88,213,238,.18); }
-  .registration-stage > .register-section .section-shell { padding: 78px 0 84px; }
-  @media (max-width: 900px) { .contact-heading { grid-template-columns: 1fr; gap: 18px; } .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contact-card:nth-child(2) { border-right: 0; } .contact-card:nth-child(n+3) { border-top: 1px solid rgba(247,241,223,.18); } }
-  @media (max-width: 820px) { .contact-section .section-shell, .registration-stage > .register-section .section-shell { padding: 72px 0; } }
+  .registration-stage > .register-section .section-shell { padding: 78px 28px 84px; }
+  @media (max-width: 900px) { .registration-stage { grid-template-columns: 1fr; } .contact-section .section-shell, .registration-stage > .register-section .section-shell { padding: 72px 0; } .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contact-card:nth-child(2) { border-right: 0; } .contact-card:nth-child(n+3) { border-top: 1px solid rgba(247,241,223,.18); } }
   @media (max-width: 520px) { .contact-section .section-shell { padding: 62px 0 56px; } .contact-grid { grid-template-columns: 1fr; } .contact-card, .contact-card:nth-child(2) { border-right: 0; border-left: 0; border-top: 1px solid rgba(247,241,223,.18); } .contact-card:first-child { border-left: 2px solid var(--gold); } .contact-footer { align-items: flex-start; flex-direction: column; } }
   .register-section { border-top: 1px solid var(--line); }
   .register-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 25px; }
