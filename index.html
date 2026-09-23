@@ -203,12 +203,12 @@
   .dc-hero { background-image: linear-gradient(90deg, rgba(4,10,17,.72), rgba(4,10,17,.48) 40%, rgba(4,10,17,.12) 80%, rgba(4,10,17,.32)), url('superman-hero.jpg'); background-position: center, center center; }
   @media (max-width: 820px) { .hero-character { right: -12vw; bottom: 58px; height: 56vh; opacity: .34; } }
   @media (max-width: 620px) { .hero-character { right: -30vw; bottom: 76px; height: 48vh; opacity: .25; } }
-  .rules-section { position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(8,18,22,.86) 0%, rgba(8,18,22,.68) 45%, rgba(8,18,22,.42) 100%), url('batman-standards.png') center right / cover no-repeat; }
-  .rules-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(8,18,22,.48), rgba(8,18,22,.18) 42%, rgba(8,18,22,.58)); }
+  .rules-section { position: relative; overflow: hidden; background: linear-gradient(90deg, rgba(8,27,31,.84) 0%, rgba(8,27,31,.64) 45%, rgba(8,27,31,.25) 100%), url('standards-bg.jpg') center right / cover no-repeat; }
+  .rules-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(8,27,31,.22), rgba(8,27,31,.04) 42%, rgba(8,27,31,.42)); }
   .rules-section .section-shell { position: relative; z-index: 1; }
-  .operations-layout { align-items: start; min-height: 78vh; }
+  .operations-layout { align-items: stretch; min-height: 78vh; }
   .operations-brief { position: sticky; top: 104px; align-self: start; }
-  .operations-rail { max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; padding-right: 10px; scrollbar-width: thin; scrollbar-color: rgba(240,183,74,.72) rgba(247,241,223,.08); }
+  .operations-rail { height: 78vh; max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; padding-right: 14px; scrollbar-width: thin; scrollbar-color: rgba(240,183,74,.72) rgba(247,241,223,.1); }
   .operations-rail::-webkit-scrollbar { width: 6px; }
   .operations-rail::-webkit-scrollbar-track { background: rgba(247,241,223,.08); }
   .operations-rail::-webkit-scrollbar-thumb { background: rgba(240,183,74,.72); border-radius: 999px; }
@@ -335,8 +335,8 @@
   .all-domain-card .pick { display: inline-flex; margin-top: 10px; }
 
   /* ---------- Rules ---------- */
-  .rules-section { position: relative; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.99) 0%, rgba(4,10,17,.97) 54%, rgba(4,10,17,.88) 100%), url('standards-bg.jpg') center right / cover no-repeat; background-blend-mode: luminosity; }
-  .rules-section::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgba(4,10,17,.92), rgba(4,10,17,.25) 45%, rgba(4,10,17,.62)); }
+  .rules-section { position: relative; isolation: isolate; border-top: 1px solid rgba(88,213,238,.22); background: linear-gradient(90deg, rgba(8,27,31,.92) 0%, rgba(8,27,31,.78) 48%, rgba(8,27,31,.35) 100%), url('standards-bg.jpg') center right / cover no-repeat; }
+  .rules-section::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 30%, rgba(88,213,238,.18), transparent 30%), linear-gradient(0deg, rgba(8,27,31,.78), rgba(8,27,31,.1) 48%, rgba(8,27,31,.34)); }
   .rules-section .section-shell { position: relative; z-index: 1; }
   .rules-section .rules-header > div { max-width: 780px; }
   .rules-subtitle { max-width: 650px; color: #b8c8d3; font-family: var(--serif); font-size: 17px; line-height: 1.5; margin: 24px 0 0; }
@@ -351,24 +351,29 @@
   .operation-rule:nth-child(10) { border-left-color: var(--gold); }
   .operation-rule:nth-child(10) strong { color: #edf1f2; font-weight: 700; }
   @media (max-width: 680px) { .rules-board { grid-template-columns: 1fr; } .operation-rule { min-height: auto; padding: 16px 15px; } }
-  .operations-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: clamp(34px, 6vw, 86px); align-items: start; }
-  .operations-brief { padding: 24px 0 0; max-width: 680px; }
+  .operations-layout { display: grid; grid-template-columns: minmax(320px, .92fr) minmax(420px, 1.08fr); gap: clamp(24px, 3.5vw, 52px); align-items: stretch; min-height: 78vh; }
+  .operations-brief { position: sticky; top: 104px; align-self: start; min-height: 78vh; padding: 28px 0 24px; max-width: 680px; overflow: hidden; }
+  .operations-brief::after { content: ""; position: absolute; z-index: 0; right: -9%; bottom: -4%; width: 58%; height: 66%; background: url('batman-standards.png') right bottom / contain no-repeat; opacity: .25; filter: drop-shadow(0 18px 24px rgba(0,0,0,.38)) saturate(.9); pointer-events: none; }
+  .operations-brief > * { position: relative; z-index: 1; }
   .operations-brief h2 { margin-bottom: 30px; }
   .operations-lead { max-width: 620px; color: #e2e7e7; font: 400 clamp(20px, 2.3vw, 30px)/1.28 var(--serif); letter-spacing: -.015em; }
   .operations-copy { max-width: 555px; color: #9db1ba; font: 15px/1.65 var(--serif); margin-top: 26px; }
   .operations-meta { display: flex; flex-wrap: wrap; gap: 9px 16px; margin-top: 38px; padding-top: 16px; border-top: 1px solid rgba(247,241,223,.14); color: #78909c; font: 9px var(--display); letter-spacing: .13em; }
   .operations-meta strong { color: var(--gold); font-weight: 400; }
-  .operations-rail { min-width: 0; }
+  .operations-rail { min-width: 0; height: 78vh; max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; padding: 0 14px 0 0; scrollbar-width: thin; scrollbar-color: rgba(240,183,74,.72) rgba(247,241,223,.1); }
+  .operations-rail::-webkit-scrollbar { width: 7px; }
+  .operations-rail::-webkit-scrollbar-track { background: rgba(247,241,223,.1); }
+  .operations-rail::-webkit-scrollbar-thumb { background: rgba(240,183,74,.72); border-radius: 999px; }
   .operations-rail-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 0 14px; border-bottom: 1px solid rgba(88,213,238,.32); color: #d6ad5c; font: 10px var(--display); letter-spacing: .14em; }
   .operations-rail-head small { color: #78909c; font-size: 8px; }
   .rules-board { max-width: none; margin-top: 0; display: block; border: 0; border-left: 1px solid rgba(126,148,160,.28); background: transparent; box-shadow: none; }
-  .operation-rule { min-height: 0; padding: 18px 18px 17px 20px; background: rgba(3,10,17,.6); border-left: 2px solid rgba(88,213,238,.34); border-bottom: 1px solid rgba(247,241,223,.1); }
+  .operation-rule { min-height: 0; padding: 20px 20px 19px 22px; background: rgba(8,27,31,.52); border-left: 2px solid rgba(88,213,238,.48); border-bottom: 1px solid rgba(247,241,223,.16); }
   .operation-rule:last-child { border-bottom: 0; }
   .operation-rule strong { font-size: clamp(15px, 1.45vw, 19px); }
   .operation-rule small { font-size: 9px; }
   .late-rule { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease, background .18s ease, border-color .18s ease; }
   .late-rule.is-visible { opacity: 1; transform: none; }
-  @media (max-width: 820px) { .operations-layout { grid-template-columns: 1fr; gap: 38px; } .operations-brief { max-width: 720px; } .operations-rail { max-width: 720px; width: 100%; } }
+  @media (max-width: 820px) { .operations-layout { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .operations-brief { position: relative; top: auto; max-width: 720px; min-height: 0; } .operations-rail { height: auto; max-height: none; max-width: 720px; width: 100%; overflow: visible; padding-right: 0; } .operations-brief::after { width: 42%; height: 50%; opacity: .18; } }
   @media (max-width: 680px) { .operations-rail-head { padding-top: 4px; } .rules-board { border-left: 0; } .operation-rule { min-height: auto; padding: 16px 15px; } }
 
 
@@ -795,14 +800,14 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="operations-layout">
         <div class="operations-brief" data-reveal="">
-          <p class="eyebrow red"><span></span>MISSION STANDARDS // CONTROLLED ENVIRONMENT</p>
-          <h2 id="rules-title">Operation <em>standards.</em></h2>
+          <p class="eyebrow red"><span></span>MISSION PROTOCOL // CONTROLLED ENVIRONMENT</p>
+          <h2 id="rules-title">Mission <em>protocol.</em></h2>
           <p class="operations-lead">A serious security event needs a clear operating model. Every participant enters the same controlled environment, works to the same evidence standard, and leaves a defensible record of what changed.</p>
-          <p class="operations-copy">The mission is designed like a professional incident-response room: establish identity, respect the boundary, document the signal, and communicate the fix. The rules on the right are the baseline for every pod, from first check-in to final handover.</p>
-          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 operating standards</strong><span>READ DOWN THE RAIL</span></div>
+          <p class="operations-copy">The mission is designed like a professional incident-response room: establish identity, respect the boundary, document the signal, and communicate the fix. The protocol on the right is the baseline for every pod, from first check-in to final handover.</p>
+          <div class="operations-meta"><span>MISSION CONTROL</span><strong>10 field protocols</strong><span>SCROLL THE RAIL</span></div>
         </div>
-        <aside class="operations-rail" aria-label="Event rules">
-          <div class="operations-rail-head"><span>OPERATION STANDARDS</span><small>01—10 / CONTROLLED</small></div>
+        <aside class="operations-rail" aria-label="Mission protocol rules">
+          <div class="operations-rail-head"><span>MISSION PROTOCOL</span><small>01—10 / CONTROLLED</small></div>
           <div class="rules-board">
             <article class="operation-rule"><span>01 / ACCESS</span><strong>Bring your college ID to check-in.</strong><small>Identity verified before entry.</small></article>
             <article class="operation-rule"><span>02 / POD</span><strong>Register solo or as a team of two.</strong><small>One registration record per pod.</small></article>
