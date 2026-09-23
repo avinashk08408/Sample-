@@ -212,13 +212,13 @@
   .hero-hud span { width: 1px; height: 40px; background: rgba(88,213,238,.35); }
 
 
-  .mission-detail-page { --dossier-color: var(--cyan); border-top: 4px solid var(--dossier-color); background-color: #050b18; box-shadow: inset 7px 0 0 color-mix(in srgb, var(--dossier-color), transparent 42%), 0 30px 90px rgba(0,0,0,.65); }
-  .mission-detail-page::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--dossier-color), transparent 58%), transparent 34%), linear-gradient(135deg, rgba(5,11,24,.8), color-mix(in srgb, var(--dossier-color), transparent 94%) 58%, rgba(4,10,18,.68)); mix-blend-mode: screen; opacity: .92; }
-  .mission-detail-page .eyebrow.gold, .mission-detail-page .dossier-meta span { color: var(--dossier-color); text-shadow: 0 0 12px color-mix(in srgb, var(--dossier-color), transparent 35%); }
-  .mission-detail-page .eyebrow.gold span { background: var(--dossier-color); opacity: 1; box-shadow: 0 0 14px var(--dossier-color); }
-  .mission-detail-page .dossier-meta div { border: 1px solid color-mix(in srgb, var(--dossier-color), transparent 52%); border-top: 2px solid var(--dossier-color); padding: 13px 12px 11px; background: color-mix(in srgb, var(--dossier-color), #071225 91%); box-shadow: inset 0 0 22px color-mix(in srgb, var(--dossier-color), transparent 92%); }
-  .mission-detail-page .button.primary { background: var(--dossier-color); border-color: var(--dossier-color); color: #06101d; box-shadow: 0 0 24px color-mix(in srgb, var(--dossier-color), transparent 55%); }
-  .mission-detail-page .button.primary:hover { background: var(--paper); border-color: var(--paper); color: #06101d; box-shadow: 0 0 28px var(--dossier-color); }
+  .mission-detail-page { --dossier-color: var(--cyan); border-top: 3px solid var(--dossier-color); background-color: #071321; box-shadow: inset 5px 0 0 color-mix(in srgb, var(--dossier-color), transparent 68%), 0 30px 90px rgba(0,0,0,.55); }
+  .mission-detail-page::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--dossier-color), transparent 82%), transparent 34%), linear-gradient(135deg, rgba(7,19,33,.84), color-mix(in srgb, var(--dossier-color), transparent 97%) 58%, rgba(4,10,18,.64)); }
+  .mission-detail-page .eyebrow.gold, .mission-detail-page .dossier-meta span { color: var(--dossier-color); }
+  .mission-detail-page .eyebrow.gold span { background: var(--dossier-color); opacity: .9; }
+  .mission-detail-page .dossier-meta div { border: 1px solid color-mix(in srgb, var(--dossier-color), transparent 76%); border-top: 2px solid color-mix(in srgb, var(--dossier-color), transparent 24%); padding: 13px 12px 11px; background: rgba(8,19,31,.78); }
+  .mission-detail-page .button.primary { background: color-mix(in srgb, var(--dossier-color), #071321 70%); border-color: color-mix(in srgb, var(--dossier-color), var(--paper) 22%); color: var(--paper); }
+  .mission-detail-page .button.primary:hover { background: color-mix(in srgb, var(--dossier-color), #071321 48%); }
   .mission-detail-page .dossier-actions .button.ghost { background: rgba(8,19,31,.72); border-color: rgba(247,241,223,.28); }
   .mission-detail-page .dossier-actions .button.ghost:hover { border-color: var(--dossier-color); color: var(--paper); }
 
@@ -320,7 +320,7 @@
   .mission-close { color: #b9c9d2; letter-spacing: .08em; cursor: pointer; background: rgba(8,19,31,.58); border: 1px solid rgba(247,241,223,.2); display: flex; align-items: center; gap: 10px; margin: 0 0 70px auto; padding: 10px 13px; font-family: var(--display); font-size: 10px; }
   .mission-close span { color: var(--gold); font-size: 22px; line-height: 1; }
   .mission-detail-hero { max-width: 1080px; border-bottom: 1px solid var(--line); padding-bottom: 40px; }
-  .mission-detail-hero h2 { font-family: var(--serif); color: var(--dossier-color) !important; text-shadow: 0 0 26px color-mix(in srgb, var(--dossier-color), transparent 48%); margin: 4px 0 18px; font-size: clamp(58px, 10vw, 150px); font-weight: 700; line-height: .82; letter-spacing: -.06em; }
+  .mission-detail-hero h2 { font-family: var(--serif); color: var(--dossier-color) !important; margin: 4px 0 18px; font-size: clamp(58px, 10vw, 150px); font-weight: 700; line-height: .82; letter-spacing: -.06em; }
   .mission-detail-hero p { color: #d3dfe7; max-width: 760px; font-family: var(--serif); font-size: clamp(19px, 2vw, 26px); line-height: 1.45; margin: 0 0 16px; }
   .dossier-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
   .dossier-meta div { border-top: 1px solid rgba(247,241,223,.16); padding-top: 9px; }
@@ -1188,49 +1188,49 @@ Error generating stack: `+l.message+`
 
   /* ---------- 15 domains ---------- */
   var DOMAINS = [
-    { num: "I", title: "Ethical Hacking", file: "FILE://ETHICAL", color: "#45f3ff",
+    { num: "I", title: "Ethical Hacking", file: "FILE://ETHICAL", color: "#6fa8b5",
       desc: "Think like an attacker, act like a defender. Find the path in, then close it with intent.",
       sites: [["TryHackMe", "https://tryhackme.com"], ["Hack The Box", "https://www.hackthebox.com"], ["HackerOne", "https://www.hackerone.com"]] },
-    { num: "II", title: "Penetration Testing", file: "FILE://PENTEST", color: "#5b7cff",
+    { num: "II", title: "Penetration Testing", file: "FILE://PENTEST", color: "#7e8eaf",
       desc: "Scope a target, build a chain, and report the story behind every access point.",
       sites: [["PortSwigger Academy", "https://portswigger.net/web-security"], ["PentesterLab", "https://pentesterlab.com"], ["VulnHub", "https://www.vulnhub.com"]] },
-    { num: "III", title: "CTF & Capture The Flag", file: "FILE://CTF", color: "#ffd166",
+    { num: "III", title: "CTF & Capture The Flag", file: "FILE://CTF", color: "#c8a761",
       desc: "Race the clock through flags, clues, and creative problem-solving across the full security stack.",
       sites: [["picoCTF", "https://picoctf.org"], ["CTFtime", "https://ctftime.org"], ["Root Me", "https://www.root-me.org"]] },
-    { num: "IV", title: "Digital Forensics", file: "FILE://FORENSICS", color: "#ff4d6d",
+    { num: "IV", title: "Digital Forensics", file: "FILE://FORENSICS", color: "#b97578",
       desc: "Reconstruct the incident from the evidence left behind. Every artifact has a timeline.",
       sites: [["Autopsy", "https://www.autopsy.com"], ["CyberDefenders", "https://cyberdefenders.org"], ["Blue Team Labs", "https://blueteamlabs.online"]] },
-    { num: "V", title: "Reverse Engineering", file: "FILE://BRAINIAC", color: "#45f3ff",
+    { num: "V", title: "Reverse Engineering", file: "FILE://BRAINIAC", color: "#6fa8b5",
       desc: "Read the machine. Dismantle binaries, crack challenges and unravel hostile code in your own sandbox.",
       sites: [["Ghidra", "https://ghidra-sre.org"], ["Crackmes.one", "https://crackmes.one"], ["pwn.college", "https://pwn.college"]] },
-    { num: "VI", title: "Cryptography", file: "FILE://CIPHER", color: "#ffd166",
+    { num: "VI", title: "Cryptography", file: "FILE://CIPHER", color: "#c8a761",
       desc: "Challenge the assumptions behind secure communication, from classical ciphers to modern primitives.",
       sites: [["CryptoHack", "https://cryptohack.org"], ["Cryptopals", "https://cryptopals.com"], ["CyberChef", "https://gchq.github.io/CyberChef"]] },
-    { num: "VII", title: "Web App Security", file: "FILE://WEB", color: "#5b7cff",
+    { num: "VII", title: "Web App Security", file: "FILE://WEB", color: "#7e8eaf",
       desc: "Trace the request, find the trust boundary, and secure the app from the inside out.",
       sites: [["PortSwigger Academy", "https://portswigger.net/web-security"], ["OWASP Juice Shop", "https://owasp.org/www-project-juice-shop/"], ["W3Schools HTTP", "https://www.w3schools.com/whatis/whatis_http.asp"]] },
-    { num: "VIII", title: "Network Security", file: "FILE://NET", color: "#45f3ff",
+    { num: "VIII", title: "Network Security", file: "FILE://NET", color: "#6fa8b5",
       desc: "Follow the packets. Protect the paths. Learn how systems reveal their weak points in motion.",
       sites: [["Wireshark", "https://www.wireshark.org"], ["TryHackMe Networking", "https://tryhackme.com/r/room/introtonetworking"], ["OverTheWire", "https://overthewire.org"]] },
-    { num: "IX", title: "Malware Analysis", file: "FILE://MALWARE", color: "#ff4d6d",
+    { num: "IX", title: "Malware Analysis", file: "FILE://MALWARE", color: "#b97578",
       desc: "Understand what a suspicious file does before it gets the chance to do it again.",
       sites: [["ANY.RUN", "https://any.run"], ["REMnux", "https://remnux.org"], ["Malware Traffic", "https://www.malware-traffic-analysis.net"]] },
-    { num: "X", title: "Binary Exploitation / Pwn", file: "FILE://PWN", color: "#ffd166",
+    { num: "X", title: "Binary Exploitation / Pwn", file: "FILE://PWN", color: "#c8a761",
       desc: "Find the edge in compiled systems and turn memory behavior into a controlled result.",
       sites: [["pwn.college", "https://pwn.college"], ["Exploit Education", "https://exploit.education"], ["ROP Emporium", "https://ropemporium.com"]] },
-    { num: "XI", title: "OSINT & Social Engineering", file: "FILE://OSINT", color: "#5b7cff",
+    { num: "XI", title: "OSINT & Social Engineering", file: "FILE://OSINT", color: "#7e8eaf",
       desc: "Gather the signal hiding in plain sight — carefully, legally, and with a sharp eye.",
       sites: [["OSINT Framework", "https://osintframework.com"], ["Bellingcat Toolkit", "https://www.bellingcat.com/resources/how-tos/"], ["Sherlock", "https://github.com/sherlock-project/sherlock"]] },
-    { num: "XII", title: "Cloud Security", file: "FILE://CLOUD", color: "#45f3ff",
+    { num: "XII", title: "Cloud Security", file: "FILE://CLOUD", color: "#6fa8b5",
       desc: "Map identity, permissions, and exposed services across the modern cloud perimeter.",
       sites: [["CloudGoat", "https://github.com/RhinoSecurityLabs/cloudgoat"], ["flAWS.cloud", "http://flaws.cloud"], ["AWS Security Docs", "https://docs.aws.amazon.com/security/"]] },
-    { num: "XIII", title: "Incident Response", file: "FILE://RESPONSE", color: "#ff4d6d",
+    { num: "XIII", title: "Incident Response", file: "FILE://RESPONSE", color: "#b97578",
       desc: "Stabilize first. Then investigate, contain, and make the next incident harder to repeat.",
       sites: [["LetsDefend", "https://letsdefend.io"], ["CyberDefenders", "https://cyberdefenders.org"], ["TheHive Project", "https://thehive-project.org"]] },
-    { num: "XIV", title: "Zero-Day Hunting", file: "FILE://ZERO-DAY", color: "#ffd166",
+    { num: "XIV", title: "Zero-Day Hunting", file: "FILE://ZERO-DAY", color: "#c8a761",
       desc: "Look for the unexpected behavior that no checklist has named yet.",
       sites: [["Fuzzing101", "https://github.com/antonio-morales/Fuzzing101"], ["OSS-Fuzz", "https://google.github.io/oss-fuzz/"], ["Google Project Zero", "https://googleprojectzero.blogspot.com"]] },
-    { num: "XV", title: "Quantum & Next-Gen Crypto", file: "FILE://QUANTUM", color: "#5b7cff",
+    { num: "XV", title: "Quantum & Next-Gen Crypto", file: "FILE://QUANTUM", color: "#7e8eaf",
       desc: "Explore how tomorrow's cryptography survives the quantum age — and what breaks today.",
       sites: [["Qiskit", "https://qiskit.org"], ["NIST PQC", "https://csrc.nist.gov/projects/post-quantum-cryptography"], ["IBM Quantum", "https://www.ibm.com/quantum"]] }
   ];
