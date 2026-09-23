@@ -323,6 +323,24 @@
   .rules-section .rules-header > div { max-width: 780px; }
   .rules-subtitle { max-width: 650px; color: #b8c8d3; font-family: var(--serif); font-size: 17px; line-height: 1.5; margin: 24px 0 0; }
   .rules-section .rules-list { max-width: 980px; }
+  .rules-board { max-width: 980px; margin-top: 43px; border-top: 1px solid rgba(88,213,238,.28); border-bottom: 1px solid rgba(247,241,223,.14); background: rgba(4,10,17,.28); }
+  .operation-rule { display: grid; grid-template-columns: 54px 1fr; align-items: baseline; gap: 18px; min-height: 57px; padding: 15px 14px; border-bottom: 1px solid rgba(247,241,223,.13); transition: background .2s ease, padding-left .2s ease; }
+  .operation-rule:last-child { border-bottom: 0; }
+  .operation-rule:hover { padding-left: 21px; background: rgba(88,213,238,.07); }
+  .operation-rule span { font-family: var(--display); color: var(--gold); font-size: 10px; letter-spacing: .16em; }
+  .operation-rule strong { color: var(--paper); font-size: clamp(17px, 2vw, 25px); font-weight: 400; line-height: 1.18; }
+  .operation-rule:nth-child(1) strong { font-family: Georgia, var(--serif); color: #f0b74a; }
+  .operation-rule:nth-child(2) strong { font-family: Arial, sans-serif; color: #8ee7f4; }
+  .operation-rule:nth-child(3) strong { font-family: "Courier New", monospace; color: #f4f7f8; letter-spacing: .01em; }
+  .operation-rule:nth-child(4) strong { font-family: Garamond, Georgia, serif; color: #ef8b84; font-style: italic; }
+  .operation-rule:nth-child(5) strong { font-family: Verdana, sans-serif; color: #a8c8ff; }
+  .operation-rule:nth-child(6) strong { font-family: "Trebuchet MS", sans-serif; color: #ffd887; }
+  .operation-rule:nth-child(7) strong { font-family: Georgia, var(--serif); color: #9de8dc; }
+  .operation-rule:nth-child(8) strong { font-family: "Courier New", monospace; color: #d8b4ff; }
+  .operation-rule:nth-child(9) strong { font-family: Arial, sans-serif; color: #ffb19a; }
+  .operation-rule:nth-child(10) strong { font-family: Impact, "Arial Narrow", sans-serif; color: var(--cyan); letter-spacing: .04em; }
+  @media (max-width: 620px) { .operation-rule { grid-template-columns: 34px 1fr; gap: 9px; padding: 14px 10px; } .operation-rule strong { font-size: 17px; } }
+
   .rules-section .rule-row { background: rgba(4,10,17,.2); }
   .rules-section .rule-row button { padding-left: 14px; padding-right: 14px; }
   .rules-section .rule-row .answer { padding-right: 20px; }
@@ -694,12 +712,22 @@ Error generating stack: `+l.message+`
       <div class="rules-header" data-reveal="">
         <div>
           <p class="eyebrow red"><span></span>EVENT OPERATIONS // CONTROLLED ENVIRONMENT</p>
-          <h2 id="rules-title">Industry-grade <em>operation.</em></h2>
-          <p class="rules-subtitle">A clear operating standard for a serious defensive sprint — who may enter, how the mission runs, and the rules that keep every decision ethical, measurable, and professional.</p>
+          <h2 id="rules-title">Mission <em>rules.</em></h2>
         </div>
-        <p class="rules-badge" aria-hidden="true">OPERATIONAL<br>STANDARD</p>
+        <p class="rules-badge" aria-hidden="true">10<br>DIRECTIVES</p>
       </div>
-      <div class="rules-list" id="rulesList"></div>
+      <div class="rules-board" aria-label="Event rules">
+        <div class="operation-rule"><span>01</span><strong>Bring your college ID to check-in.</strong></div>
+        <div class="operation-rule"><span>02</span><strong>Enter solo or as a team of two.</strong></div>
+        <div class="operation-rule"><span>03</span><strong>Work only inside the assigned environment.</strong></div>
+        <div class="operation-rule"><span>04</span><strong>Respect the scope, the system, and every participant.</strong></div>
+        <div class="operation-rule"><span>05</span><strong>Do not probe external systems or other teams.</strong></div>
+        <div class="operation-rule"><span>06</span><strong>Document your evidence before you patch.</strong></div>
+        <div class="operation-rule"><span>07</span><strong>Explain the risk and the fix with clarity.</strong></div>
+        <div class="operation-rule"><span>08</span><strong>Keep credentials, data, and challenge material private.</strong></div>
+        <div class="operation-rule"><span>09</span><strong>Submit your final handover before the clock closes.</strong></div>
+        <div class="operation-rule"><span>10</span><strong>Think like an attacker. Finish like a defender.</strong></div>
+      </div>
     </div>
   </section>
 
@@ -1089,18 +1117,6 @@ Error generating stack: `+l.message+`
       '<span class="sites"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>' + d.sites[0][0] + ' · ' + d.sites[1][0] + '</span></span>';
     return btn;
   }
-
-  /* ---------- rules ---------- */
-  var RULES = [
-    { id: "elig", label: "01 // ELIGIBILITY", title: "Who is cleared for the mission?", body: "Open to SRM Valliammai Engineering College students in Year I, II, or III across departments. A valid college ID is required at check-in; only verified participants enter the operating floor." },
-    { id: "format", label: "02 // FORMAT", title: "How does the operation run?", body: "Enter solo or as a team of two. Every pod receives the same intentionally vulnerable system, a three-hour controlled sprint, one selected domain, a technical handover, and a five-minute final showcase." },
-    { id: "conduct", label: "03 // RULES & REGULATIONS", title: "What governs the operating floor?", body: "Work only inside the assigned environment and approved brief. Do not probe external systems, access another pod's work, expose participant data, or bypass event controls. Every action must be ethical, scoped, documented, and repeatable." },
-    { id: "judge", label: "04 // EVALUATION", title: "How is performance measured?", body: "The council evaluates analysis quality, evidence and reproducibility, remediation effectiveness, technical communication, operational discipline, and the clarity of the final five-minute showcase." }
-  ];
-  var rulesList = $("#rulesList");
-  RULES.forEach(function (r, i) {
-    rulesList.appendChild(accordion("rule", r.id, "0" + (i + 1), r.label, r.title, r.body, i === 0));
-  });
 
   /* ---------- FAQ ---------- */
   var FAQS = [
