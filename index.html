@@ -73,6 +73,8 @@
   .landing-status { display: flex; align-items: center; justify-content: center; gap: 11px; margin-top: 22px; color: #9fb4c2; font-size: 9px; letter-spacing: .15em; }
   .landing-status strong { min-width: 32px; color: var(--gold); font-weight: 400; text-align: left; }
   .landing-loader { width: 13px; height: 13px; border: 1px solid rgba(88,213,238,.25); border-top-color: var(--cyan); border-radius: 50%; animation: landing-spin .8s linear infinite; }
+  .landing-progress-track { width: min(300px, 70vw); height: 2px; margin: 12px auto 0; overflow: hidden; background: rgba(247,241,223,.16); }
+  .landing-progress-track span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--gold)); transition: width .12s linear; }
   .landing-enter { margin-top: 28px; border: 1px solid #e4b85d; background: #e4b85d; color: #08131f; cursor: pointer; font: 700 12px var(--display); letter-spacing: .12em; padding: 16px 28px; box-shadow: 0 12px 30px rgba(228,184,93,.2); transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease); }
   .landing-enter:hover { color: #08131f; background: #f5d17c; border-color: #f5d17c; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(228,184,93,.32); }
   @keyframes landing-spin { to { transform: rotate(360deg); } }
@@ -494,10 +496,10 @@
   .contact-section { position: relative; isolation: isolate; overflow: hidden; border-top: 1px solid rgba(88,213,238,.18); background: linear-gradient(90deg, rgba(4,12,21,.82) 0%, rgba(4,12,21,.64) 46%, rgba(4,12,21,.28) 100%), url('dc-team-form.jpg') center / cover no-repeat; }
   .contact-section::before { content: "CONTACT DESK / 02"; position: absolute; z-index: -1; top: 26px; left: 28px; color: rgba(247,241,223,.72); font: 9px var(--display); letter-spacing: .15em; }
   .contact-section .section-shell { display: block; padding: 86px 0 72px; }
-  .contact-heading { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 48px; align-items: end; padding-bottom: 42px; }
-  .contact-heading h2 { max-width: 620px; margin-top: 18px; color: var(--paper); font: 400 clamp(48px, 6.5vw, 84px)/.9 var(--serif); letter-spacing: -.055em; }
+  .contact-heading { display: block; max-width: 760px; padding-bottom: 42px; text-align: left; }
+  .contact-heading h2 { max-width: 620px; margin-top: 18px; color: var(--paper); font: 400 clamp(52px, 7vw, 93px)/.9 var(--serif); letter-spacing: -.05em; }
   .contact-heading h2 em { color: var(--cyan); font-style: italic; }
-  .contact-lead { max-width: 500px; margin: 0 0 5px; color: #b9cad3; font: 17px/1.55 var(--serif); }
+  .contact-lead { max-width: 600px; margin: 24px 0 5px; color: #b9cad3; font: 17px/1.55 var(--serif); }
   .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(247,241,223,.25); border-bottom: 1px solid rgba(247,241,223,.25); }
   .contact-card { min-height: 154px; padding: 24px 22px 22px; border-right: 1px solid rgba(247,241,223,.18); background: rgba(4,13,23,.38); }
   .contact-card:first-child { border-left: 2px solid var(--gold); }
@@ -666,7 +668,8 @@
         <h1>Reverse <em>Hackathon.</em></h1>
         <p class="landing-subtitle">A controlled three-hour defensive sprint for people who want to understand the system from the inside out.</p>
         <div class="landing-status"><span class="landing-loader" aria-hidden="true"></span><strong id="landingProgress">00%</strong><span id="landingStatusText">INITIALISING MISSION DECK</span></div>
-        <button class="landing-enter" id="landingEnter" type="button">ENTER THE OPERATION →</button>
+        <div class="landing-progress-track" aria-hidden="true"><span id="landingProgressBar"></span></div>
+        <button class="landing-enter" id="landingEnter" type="button">ENTER WORLD →</button>
       </div>
       <div class="landing-art-frame">
         <img src="dc-landing-banner.jpg" alt="Justice League lineup" width="341" height="148">
@@ -678,6 +681,7 @@
       var intro = document.getElementById('landingIntro');
       var enter = document.getElementById('landingEnter');
       var progress = document.getElementById('landingProgress');
+      var progressBar = document.getElementById('landingProgressBar');
       if (!intro) return;
       function finish() {
         intro.classList.add('is-done');
@@ -688,6 +692,7 @@
       function tick() {
         value = Math.min(100, value + (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 4 : 1));
         if (progress) progress.textContent = String(value).padStart(2, '0') + '%';
+        if (progressBar) progressBar.style.width = value + '%';
         if (value < 100) window.setTimeout(tick, 24);
         else if (document.getElementById('landingStatusText')) document.getElementById('landingStatusText').textContent = 'READY / PRESS ENTER TO CONTINUE';
       }
@@ -1090,7 +1095,7 @@ Error generating stack: `+l.message+`
     <div class="section-shell">
       <div class="contact-heading" data-reveal="">
         <p class="eyebrow gold"><span></span>MISSION CONTROL // CONTACT DESK</p>
-        <h2 id="contact-title">Contact <em>details.</em></h2>
+        <h2 id="contact-title">Contact</h2>
         <p class="contact-lead">For registration support, team changes, venue questions, or anything the mission desk cannot resolve, reach the organiser directly.</p>
       </div>
       <div class="contact-grid">
