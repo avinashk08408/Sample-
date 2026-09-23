@@ -317,29 +317,24 @@
   .all-domain-card .pick { display: inline-flex; margin-top: 10px; }
 
   /* ---------- Rules ---------- */
-  .rules-section { position: relative; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.985) 0%, rgba(4,10,17,.94) 42%, rgba(4,10,17,.62) 100%), url('standards-bg.jpg') center right / cover fixed; }
-  .rules-section::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgba(4,10,17,.72), transparent 36%, rgba(4,10,17,.28)); }
+  .rules-section { position: relative; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(90deg, rgba(4,10,17,.99) 0%, rgba(4,10,17,.97) 54%, rgba(4,10,17,.84) 100%), url('standards-bg.jpg') center right / cover fixed; background-blend-mode: luminosity; }
+  .rules-section::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgba(4,10,17,.92), rgba(4,10,17,.25) 45%, rgba(4,10,17,.62)); }
   .rules-section .section-shell { position: relative; z-index: 1; }
   .rules-section .rules-header > div { max-width: 780px; }
   .rules-subtitle { max-width: 650px; color: #b8c8d3; font-family: var(--serif); font-size: 17px; line-height: 1.5; margin: 24px 0 0; }
   .rules-section .rules-list { max-width: 980px; }
-  .rules-board { max-width: 980px; margin-top: 43px; border-top: 1px solid rgba(88,213,238,.28); border-bottom: 1px solid rgba(247,241,223,.14); background: rgba(4,10,17,.28); }
-  .operation-rule { display: grid; grid-template-columns: 54px 1fr; align-items: baseline; gap: 18px; min-height: 57px; padding: 15px 14px; border-bottom: 1px solid rgba(247,241,223,.13); transition: background .2s ease, padding-left .2s ease; }
+  .rules-board { max-width: 980px; margin-top: 43px; border: 1px solid rgba(247,241,223,.17); border-left: 3px solid rgba(88,213,238,.62); background: rgba(3,10,17,.76); box-shadow: 0 24px 65px rgba(0,0,0,.3); }
+  .operation-rule { display: grid; grid-template-columns: 58px minmax(0, 1fr) 82px; align-items: center; gap: 18px; min-height: 57px; padding: 13px 18px; border-bottom: 1px solid rgba(247,241,223,.11); transition: background .2s ease, border-color .2s ease; }
   .operation-rule:last-child { border-bottom: 0; }
-  .operation-rule:hover { padding-left: 21px; background: rgba(88,213,238,.07); }
-  .operation-rule span { font-family: var(--display); color: var(--gold); font-size: 10px; letter-spacing: .16em; }
-  .operation-rule strong { color: var(--paper); font-size: clamp(17px, 2vw, 25px); font-weight: 400; line-height: 1.18; }
-  .operation-rule:nth-child(1) strong { font-family: Georgia, var(--serif); color: #f0b74a; }
-  .operation-rule:nth-child(2) strong { font-family: Arial, sans-serif; color: #8ee7f4; }
-  .operation-rule:nth-child(3) strong { font-family: "Courier New", monospace; color: #f4f7f8; letter-spacing: .01em; }
-  .operation-rule:nth-child(4) strong { font-family: Garamond, Georgia, serif; color: #ef8b84; font-style: italic; }
-  .operation-rule:nth-child(5) strong { font-family: Verdana, sans-serif; color: #a8c8ff; }
-  .operation-rule:nth-child(6) strong { font-family: "Trebuchet MS", sans-serif; color: #ffd887; }
-  .operation-rule:nth-child(7) strong { font-family: Georgia, var(--serif); color: #9de8dc; }
-  .operation-rule:nth-child(8) strong { font-family: "Courier New", monospace; color: #d8b4ff; }
-  .operation-rule:nth-child(9) strong { font-family: Arial, sans-serif; color: #ffb19a; }
-  .operation-rule:nth-child(10) strong { font-family: Impact, "Arial Narrow", sans-serif; color: var(--cyan); letter-spacing: .04em; }
-  @media (max-width: 620px) { .operation-rule { grid-template-columns: 34px 1fr; gap: 9px; padding: 14px 10px; } .operation-rule strong { font-size: 17px; } }
+  .operation-rule:hover { background: rgba(88,213,238,.045); border-color: rgba(88,213,238,.24); }
+  .operation-rule span { color: #718493; font: 10px var(--display); letter-spacing: .16em; }
+  .operation-rule strong { color: #dbe3e8; font: 400 clamp(16px, 1.65vw, 21px)/1.25 var(--serif); letter-spacing: -.01em; }
+  .operation-rule::after { content: "PROTOCOL"; justify-self: end; color: #596b78; font: 8px var(--display); letter-spacing: .14em; }
+  .operation-rule:nth-child(3n) strong { color: #a9d4dc; }
+  .operation-rule:nth-child(5n) strong { color: #d9c897; }
+  .operation-rule:nth-child(10) strong { color: #e9eef0; font-weight: 700; }
+  .operation-rule:nth-child(10)::after { color: var(--cyan); }
+  @media (max-width: 620px) { .operation-rule { grid-template-columns: 34px 1fr; gap: 9px; padding: 14px 11px; } .operation-rule strong { font-size: 16px; } .operation-rule::after { display: none; } }
 
   .rules-section .rule-row { background: rgba(4,10,17,.2); }
   .rules-section .rule-row button { padding-left: 14px; padding-right: 14px; }
@@ -712,9 +707,9 @@ Error generating stack: `+l.message+`
       <div class="rules-header" data-reveal="">
         <div>
           <p class="eyebrow red"><span></span>EVENT OPERATIONS // CONTROLLED ENVIRONMENT</p>
-          <h2 id="rules-title">Mission <em>rules.</em></h2>
+          <h2 id="rules-title">Operational <em>standards.</em></h2>
         </div>
-        <p class="rules-badge" aria-hidden="true">10<br>DIRECTIVES</p>
+        <p class="rules-badge" aria-hidden="true">CONTROLLED<br>PROTOCOL</p>
       </div>
       <div class="rules-board" aria-label="Event rules">
         <div class="operation-rule"><span>01</span><strong>Bring your college ID to check-in.</strong></div>
