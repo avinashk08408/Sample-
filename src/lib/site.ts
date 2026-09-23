@@ -41,7 +41,7 @@ export const siteConfig = {
   organizer: "Whitehat Club, Department of Cyber Security",
   college: "SRM Valliammai Engineering College",
 
-  teamSize: { min: 2, max: 4 as const },
+  teamSize: { min: 1, max: 4 as const },
 
   /** EDIT-ME: The Cut (prizes). Update amounts/currencies freely. */
   prizes: [
