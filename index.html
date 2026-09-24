@@ -53,6 +53,13 @@
   html.landing-active, html.landing-active body { overflow: hidden; }
   .landing-intro { position: fixed; inset: 0; z-index: 250; display: grid; place-items: center; background: #050b14; color: var(--cream); opacity: 1; visibility: visible; transition: opacity .65s var(--ease), visibility .65s var(--ease); }
   .landing-intro.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .intro-video-gate { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; background: #02060b; opacity: 1; visibility: visible; transition: opacity .55s var(--ease), visibility .55s var(--ease); }
+  .intro-video-gate.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .intro-video-gate video { width: 100%; height: 100%; object-fit: cover; background: #02060b; }
+  .intro-video-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,11,.2), rgba(2,6,11,.38) 55%, rgba(2,6,11,.8)); pointer-events: none; }
+  .intro-video-label { position: absolute; top: 28px; left: 32px; color: var(--gold); font: 10px var(--display); letter-spacing: .18em; }
+  .intro-video-skip { position: absolute; right: 32px; bottom: 30px; border: 1px solid rgba(240,183,74,.85); background: rgba(4,10,17,.72); color: var(--cream); cursor: pointer; padding: 12px 16px; font: 700 10px var(--display); letter-spacing: .12em; transition: background .2s ease, color .2s ease; }
+  .intro-video-skip:hover { background: var(--gold); color: var(--ink); }
   .landing-intro::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 72% 40%, rgba(88,213,238,.13), transparent 30%), linear-gradient(115deg, rgba(5,11,20,.99) 0%, rgba(8,19,32,.96) 55%, rgba(11,31,45,.86) 100%); }
   .landing-intro::after { content: "RH / 2026"; position: absolute; top: 32px; right: 40px; color: rgba(159,180,194,.55); font: 9px var(--display); letter-spacing: .18em; }
   .landing-intro-shell { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 28px; width: min(920px, calc(100% - 48px)); text-align: center; }
@@ -670,6 +677,10 @@
   .mission-chat-answer.is-visible { display: block; }
   .mission-chat-answer a { color: var(--gold); text-decoration: none; }
   .mission-chat-answer a:hover { color: var(--cyan); }
+  .mission-chat-form { display: flex; gap: 7px; margin-top: 14px; }
+  .mission-chat-form input { min-width: 0; flex: 1; border: 1px solid rgba(247,241,223,.2); background: rgba(3,12,22,.72); color: var(--cream); padding: 10px; font: 12px var(--serif); }
+  .mission-chat-form button { border: 1px solid var(--gold); background: var(--gold); color: var(--ink); cursor: pointer; padding: 0 12px; font: 700 9px var(--display); letter-spacing: .08em; }
+  .mission-chat-form button:hover { background: var(--cream); border-color: var(--cream); }
   .mission-chat-foot { padding: 11px 15px; border-top: 1px solid rgba(247,241,223,.13); color: #7f95a5; font: 9px/1.4 var(--display); letter-spacing: .05em; }
   .mission-chat-foot a { color: var(--gold); text-decoration: none; }
   .mission-chat-foot a:hover { color: var(--cyan); }
@@ -678,6 +689,14 @@
 <script>document.documentElement.classList.add('landing-active');</script>
 <link rel="canonical" href="https://reversehack-2cw9n6ya.manus.space/"><link rel="manifest" href="/__manus/pwa/manifest.webmanifest" crossorigin="use-credentials"></head>
 <body>
+  <section class="intro-video-gate" id="introVideoGate" aria-label="Reverse Hackathon event video">
+    <video id="introVideo" autoplay muted playsinline preload="auto">
+      <source src="dc-event-intro.mp4" type="video/mp4">
+    </video>
+    <div class="intro-video-shade" aria-hidden="true"></div>
+    <div class="intro-video-label">REVERSE HACKATHON / EVENT SIGNAL</div>
+    <button class="intro-video-skip" id="introVideoSkip" type="button">SKIP VIDEO →</button>
+  </section>
   <section class="landing-intro" id="landingIntro" aria-label="Reverse Hackathon loading intro">
     <div class="landing-intro-shell">
       <div class="event-identity landing-event-identity" aria-label="Event presented by SRM Valliammai Engineering College Cyber Security and The Whitehatians">
@@ -698,9 +717,6 @@
         <div class="landing-progress-track" aria-hidden="true"><span id="landingProgressBar"></span></div>
         <button class="landing-enter" id="landingEnter" type="button">ENTER WORLD →</button>
       </div>
-      <div class="landing-art-frame">
-        <img src="dc-landing-banner.jpg" alt="Justice League lineup" width="341" height="148">
-      </div>
     </div>
   </section>
   <script>
@@ -709,11 +725,25 @@
       var enter = document.getElementById('landingEnter');
       var progress = document.getElementById('landingProgress');
       var progressBar = document.getElementById('landingProgressBar');
+      var videoGate = document.getElementById('introVideoGate');
+      var video = document.getElementById('introVideo');
+      var videoSkip = document.getElementById('introVideoSkip');
       if (!intro) return;
       function finish() {
         intro.classList.add('is-done');
         document.documentElement.classList.remove('landing-active');
         window.setTimeout(function () { intro.remove(); }, 700);
+      }
+      function closeVideo() {
+        if (!videoGate) return;
+        videoGate.classList.add('is-done');
+        if (video) { video.pause(); video.removeAttribute('src'); }
+        window.setTimeout(function () { videoGate.remove(); }, 600);
+      }
+      if (videoGate) {
+        if (video) video.addEventListener('ended', closeVideo);
+        if (videoSkip) videoSkip.addEventListener('click', closeVideo);
+        if (video) video.addEventListener('error', closeVideo, { once: true });
       }
       var value = 0;
       function tick() {
@@ -1717,6 +1747,10 @@ Error generating stack: `+l.message+`
       <button type="button" data-chat-topic="size">Team size</button>
       <button type="button" data-chat-topic="other">Other question</button>
     </div>
+    <form class="mission-chat-form" id="missionChatForm">
+      <input id="missionChatInput" type="text" maxlength="240" placeholder="Type your question..." aria-label="Type your question">
+      <button type="submit">SEND</button>
+    </form>
     <div class="mission-chat-answer" id="missionChatAnswer" role="status" aria-live="polite"></div>
   </div>
   <div class="mission-chat-foot">Complex issue? Contact Anesh: <a href="tel:+917339614244">+91 73396 14244</a></div>
@@ -1727,6 +1761,8 @@ Error generating stack: `+l.message+`
     var panel = document.getElementById('missionChatPanel');
     var close = document.getElementById('missionChatClose');
     var answer = document.getElementById('missionChatAnswer');
+    var chatForm = document.getElementById('missionChatForm');
+    var chatInput = document.getElementById('missionChatInput');
     if (!launcher || !panel) return;
     var replies = {
       payment: 'Payment instructions, if applicable, are provided during registration. If a payment fails or you need confirmation, contact Anesh directly at <a href="tel:+917339614244">+91 73396 14244</a>.',
@@ -1749,6 +1785,14 @@ Error generating stack: `+l.message+`
         answer.innerHTML = replies[button.getAttribute('data-chat-topic')] || replies.other;
         answer.classList.add('is-visible');
       });
+    });
+    if (chatForm && chatInput) chatForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var question = chatInput.value.trim();
+      if (!question) return;
+      answer.innerHTML = 'I can answer the common topics above. For this question, please contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.';
+      answer.classList.add('is-visible');
+      chatInput.value = '';
     });
     document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !panel.hidden) setOpen(false); });
   }());
