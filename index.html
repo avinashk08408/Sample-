@@ -1764,14 +1764,14 @@ Error generating stack: `+l.message+`
     <button class="mission-chat-close" id="missionChatClose" type="button" aria-label="Close assistant">×</button>
   </div>
   <div class="mission-chat-body">
-    <p class="mission-chat-message">Ask about <strong>payment, theme, event, format, size</strong>, or choose a topic below.</p>
+    <p class="mission-chat-message">Say <strong>hi</strong>, ask about <strong>theme, event, payment, format</strong>, or check who can participate.</p>
     <div class="mission-chat-quick" role="list">
       <button type="button" data-chat-topic="payment">Payment</button>
       <button type="button" data-chat-topic="theme">Theme</button>
       <button type="button" data-chat-topic="event">Event</button>
       <button type="button" data-chat-topic="format">Format</button>
       <button type="button" data-chat-topic="size">Team size</button>
-      <button type="button" data-chat-topic="other">Other question</button>
+      <button type="button" data-chat-topic="eligibility">Who can participate?</button>
     </div>
     <form class="mission-chat-form" id="missionChatForm">
       <input id="missionChatInput" type="text" maxlength="240" placeholder="Type your question..." aria-label="Type your question">
@@ -1791,12 +1791,13 @@ Error generating stack: `+l.message+`
     var chatInput = document.getElementById('missionChatInput');
     if (!launcher || !panel) return;
     var replies = {
+      greeting: 'Hi! Welcome to Reverse Hackathon 2026. I can help with the event, theme, payment, format, team size, and eligibility. How can I help you?',
       payment: 'Payment instructions, if applicable, are provided during registration. If a payment fails or you need confirmation, contact Anesh directly at <a href="tel:+917339614244">+91 73396 14244</a>.',
       theme: 'The event follows a DC-inspired cybersecurity mission theme: comic-book heroes, controlled environments, defensive thinking, and professional incident-response discipline.',
       event: 'Reverse Hackathon 2026 is a three-hour defensive cybersecurity sprint presented by The Whitehatians and the Department of Cyber Security at SRM Valliammai Engineering College.',
       format: 'Participants choose a cybersecurity domain, work through the assigned challenge format, document their evidence, and complete a final handover before the cutoff.',
       size: 'You can register solo or as a team of two. One registration record is created for each participant pod.',
-      other: 'For a question not covered here, registration issue, special request, or any complex matter, contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.'
+      eligibility: 'Students from Year I to Year III can participate across eligible departments. You may enter solo or as a team of two.'
     };
     function setOpen(open) {
       panel.hidden = !open;
@@ -1814,8 +1815,18 @@ Error generating stack: `+l.message+`
     });
     if (chatForm && chatInput) chatForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      if (!chatInput.value.trim()) return;
-      answer.innerHTML = 'For this complex question, please contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.';
+      var question = chatInput.value.trim();
+      if (!question) return;
+      var text = question.toLowerCase();
+      var key = '';
+      if (/^(hi|hello|hey|hai|good morning|good afternoon|good evening)\b/.test(text)) key = 'greeting';
+      else if (/payment|fee|cost|pay|register fee/.test(text)) key = 'payment';
+      else if (/theme|dc|comic|superhero/.test(text)) key = 'theme';
+      else if (/event|hackathon|when|date|venue|where/.test(text)) key = 'event';
+      else if (/format|round|challenge|how does|process/.test(text)) key = 'format';
+      else if (/team|solo|pair|size|partner/.test(text)) key = 'size';
+      else if (/who|eligib|eligible|participate|perform|student|year [i1-3]/.test(text)) key = 'eligibility';
+      answer.innerHTML = replies[key] || 'For this complex question, please contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.';
       answer.classList.add('is-visible');
       chatInput.value = '';
     });
