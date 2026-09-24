@@ -1831,7 +1831,7 @@ Error generating stack: `+l.message+`
     function isSectionFocused() {
       var rect = section.getBoundingClientRect();
       var viewport = window.innerHeight || document.documentElement.clientHeight;
-      return rect.top <= viewport * 0.35 && rect.bottom >= viewport * 0.65;
+      return rect.top <= 24 && rect.bottom >= viewport * 0.45;
     }
     function canConsume(delta) {
       var atTop = rail.scrollTop <= 0;
