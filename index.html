@@ -648,6 +648,32 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     [data-reveal] { opacity: 1; transform: none; }
   }
+  /* ---------- DC mission assistant ---------- */
+  .mission-chat-launcher { position: fixed; right: 24px; bottom: 24px; z-index: 180; width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid rgba(240,183,74,.82); border-radius: 50%; background: linear-gradient(145deg, #142a40, #071321); color: var(--gold); cursor: pointer; box-shadow: 0 12px 34px rgba(0,0,0,.42), 0 0 0 5px rgba(240,183,74,.08); transition: transform .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+  .mission-chat-launcher:hover, .mission-chat-launcher[aria-expanded="true"] { transform: translateY(-4px); color: var(--paper); border-color: var(--cyan); }
+  .mission-chat-launcher svg { width: 29px; height: 29px; }
+  .mission-chat-panel { position: fixed; right: 24px; bottom: 94px; z-index: 180; width: min(360px, calc(100vw - 32px)); overflow: hidden; border: 1px solid rgba(88,213,238,.42); background: rgba(5,14,24,.96); color: var(--paper); box-shadow: 0 24px 70px rgba(0,0,0,.52); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .mission-chat-panel[hidden] { display: none; }
+  .mission-chat-head { display: flex; align-items: center; gap: 11px; padding: 16px 17px 14px; border-bottom: 1px solid rgba(247,241,223,.16); background: linear-gradient(90deg, rgba(88,213,238,.12), transparent); }
+  .mission-chat-head svg { flex: none; width: 26px; height: 26px; color: var(--gold); }
+  .mission-chat-head strong { display: block; color: var(--paper); font: 11px var(--display); letter-spacing: .12em; }
+  .mission-chat-head small { display: block; margin-top: 4px; color: #8fa5b4; font: 10px var(--serif); }
+  .mission-chat-close { margin-left: auto; border: 0; background: transparent; color: #8fa5b4; cursor: pointer; font-size: 21px; line-height: 1; }
+  .mission-chat-close:hover { color: var(--gold); }
+  .mission-chat-body { max-height: min(420px, 58vh); overflow-y: auto; padding: 15px; }
+  .mission-chat-message { margin: 0 0 14px; color: #c5d2db; font: 14px/1.45 var(--serif); }
+  .mission-chat-message strong { color: var(--gold); font-weight: 400; }
+  .mission-chat-quick { display: flex; flex-wrap: wrap; gap: 7px; }
+  .mission-chat-quick button { border: 1px solid rgba(88,213,238,.32); background: rgba(8,29,44,.72); color: #c7d8e2; cursor: pointer; padding: 8px 9px; font: 9px var(--display); letter-spacing: .06em; }
+  .mission-chat-quick button:hover { border-color: var(--cyan); color: var(--cyan); }
+  .mission-chat-answer { display: none; margin: 14px 0 0; padding: 12px; border-left: 2px solid var(--cyan); background: rgba(88,213,238,.08); color: #d1dee6; font: 13px/1.48 var(--serif); }
+  .mission-chat-answer.is-visible { display: block; }
+  .mission-chat-answer a { color: var(--gold); text-decoration: none; }
+  .mission-chat-answer a:hover { color: var(--cyan); }
+  .mission-chat-foot { padding: 11px 15px; border-top: 1px solid rgba(247,241,223,.13); color: #7f95a5; font: 9px/1.4 var(--display); letter-spacing: .05em; }
+  .mission-chat-foot a { color: var(--gold); text-decoration: none; }
+  .mission-chat-foot a:hover { color: var(--cyan); }
+  @media (max-width: 620px) { .mission-chat-launcher { right: 16px; bottom: 16px; width: 53px; height: 53px; } .mission-chat-panel { right: 16px; bottom: 82px; } }
 </style>
 <script>document.documentElement.classList.add('landing-active');</script>
 <link rel="canonical" href="https://reversehack-2cw9n6ya.manus.space/"><link rel="manifest" href="/__manus/pwa/manifest.webmanifest" crossorigin="use-credentials"></head>
@@ -1671,6 +1697,61 @@ Error generating stack: `+l.message+`
     if (el) el.addEventListener("input", function () { setFieldError(el, false); clearAlert(); });
   });
 })();
+</script>
+<button class="mission-chat-launcher" id="missionChatLauncher" type="button" aria-label="Open event assistant" aria-expanded="false" aria-controls="missionChatPanel">
+  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 13.5 9.5 12l4.5-4 2 3 2-3 4.5 4 5.5 1.5-4.5 2.8-2.5 5.2-5-2-5 2-2.5-5.2L4 13.5Z" fill="currentColor" opacity=".16"/><path d="m4 13.5 5.5-1.6 4.5-4 2 3 2-3 4.5 4 5.5 1.6-4.5 2.8-2.5 5.2-5-2-5 2-2.5-5.2L4 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 17.5h8M14 20h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+</button>
+<aside class="mission-chat-panel" id="missionChatPanel" hidden aria-label="Reverse Hackathon event assistant">
+  <div class="mission-chat-head">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 13.5 9.5 12l4.5-4 2 3 2-3 4.5 4 5.5 1.5-4.5 2.8-2.5 5.2-5-2-5 2-2.5-5.2L4 13.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 17.5h8M14 20h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    <div><strong>MISSION ASSISTANT</strong><small>Common questions, decoded.</small></div>
+    <button class="mission-chat-close" id="missionChatClose" type="button" aria-label="Close assistant">×</button>
+  </div>
+  <div class="mission-chat-body">
+    <p class="mission-chat-message">Ask about <strong>payment, theme, event, format, size</strong>, or choose a topic below.</p>
+    <div class="mission-chat-quick" role="list">
+      <button type="button" data-chat-topic="payment">Payment</button>
+      <button type="button" data-chat-topic="theme">Theme</button>
+      <button type="button" data-chat-topic="event">Event</button>
+      <button type="button" data-chat-topic="format">Format</button>
+      <button type="button" data-chat-topic="size">Team size</button>
+      <button type="button" data-chat-topic="other">Other question</button>
+    </div>
+    <div class="mission-chat-answer" id="missionChatAnswer" role="status" aria-live="polite"></div>
+  </div>
+  <div class="mission-chat-foot">Complex issue? Contact Anesh: <a href="tel:+917339614244">+91 73396 14244</a></div>
+</aside>
+<script>
+  (function () {
+    var launcher = document.getElementById('missionChatLauncher');
+    var panel = document.getElementById('missionChatPanel');
+    var close = document.getElementById('missionChatClose');
+    var answer = document.getElementById('missionChatAnswer');
+    if (!launcher || !panel) return;
+    var replies = {
+      payment: 'Payment instructions, if applicable, are provided during registration. If a payment fails or you need confirmation, contact Anesh directly at <a href="tel:+917339614244">+91 73396 14244</a>.',
+      theme: 'The event follows a DC-inspired cybersecurity mission theme: comic-book heroes, controlled environments, defensive thinking, and professional incident-response discipline.',
+      event: 'Reverse Hackathon 2026 is a three-hour defensive cybersecurity sprint presented by The Whitehatians and the Department of Cyber Security at SRM Valliammai Engineering College.',
+      format: 'Participants choose a cybersecurity domain, work through the assigned challenge format, document their evidence, and complete a final handover before the cutoff.',
+      size: 'You can register solo or as a team of two. One registration record is created for each participant pod.',
+      other: 'For a question not covered here, registration issue, special request, or any complex matter, contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.'
+    };
+    function setOpen(open) {
+      panel.hidden = !open;
+      launcher.setAttribute('aria-expanded', String(open));
+      if (open) window.setTimeout(function () { if (close) close.focus(); }, 0);
+      else launcher.focus();
+    }
+    launcher.addEventListener('click', function () { setOpen(panel.hidden); });
+    if (close) close.addEventListener('click', function () { setOpen(false); });
+    panel.querySelectorAll('[data-chat-topic]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        answer.innerHTML = replies[button.getAttribute('data-chat-topic')] || replies.other;
+        answer.classList.add('is-visible');
+      });
+    });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !panel.hidden) setOpen(false); });
+  }());
 </script>
 <manus-content-root></manus-content-root><script>
 			var __manus_space_editor_info = {
