@@ -1822,6 +1822,29 @@ Error generating stack: `+l.message+`
     document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !panel.hidden) setOpen(false); });
   }());
 </script>
+<script>
+  (function () {
+    var section = document.getElementById('rules');
+    var rail = section && section.querySelector('.operations-rail');
+    if (!section || !rail) return;
+    function isDesktop() { return window.matchMedia('(min-width: 821px)').matches; }
+    function isSectionFocused() {
+      var rect = section.getBoundingClientRect();
+      var viewport = window.innerHeight || document.documentElement.clientHeight;
+      return rect.top <= 86 && rect.bottom >= viewport - 86;
+    }
+    function canConsume(delta) {
+      var atTop = rail.scrollTop <= 0;
+      var atBottom = rail.scrollTop + rail.clientHeight >= rail.scrollHeight - 1;
+      return (delta > 0 && !atBottom) || (delta < 0 && !atTop);
+    }
+    section.addEventListener('wheel', function (event) {
+      if (!isDesktop() || !isSectionFocused() || !canConsume(event.deltaY)) return;
+      event.preventDefault();
+      rail.scrollTop += event.deltaY;
+    }, { passive: false });
+  }());
+</script>
 <manus-content-root></manus-content-root><script>
 			var __manus_space_editor_info = {
 			spaceId : '2cW9n6yAM5nw3tKwBhQdGC',
