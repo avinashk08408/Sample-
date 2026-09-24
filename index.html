@@ -670,6 +670,10 @@
   .mission-chat-answer.is-visible { display: block; }
   .mission-chat-answer a { color: var(--gold); text-decoration: none; }
   .mission-chat-answer a:hover { color: var(--cyan); }
+  .mission-chat-form { display: flex; gap: 7px; margin-top: 14px; }
+  .mission-chat-form input { min-width: 0; flex: 1; border: 1px solid rgba(247,241,223,.2); background: rgba(3,12,22,.72); color: var(--cream); padding: 10px; font: 12px var(--serif); }
+  .mission-chat-form button { border: 1px solid var(--gold); background: var(--gold); color: var(--ink); cursor: pointer; padding: 0 12px; font: 700 9px var(--display); letter-spacing: .08em; }
+  .mission-chat-form button:hover { background: var(--cream); border-color: var(--cream); }
   .mission-chat-foot { padding: 11px 15px; border-top: 1px solid rgba(247,241,223,.13); color: #7f95a5; font: 9px/1.4 var(--display); letter-spacing: .05em; }
   .mission-chat-foot a { color: var(--gold); text-decoration: none; }
   .mission-chat-foot a:hover { color: var(--cyan); }
@@ -697,9 +701,6 @@
         <div class="landing-status"><span class="landing-loader" aria-hidden="true"></span><strong id="landingProgress">00%</strong><span id="landingStatusText">INITIALISING MISSION DECK</span></div>
         <div class="landing-progress-track" aria-hidden="true"><span id="landingProgressBar"></span></div>
         <button class="landing-enter" id="landingEnter" type="button">ENTER WORLD →</button>
-      </div>
-      <div class="landing-art-frame">
-        <img src="dc-landing-banner.jpg" alt="Justice League lineup" width="341" height="148">
       </div>
     </div>
   </section>
@@ -1717,6 +1718,10 @@ Error generating stack: `+l.message+`
       <button type="button" data-chat-topic="size">Team size</button>
       <button type="button" data-chat-topic="other">Other question</button>
     </div>
+    <form class="mission-chat-form" id="missionChatForm">
+      <input id="missionChatInput" type="text" maxlength="240" placeholder="Type your question..." aria-label="Type your question">
+      <button type="submit">SEND</button>
+    </form>
     <div class="mission-chat-answer" id="missionChatAnswer" role="status" aria-live="polite"></div>
   </div>
   <div class="mission-chat-foot">Complex issue? Contact Anesh: <a href="tel:+917339614244">+91 73396 14244</a></div>
@@ -1727,6 +1732,8 @@ Error generating stack: `+l.message+`
     var panel = document.getElementById('missionChatPanel');
     var close = document.getElementById('missionChatClose');
     var answer = document.getElementById('missionChatAnswer');
+    var chatForm = document.getElementById('missionChatForm');
+    var chatInput = document.getElementById('missionChatInput');
     if (!launcher || !panel) return;
     var replies = {
       payment: 'Payment instructions, if applicable, are provided during registration. If a payment fails or you need confirmation, contact Anesh directly at <a href="tel:+917339614244">+91 73396 14244</a>.',
@@ -1749,6 +1756,13 @@ Error generating stack: `+l.message+`
         answer.innerHTML = replies[button.getAttribute('data-chat-topic')] || replies.other;
         answer.classList.add('is-visible');
       });
+    });
+    if (chatForm && chatInput) chatForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!chatInput.value.trim()) return;
+      answer.innerHTML = 'For this complex question, please contact organiser Anesh at <a href="tel:+917339614244">+91 73396 14244</a>.';
+      answer.classList.add('is-visible');
+      chatInput.value = '';
     });
     document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !panel.hidden) setOpen(false); });
   }());
