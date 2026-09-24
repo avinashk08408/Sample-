@@ -609,10 +609,11 @@
   .register-section { position: relative; isolation: isolate; overflow: hidden; border-top: 0; background: linear-gradient(90deg, rgba(4,10,18,.80) 0%, rgba(4,10,18,.62) 42%, rgba(4,10,18,.26) 100%), url('dc-contact-new.jpg') center 28% / cover no-repeat; }
   .register-section::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(4,10,18,.22), rgba(4,10,18,.52)); }
   .register-section .section-shell { position: relative; z-index: 1; }
-  .register-section .section-shell { padding: 78px 0 84px; }
-  .register-heading h2 { color: #f4f7fb; font-size: clamp(58px, 8vw, 104px); letter-spacing: -.045em; }
+  .register-section .section-shell { padding: 92px 0 96px; }
+  .register-heading { display: block; }
+  .register-heading h2 { margin: 18px 0 0; color: var(--paper); font-family: var(--serif); font-size: clamp(52px, 7vw, 93px); font-weight: 400; line-height: .9; letter-spacing: -.05em; }
   .register-heading h2 em { color: #70d5e6; }
-  .register-heading p { color: #c1d0da; font-size: 17px; margin-top: 16px; }
+  .register-heading p { max-width: 520px; color: #c1d0da; font: 17px/1.5 var(--serif); margin: 20px 0 0; }
   .register-heading .eyebrow { color: #e4b85d; }
   .mission-form { max-width: 1040px; margin-top: 28px; padding: 30px 32px 28px; background: rgba(5,16,28,.9); border: 1px solid rgba(112,213,230,.28); border-top: 2px solid #70d5e6; box-shadow: 0 22px 58px rgba(0,0,0,.34); }
   .form-section-head { margin-top: 22px; padding-bottom: 0; border-bottom: 0; }
@@ -631,7 +632,7 @@
   .submit-button { color: #06111a; background: #70d5e6; border-color: #70d5e6; font-size: 11px; padding: 14px 20px; }
   .submit-button:hover { background: #e4b85d; border-color: #e4b85d; }
   .form-footnote { color: #819ba3; font-size: 10px; }
-  @media (max-width: 620px) { .mission-form { padding: 26px 18px 24px; } .register-heading h2 { font-size: 61px; } .register-heading p { font-size: 16px; } }
+  @media (max-width: 620px) { .register-section .section-shell { padding: 74px 0 78px; } .mission-form { padding: 26px 18px 24px; } .register-heading h2 { font-size: 57px; } .register-heading p { font-size: 16px; margin-top: 16px; } }
 
   /* ---------- Registration command desk ---------- */
   .registration-layout { display: grid; grid-template-columns: minmax(220px, .72fr) minmax(0, 2.28fr); gap: 28px; align-items: start; margin-top: 42px; }
