@@ -611,6 +611,24 @@
   .form-footnote { color: #819ba3; font-size: 10px; }
   @media (max-width: 620px) { .mission-form { padding: 26px 18px 24px; } .register-heading h2 { font-size: 61px; } .register-heading p { font-size: 16px; } }
 
+  /* ---------- Registration command desk ---------- */
+  .registration-layout { display: grid; grid-template-columns: minmax(220px, .72fr) minmax(0, 2.28fr); gap: 28px; align-items: start; margin-top: 42px; }
+  .register-brief { position: sticky; top: 92px; padding: 24px 22px; border: 1px solid rgba(228,184,93,.34); border-left: 2px solid var(--gold); background: rgba(5,16,28,.58); }
+  .register-brief > span { color: var(--gold); font: 9px var(--display); letter-spacing: .18em; }
+  .register-brief h3 { margin: 15px 0 10px; color: var(--paper); font: 400 clamp(27px, 3vw, 39px)/.98 var(--serif); letter-spacing: -.035em; }
+  .register-brief h3 em { color: var(--cyan); font-style: italic; }
+  .register-brief > p { margin: 0; color: #afc0ca; font: 14px/1.5 var(--serif); }
+  .register-steps { display: grid; gap: 0; margin: 25px 0 0; border-top: 1px solid rgba(247,241,223,.14); }
+  .register-step { display: grid; grid-template-columns: 27px 1fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(247,241,223,.14); }
+  .register-step b { color: var(--gold); font: 10px var(--display); }
+  .register-step strong { display: block; color: #e3edf1; font: 10px var(--display); letter-spacing: .08em; }
+  .register-step small { display: block; margin-top: 4px; color: #8298a6; font: 12px/1.35 var(--serif); }
+  .register-brief-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; color: #7f98a7; font: 8px var(--display); letter-spacing: .1em; }
+  .register-brief-foot strong { color: #8fc1bd; font-weight: 400; }
+  .registration-layout .mission-form { max-width: none; margin-top: 0; }
+  @media (max-width: 900px) { .registration-layout { grid-template-columns: 1fr; gap: 24px; } .register-brief { position: static; } }
+  @media (max-width: 620px) { .registration-layout { margin-top: 30px; } .register-brief { padding: 20px 17px; } .register-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; border-bottom: 1px solid rgba(247,241,223,.14); } .register-step { border-bottom: 0; } .register-brief-foot { flex-direction: column; gap: 6px; } }
+
   /* ---------- Success ---------- */
   .register-success { background: radial-gradient(circle at 80% 10%, rgba(88,213,238,.14), transparent 28%), #0f1b29; border: 1px solid rgba(88,213,238,.35); max-width: 760px; padding: 52px 42px; }
   @media (max-width: 620px) { .register-success { padding: 32px 22px; } }
@@ -976,6 +994,19 @@ Error generating stack: `+l.message+`
         </div>
       </div>
 
+      <div class="registration-layout">
+      <aside class="register-brief" data-reveal="" aria-label="Registration process summary">
+        <span>MISSION ENTRY / 01</span>
+        <h3>Build your <em>dossier.</em></h3>
+        <p>Complete the participant record below. Your details stay focused, readable, and ready for the mission desk.</p>
+        <div class="register-steps">
+          <div class="register-step"><b>01</b><div><strong>CHOOSE FORMAT</strong><small>Enter solo or with one teammate.</small></div></div>
+          <div class="register-step"><b>02</b><div><strong>IDENTIFY CREW</strong><small>Share the lead participant details.</small></div></div>
+          <div class="register-step"><b>03</b><div><strong>SELECT DOMAIN</strong><small>Lock one cybersecurity practice ground.</small></div></div>
+          <div class="register-step"><b>04</b><div><strong>CONFIRM ENTRY</strong><small>Accept the rules and submit the record.</small></div></div>
+        </div>
+        <div class="register-brief-foot"><span>ENTRY STATUS</span><strong>OPEN / 08 OCT 2026</strong></div>
+      </aside>
       <div id="regFormWrap">
         <form class="mission-form" id="regForm" novalidate="">
           <div class="form-section-head"><span>01 · CREW FORMAT</span><p>Select your participation mode and reserve a unique seat.</p></div>
@@ -1114,6 +1145,7 @@ Error generating stack: `+l.message+`
         <button class="text-link" id="copyLink" type="button">copy to clipboard instead</button>
         <p class="form-footnote" id="copyNote" aria-live="polite">No email app to hand? Copy your details and send them to the inbox above.</p>
         <div class="detail-text" id="detailText"></div>
+      </div>
       </div>
     </div>
   </section>
