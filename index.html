@@ -335,7 +335,7 @@
   .view-other-events { margin-top: 0; }
   .full-dossier-note { color: #9eb0bf; font-family: var(--display); font-size: 10px; letter-spacing: .1em; margin-top: 18px; }
   .mission-detail-hero p.full-dossier-note { color: #9eb0bf; font-family: var(--display); font-size: 10px; line-height: 1.4; letter-spacing: .1em; margin: 18px 0 0; }
-  .mission-detail-page { --dossier-color: #9aafb4; --dossier-wash: rgba(4,10,17,.985); --dossier-mid: rgba(4,10,17,.9); --dossier-edge: rgba(4,10,17,.7); --dossier-tint: rgba(95,95,95,.42); --dossier-line: rgba(185,201,210,.2); background: linear-gradient(90deg, var(--dossier-wash) 0%, var(--dossier-mid) 42%, var(--dossier-tint) 78%, var(--dossier-edge) 100%), var(--dossier-art, url('hero-bg.jpg')) center right / cover no-repeat; }
+  .mission-detail-page { --dossier-color: #9aafb4; --dossier-wash: rgba(4,10,17,.985); --dossier-mid: rgba(4,10,17,.9); --dossier-edge: rgba(4,10,17,.7); --dossier-line: rgba(185,201,210,.2); background: linear-gradient(90deg, var(--dossier-wash), var(--dossier-mid) 52%, var(--dossier-edge)), var(--dossier-art, url('hero-bg.jpg')) center right / cover no-repeat; }
   .mission-detail-page::after { background: linear-gradient(0deg, rgba(4,10,18,.86), transparent 45%, rgba(4,10,18,.38)); }
   .mission-detail-page > .mission-close { color: #aebbc0; background: rgba(8,19,31,.68); border-color: rgba(185,201,210,.2); }
   .mission-detail-page > .mission-close span { color: var(--dossier-color); }
@@ -1379,21 +1379,21 @@ Error generating stack: `+l.message+`
     XV: "https://creativesum-n5ztyent.manus.space/manus-storage/supergirl_0jpg_0fdd9e06.jpg"
   };
   var DOMAIN_TONES = {
-    I:   { accent: "#78aaa1", tint: "rgba(18,78,75,.56)", line: "rgba(120,170,161,.42)" },
-    II:  { accent: "#aaa0bd", tint: "rgba(69,49,93,.56)", line: "rgba(170,160,189,.42)" },
-    III: { accent: "#c2a06d", tint: "rgba(91,59,24,.56)", line: "rgba(194,160,109,.42)" },
-    IV:  { accent: "#8eb3c0", tint: "rgba(28,76,91,.56)", line: "rgba(142,179,192,.42)" },
-    V:   { accent: "#a18c99", tint: "rgba(72,39,57,.6)", line: "rgba(161,140,153,.42)" },
-    VI:  { accent: "#c18479", tint: "rgba(94,38,29,.58)", line: "rgba(193,132,121,.42)" },
-    VII: { accent: "#c5a06a", tint: "rgba(91,62,20,.54)", line: "rgba(197,160,106,.42)" },
-    VIII:{ accent: "#91b887", tint: "rgba(35,78,39,.56)", line: "rgba(145,184,135,.42)" },
-    IX:  { accent: "#c1a082", tint: "rgba(82,56,34,.56)", line: "rgba(193,160,130,.42)" },
-    X:   { accent: "#9bb5c7", tint: "rgba(31,65,91,.58)", line: "rgba(155,181,199,.42)" },
-    XI:  { accent: "#8fbaca", tint: "rgba(26,76,96,.58)", line: "rgba(143,186,202,.42)" },
-    XII: { accent: "#c18f80", tint: "rgba(91,43,32,.58)", line: "rgba(193,143,128,.42)" },
-    XIII:{ accent: "#c6ae80", tint: "rgba(90,72,35,.56)", line: "rgba(198,174,128,.42)" },
-    XIV: { accent: "#c99584", tint: "rgba(91,43,33,.58)", line: "rgba(201,149,132,.42)" },
-    XV:  { accent: "#c49baa", tint: "rgba(88,43,62,.58)", line: "rgba(196,155,170,.42)" }
+    I:   { accent: "#769f9a", wash: "rgba(12,38,39,.34)", line: "rgba(118,159,154,.28)" },
+    II:  { accent: "#9a91aa", wash: "rgba(39,33,54,.34)", line: "rgba(154,145,170,.28)" },
+    III: { accent: "#a88b68", wash: "rgba(57,39,23,.34)", line: "rgba(168,139,104,.28)" },
+    IV:  { accent: "#7f9aa4", wash: "rgba(24,47,55,.34)", line: "rgba(127,154,164,.28)" },
+    V:   { accent: "#897a83", wash: "rgba(43,29,38,.38)", line: "rgba(137,122,131,.28)" },
+    VI:  { accent: "#9d7069", wash: "rgba(55,29,25,.36)", line: "rgba(157,112,105,.28)" },
+    VII: { accent: "#ae8c62", wash: "rgba(54,39,21,.32)", line: "rgba(174,140,98,.28)" },
+    VIII:{ accent: "#7e9c78", wash: "rgba(28,48,30,.34)", line: "rgba(126,156,120,.28)" },
+    IX:  { accent: "#a58b74", wash: "rgba(53,38,28,.34)", line: "rgba(165,139,116,.28)" },
+    X:   { accent: "#8799a6", wash: "rgba(28,43,54,.36)", line: "rgba(135,153,166,.28)" },
+    XI:  { accent: "#82a0ad", wash: "rgba(24,49,60,.34)", line: "rgba(130,160,173,.28)" },
+    XII: { accent: "#9b7d72", wash: "rgba(52,31,25,.36)", line: "rgba(155,125,114,.28)" },
+    XIII:{ accent: "#b09b7c", wash: "rgba(52,43,29,.34)", line: "rgba(176,155,124,.28)" },
+    XIV: { accent: "#a98276", wash: "rgba(54,30,27,.34)", line: "rgba(169,130,118,.28)" },
+    XV:  { accent: "#aa8792", wash: "rgba(55,32,42,.34)", line: "rgba(170,135,146,.28)" }
   };
   var TAG = {
     I: "FIND PATH IN", II: "SECURE CHAIN", III: "FLAG RUSH", IV: "TRACE ARTIFACTS",
@@ -1452,7 +1452,7 @@ Error generating stack: `+l.message+`
 
   function openModal(num) {
     var d = byNum(num);
-    var tone = DOMAIN_TONES[d.num] || { accent: d.color, tint: "rgba(95,95,95,.42)", line: "rgba(185,201,210,.2)" };
+    var tone = DOMAIN_TONES[d.num] || { accent: d.color, wash: "rgba(4,10,17,.34)", line: "rgba(185,201,210,.2)" };
     modalTitle.textContent = d.title;
     modalTitle.style.removeProperty("color");
     modalTitle.removeAttribute("data-color");
@@ -1463,9 +1463,8 @@ Error generating stack: `+l.message+`
     modal.style.setProperty("--dossier-art", "url('" + ART_IMG[d.num] + "')");
     modal.style.setProperty("--dossier-color", tone.accent);
     modal.style.setProperty("--dossier-wash", "rgba(4,10,17,.985)");
-    modal.style.setProperty("--dossier-mid", "rgba(4,10,17,.84)");
+    modal.style.setProperty("--dossier-mid", tone.wash);
     modal.style.setProperty("--dossier-edge", "rgba(4,10,17,.68)");
-    modal.style.setProperty("--dossier-tint", tone.tint);
     modal.style.setProperty("--dossier-line", tone.line);
     detailView.hidden = false;
     directoryView.hidden = true;
