@@ -10,8 +10,8 @@ module.exports = async function handler(req, res) {
   const raw = body.mark;
   const mark = raw === "" || raw === null || raw === undefined ? null : Number(raw);
   if (!registrationId) return res.status(400).json({ error: "Registration ID is required." });
-  if (mark !== null && (!Number.isFinite(mark) || mark < 0 || mark > 100)) {
-    return res.status(400).json({ error: "Mark must be between 0 and 100." });
+  if (mark !== null && (!Number.isFinite(mark) || mark < 0 || mark > 30)) {
+    return res.status(400).json({ error: "Mark must be between 0 and 30." });
   }
   try {
     const updated = await updateRegistration(registrationId, { mark, updatedAt: new Date().toISOString() });
