@@ -1652,7 +1652,22 @@ Error generating stack: `+l.message+`
   /* ---------- registration ---------- */
   var form = $("#regForm"), confirmPanel = $("#regSuccess");
   var mode = "solo";
-
+  var FIELDS = {
+    name: { el: "#f-name", check: function (v) { return v.trim().length >= 2; } },
+    email: { el: "#f-email", check: function (v) { return /^\S+@\S+\.\S+$/.test(v.trim()); } },
+    phone: { el: "#f-phone", check: function (v) { var c = v.replace(/[\s-]/g, ""); return /^(\+91)?[6-9]\d{9}$/.test(c) || /^\+?\d{10,15}$/.test(c); } },
+    year: { el: "#f-year", check: function (v) { return ["I", "II", "III"].indexOf(v) !== -1; } },
+    department: { el: "#f-department", check: function (v) { return v.trim().length > 0; } },
+    gender: { el: "#f-gender", check: function (v) { return ["Female", "Male"].indexOf(v) !== -1; } },
+    roll: { el: "#f-roll", check: function (v) { return /^[A-Za-z0-9][A-Za-z0-9/-]{2,39}$/.test(v.trim()); } },
+    domain: { el: "#f-domain", check: function (v) { return DOMAINS.some(function (d) { return d.title === v; }); } },
+    agree: { el: "#f-agree", check: function (v) { return !!v; } },
+    team: { el: "#f-team", check: function (v) { return v.trim().length >= 2; } },
+    password: { el: "#f-password", check: function (v) { return v.length >= 8 && v.length <= 72; } },
+    heard: { el: "#f-heard", check: function (v) { return HEARD_ABOUT.indexOf(v) !== -1; } }
+  };
+  var HEARD_ABOUT = ["Instagram", "WhatsApp", "Friend or senior", "Faculty", "Flyer / poster", "Other"];
+  var submitting = false;
   var agreeWrap = $("#agreeWrap");
   agreeWrap.addEventListener("click", function () {
     setFieldError($("#f-agree"), false);
