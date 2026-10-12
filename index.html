@@ -1652,6 +1652,9 @@ Error generating stack: `+l.message+`
   /* ---------- registration ---------- */
   var form = $("#regForm"), confirmPanel = $("#regSuccess");
   var mode = "solo";
+  var LS_KEY = "rh26_registrations";
+  var regs = [];
+  try { regs = JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch (e) { regs = []; }
   var FIELDS = {
     name: { el: "#f-name", check: function (v) { return v.trim().length >= 2; } },
     email: { el: "#f-email", check: function (v) { return /^\S+@\S+\.\S+$/.test(v.trim()); } },
