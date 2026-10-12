@@ -1671,6 +1671,16 @@ Error generating stack: `+l.message+`
   };
   var HEARD_ABOUT = ["Instagram", "WhatsApp", "Friend or senior", "Faculty", "Flyer / poster", "Other"];
   var submitting = false;
+
+  function setFieldError(el, bad) {
+    var wrap = el.closest(".field");
+    if (wrap) wrap.classList.toggle("has-error", bad);
+    if (el.id === "f-agree") $("#agreeWrap").classList.toggle("has-error", bad);
+    return !bad;
+  }
+  function showAlert(msg) { var a = $("#formAlert"); a.textContent = msg; a.classList.add("on"); }
+  function clearAlert() { $("#formAlert").classList.remove("on"); }
+
   var agreeWrap = $("#agreeWrap");
   agreeWrap.addEventListener("click", function () {
     setFieldError($("#f-agree"), false);
