@@ -6,9 +6,9 @@
  * the browser or committed to the repository.
  */
 
-const EVENT_START_ISO = "2026-10-13T09:00:00+05:30";
+const EVENT_START_ISO = "2026-10-14T09:00:00+05:30";
 /** The ledger closes at 07:00 on the day of the event. */
-const REGISTRATION_DEADLINE_ISO = "2026-10-13T07:00:00+05:30";
+const REGISTRATION_DEADLINE_ISO = "2026-10-14T07:00:00+05:30";
 
 const YEARS = ["I", "II", "III"];
 const GENDERS = ["Female", "Male"];
@@ -97,7 +97,7 @@ function mapRegistration(row) {
     teamName: row.team_name,
     teamNameKey: row.team_name_key,
     passwordHash: row.password_hash,
-    headcount: row.headcount ?? (row.entry_format === "duo" ? 2 : 1),
+    headcount: row.headcount ?? 1,
     heardAbout: row.heard_about,
     submittedAt: row.submitted_at,
     submittedAtWork: row.submitted_at_work,
@@ -282,9 +282,9 @@ function validateRegistration(body) {
     return { ok: false, fieldErrors: { _: ["Send a registration object."] } };
   }
 
-  const entryFormat = body.entryFormat === "duo" ? "duo" : "solo";
-  if (body.entryFormat !== "solo" && body.entryFormat !== "duo") {
-    fail("entryFormat", "Choose SOLO or TEAM OF TWO.");
+  const entryFormat = "solo";
+  if (body.entryFormat !== "solo") {
+    fail("entryFormat", "Solo registration only.");
   }
 
   const teamName = clean(body.teamName, 60);
@@ -314,20 +314,7 @@ function validateRegistration(body) {
     fail("leader.rollNumber", "Register number accepts letters, numbers, / and - only.");
   }
 
-  let partner = null;
-  if (entryFormat === "duo") {
-    partner = {
-      fullName: clean(body.partner?.fullName, 80),
-      year: clean(body.partner?.year, 8),
-      rollNumber: clean(body.partner?.rollNumber, 40),
-    };
-    if (partner.fullName.length < 2) fail("partner.fullName", "Enter your partner's full name.");
-    if (!YEARS.includes(partner.year)) fail("partner.year", "Select your partner's year.");
-    if (partner.rollNumber.length < 3) fail("partner.rollNumber", "Enter your partner's register number.");
-    else if (!isRollNumber(partner.rollNumber)) {
-      fail("partner.rollNumber", "Register number accepts letters, numbers, / and - only.");
-    }
-  }
+  const partner = null;
 
   const domain = clean(body.domain, 60);
   if (!DOMAINS.includes(domain)) fail("domain", "Choose one domain.");
@@ -339,12 +326,8 @@ function validateRegistration(body) {
 
   if (Object.keys(errors).length > 0) return { ok: false, fieldErrors: errors };
 
-  const headcount = entryFormat === "duo" ? 2 : 1;
-  // Only the lead is required to give an email, but index one if supplied so
-  // a partner cannot reuse an address that is already on the ledger.
+  const headcount = 1;
   const emails = [leader.email];
-  const partnerEmail = clean(body.partner?.email, 120).toLowerCase();
-  if (partnerEmail) emails.push(partnerEmail);
 
   return {
     ok: true,
@@ -405,7 +388,7 @@ function readJsonBody(req) {
 const EVENT_NAME = "Reverse Hackathon 2026";
 const ORGANISER = "The Whitehatians, Department of Cyber Security";
 const COLLEGE = "SRM Valliammai Engineering College";
-const EVENT_DATE_LABEL = "Tuesday, 13 October 2026";
+const EVENT_DATE_LABEL = "Wednesday, 14 October 2026";
 
 function smtpConfigured() {
   return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
@@ -425,7 +408,7 @@ function participantRows(reg) {
   const rows = [
     ["Role", "Name", "Email", "Mobile", "Year", "Register no."],
     [
-      reg.headcount === 2 ? "Capo (team lead)" : "Solo participant",
+      "Solo participant",
       reg.leader.fullName,
       reg.leader.email,
       reg.leader.phone,
@@ -433,16 +416,6 @@ function participantRows(reg) {
       reg.leader.rollNumber,
     ],
   ];
-  if (reg.headcount === 2 && reg.partner) {
-    rows.push([
-      "Soldato (partner)",
-      reg.partner.fullName,
-      "-",
-      "-",
-      reg.partner.year,
-      reg.partner.rollNumber,
-    ]);
-  }
   return rows;
 }
 
@@ -473,10 +446,10 @@ function buildConfirmationHtml(reg) {
       </tr>
       <tr>
         <td style="padding:8px 0;color:#8f96a8">Format</td>
-        <td style="padding:8px 0">${reg.headcount === 2 ? "Duo" : "Solo"}</td>
+        <td style="padding:8px 0">Solo</td>
       </tr>
       <tr>
-        <td style="padding:8px 0;color:#8f96a8">${reg.headcount === 2 ? "Team" : "Alias"}</td>
+        <td style="padding:8px 0;color:#8f96a8">Alias</td>
         <td style="padding:8px 0">${escapeHtml(reg.teamName)}</td>
       </tr>
       <tr>
@@ -511,8 +484,8 @@ function buildConfirmationText(reg) {
     `Your seat in the ledger is confirmed for ${EVENT_NAME}.`,
     "",
     `Registration ID : ${reg.registrationId}`,
-    `Format          : ${reg.headcount === 2 ? "Duo" : "Solo"}`,
-    `${reg.headcount === 2 ? "Team" : "Alias"}         : ${reg.teamName}`,
+    `Format          : Solo`,
+    `Alias         : ${reg.teamName}`,
     `Domain          : ${reg.domain}`,
     "Entry fee       : Free (no payment required)",
     `Event           : ${EVENT_DATE_LABEL}, 09:00 IST`,

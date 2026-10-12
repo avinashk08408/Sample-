@@ -99,7 +99,7 @@ export default function RegistrationSection() {
   const { register, handleSubmit, formState, reset, setError } = form;
   const { errors } = formState;
 
-  const memberCount = fields.length + 1; // Capo counts
+  const memberCount = fields.length + 1; // Participant counts
   const maxedOut = fields.length >= 3;
   const isOpen = clock >= REG_OPEN_DATE.getTime();
   const isClosed = clock > REG_DEADLINE_DATE.getTime();
@@ -167,7 +167,7 @@ export default function RegistrationSection() {
           </div>
 
           <p className="mx-auto mt-8 max-w-md leading-relaxed text-parchment/65">
-            A confirmation letter is on its way to the Capo&apos;s inbox. If it has not arrived within the
+            A confirmation letter is on its way to the Participant&apos;s inbox. If it has not arrived within the
             hour, write to{" "}
             <a
               href={`mailto:${siteConfig.contact.email}`}
@@ -215,7 +215,7 @@ export default function RegistrationSection() {
             <span className="gold-text">Family&apos;s book</span>
           </>
         }
-        plain="Every team registers once. The Capo (team lead) signs for the whole family — duplicate teams and emails are refused at the door."
+        plain="Every team registers once. The Participant (team lead) signs for the whole participant — duplicate teams and emails are refused at the door."
       />
 
       {isClosed ? (
@@ -283,11 +283,11 @@ export default function RegistrationSection() {
               </div>
             </fieldset>
 
-            {/* The Capo */}
+            {/* The Participant */}
             <fieldset className="border-b border-parchment/10 pb-8 pt-8">
               <legend className="flex items-baseline gap-3 font-head text-2xl font-bold text-gold">
                 <span aria-hidden className="font-display text-base text-gold/60">II.</span>
-                The Capo — team lead
+                The Participant — team lead
               </legend>
               <div className="mt-5 grid gap-6 sm:grid-cols-2">
                 <div>
@@ -404,16 +404,16 @@ export default function RegistrationSection() {
               </div>
             </fieldset>
 
-            {/* The Crew */}
+            {/* The Registration */}
             <fieldset className="border-b border-parchment/10 pb-8 pt-8">
               <legend className="flex items-baseline justify-between gap-3 font-head text-2xl font-bold text-gold">
                 <span className="flex items-baseline gap-3">
                   <span aria-hidden className="font-display text-base text-gold/60">III.</span>
-                  The Crew — team members
+                  The Registration — team members
                 </span>
               </legend>
               <p className="mt-2 font-typewriter text-xs uppercase tracking-[0.22em] text-parchment/55">
-                {memberCount} of {siteConfig.teamSize.max} seats filled — the Capo counts as one.
+                {memberCount} of {siteConfig.teamSize.max} seats filled — the Participant counts as one.
               </p>
 
               <div className="mt-6 space-y-8">
@@ -546,7 +546,7 @@ export default function RegistrationSection() {
                 </button>
               ) : (
                 <p className="mt-6 font-typewriter text-xs uppercase tracking-[0.2em] text-parchment/50">
-                  The table is full — a family runs {siteConfig.teamSize.min}–{siteConfig.teamSize.max}.
+                  The table is full — a participant runs {siteConfig.teamSize.min}–{siteConfig.teamSize.max}.
                 </p>
               )}
             </fieldset>
@@ -618,7 +618,7 @@ export default function RegistrationSection() {
                   />
                 </span>
                 <span className="-mt-1 leading-relaxed text-parchment/80">
-                  The Capo, on behalf of the whole team, agrees to stand by{" "}
+                  The Participant, on behalf of the whole team, agrees to stand by{" "}
                   <a
                     href="#code"
                     className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-goldHi"

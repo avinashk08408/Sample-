@@ -10,7 +10,7 @@ const clauses = [
     plain: "Eligibility, plainly:",
     items: [
       "Open to all full-time students of SRM Valliammai Engineering College, any department and year.",
-      `Teams of ${siteConfig.teamSize.min}–${siteConfig.teamSize.max}. One Capo (team lead) registers the team and answers for it.`,
+      `Solo registrations. One Participant (team lead) registers the team and answers for it.`,
       "Only registered teams receive the vulnerable build and the credentials to the sandbox.",
       "No prior security experience is required — fresh blood is welcome at this table.",
     ],

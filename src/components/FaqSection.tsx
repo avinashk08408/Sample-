@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Who can register, and how large can a team be?",
-    a: `Any full-time student of ${siteConfig.college} can register, from any department and year. Teams run ${siteConfig.teamSize.min}–${siteConfig.teamSize.max} members. One designated Capo (team lead) signs the book on behalf of everyone.`,
+    a: `Any full-time student of ${siteConfig.college} can register, from any department and year. Teams run ${siteConfig.teamSize.min}–${siteConfig.teamSize.max} members. One designated Participant (team lead) signs the book on behalf of everyone.`,
   },
   {
     q: "What should we bring on the day?",

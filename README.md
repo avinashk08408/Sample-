@@ -1,7 +1,7 @@
 # Reverse Hackathon 2026 — Mission Deck
 
 Registration site for the Reverse Hackathon 2026, run by **The Whitehatians**, Department of
-Cyber Security, SRM Valliammai Engineering College. A three-hour defensive sprint: teams receive an
+Cyber Security, SRM Valliammai Engineering College. A three-hour defensive sprint: participants receive an
 already-built, deliberately vulnerable system and must find, patch and defend the fixes.
 
 **Live site:** <https://reverse-hackthon2k26.vercel.app/>
@@ -25,8 +25,8 @@ front end, and no framework.
 
 ## Event facts
 
-- **Date:** Tuesday, 13 October 2026, 09:00 IST (gates 08:00, ledger closes 07:00)
-- **Format:** Solo or Duo; a Duo is one team lead plus exactly one partner (no larger teams)
+- **Date:** Wednesday, 14 October 2026, 09:00 IST (gates 08:00, ledger closes 07:00)
+- **Format:** Solo only; each registration is for one participant
 - **Eligibility:** DEP-CYS students, years I–III
 - **Entry fee:** None. Registration is free; no payment or receipt is required.
 
@@ -87,33 +87,32 @@ The API talks to Supabase only from Vercel server functions. The browser never r
 Registration is free; no UPI payment, transaction ID, receipt, or proof is required. the server-side API validation layer
 is the server-side validation source of truth, and the page mirrors field errors onto the matching input.
 
-The form collects the entry format (Solo or Duo), a unique team name or Solo alias, and the primary
-participant's name, email, phone, year, department, gender and register number. Duo entries also
-require the partner's name, year and register number. Every entry includes one of 15 domains, how
+The form collects the entry format (Solo only), a unique solo alias, and the primary
+participant's name, email, phone, year, department, gender and register number. Every entry includes one of 15 domains, how
 the participant heard about the event, and agreement to the rules.
 
 ### API
 
 | Route | Method | Auth | Purpose |
 | --- | --- | --- | --- |
-| `/api/register` | POST | none | Store one free registration. `201`, or `400` with `fieldErrors`, `409` on duplicate team/email, `403` after the deadline, `503` if Mongo is unreachable. |
-| `/api/admin/registrations` | GET | `x-admin-key` | Registration details and Solo/Duo/participant totals; legacy payment fields are excluded. |
+| `/api/register` | POST | none | Store one free registration. `201`, or `400` with `fieldErrors`, `409` on duplicate alias/email, `403` after the deadline, `503` if the registry is unreachable. |
+| `/api/admin/registrations` | GET | `x-admin-key` | Registration details and Solo/participant totals; legacy payment fields are excluded. |
 | `/api/admin/export` | GET | `x-admin-key` | Streams a styled `.xlsx`. |
 
 The admin key is compared with `crypto.timingSafeEqual`, so it cannot be probed byte by byte.
 
 ## Team workspace and scoring
 
-- `/user.html` is the team login and workspace. The team name is the username; registration creates a password hash and never stores the plain password.
+- `/user.html` is the participant login and workspace. The solo alias is the username; registration creates a password hash and never stores the plain password.
 - Teams can update their problem statement and solution after logging in. The mission desk mark is visible to the team but cannot be edited there.
-- `/admin.html` is the organiser control room. It lists team members, domain, problem statement, solution and provides a 0–30 mark input per team.
+- `/admin.html` is the organiser control room. It lists participants, domain, problem statement, solution and provides a 0–30 mark input per team.
 - `/scoresheet.html` is a public, read-only leaderboard sorted by mark from highest to lowest; marks are entered only in the protected admin panel.
 - Add a long random `SESSION_SECRET` environment variable in Vercel for signing team login cookies. If it is omitted, the server falls back to `ADMIN_KEY`; set both explicitly in production.
 
 ## Organiser dashboard
 
 Open `/admin.html`, paste the `ADMIN_KEY`, and the dashboard shows registrations, participants,
-and Solo/Duo totals. You can filter the table and download a workbook with three sheets:
+and Solo totals. You can filter the table and download a workbook with three sheets:
 
 - **Participants** — one row per human. This is what the check-in desk wants.
 - **Registrations** — one row per entry.

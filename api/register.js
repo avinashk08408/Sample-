@@ -44,7 +44,7 @@ module.exports = async function handler(req, res) {
   }
 
   if (!registrationWindowOpen()) {
-    return res.status(403).json({ error: "Registration closed on 13 October 2026, 07:00 AM IST." });
+    return res.status(403).json({ error: "Registration closed on 14 October 2026, 07:00 AM IST." });
   }
 
   if (!isSupabaseConfigured()) {
@@ -61,7 +61,7 @@ module.exports = async function handler(req, res) {
 
     if (clash) {
       const emailHit = (clash.emails || []).some((e) => value.emails.includes(e));
-      const entryLabel = value.entryFormat === "duo" ? "team name" : "solo alias";
+      const entryLabel = "solo alias";
       return res.status(409).json({
         error: emailHit
           ? "That email is already registered for this event - each participant sits once."

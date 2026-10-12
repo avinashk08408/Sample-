@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { siteConfig } from "./site";
 
-const MIN_TEAM = siteConfig.teamSize.min; // 2 (Capo + 1)
-const MAX_MEMBERS = siteConfig.teamSize.max - 1; // 3 additional members
+const MIN_TEAM = siteConfig.teamSize.min; // 1 participant
+const MAX_MEMBERS = siteConfig.teamSize.max - 1; // no additional members
 
 export const TshirtSizeSchema = z.enum(
   siteConfig.tshirtSizes as unknown as [string, ...string[]],
@@ -61,8 +61,8 @@ export const RegistrationSchema = z
     leader: LeaderSchema,
     members: z
       .array(MemberSchema)
-      .min(MIN_TEAM - 1, `A team needs at least ${MIN_TEAM} members — add one more.`)
-      .max(MAX_MEMBERS, `A team can have at most ${siteConfig.teamSize.max} members.`),
+      .min(MIN_TEAM - 1, `A solo registration has one participant.`)
+      .max(MAX_MEMBERS, `Solo registration only.`),
     track: TrackIdsSchema,
     heardAbout: z
       .string()

@@ -77,11 +77,11 @@ dupes.length ? fail("duplicate ids: " + dupes.join(", ")) : ok(`${ids.length} id
 
 /* -------------------------------------------------------------- dates ----- */
 console.log("\nEvent date");
-for (const stale of ["2026-10-08", "Oct 8, 2026", "Oct 08, 2026", "08 OCT 2026", "October 8, 2026"]) {
+for (const stale of ["2026-10-13", "Oct 13, 2026", "13 OCT 2026", "October 13, 2026"]) {
   html.includes(stale) ? fail(`stale date present: ${stale}`) : ok(`no "${stale}"`);
 }
-const hit = ["2026-10-13", "Oct 13, 2026", "13 OCT 2026", "October 13, 2026"].filter((s) => html.includes(s));
-hit.length ? ok(`${hit.length} October 13 reference(s)`) : fail("no October 13 reference found");
+const hit = ["2026-10-14", "Oct 14, 2026", "14 OCT 2026", "October 14, 2026"].filter((s) => html.includes(s));
+hit.length ? ok(`${hit.length} October 14 reference(s)`) : fail("no October 14 reference found");
 
 /* ------------------------------------------------------------- branding --- */
 console.log("\nBranding");

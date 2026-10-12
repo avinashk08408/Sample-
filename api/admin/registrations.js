@@ -29,12 +29,11 @@ module.exports = async function handler(req, res) {
     const totals = registrations.reduce(
       (acc, r) => {
         acc.registrations += 1;
-        acc.participants += r.headcount;
-        if (r.entryFormat === "duo") acc.duo += 1;
-        else acc.solo += 1;
+        acc.participants += 1;
+        acc.solo += 1;
         return acc;
       },
-      { registrations: 0, participants: 0, solo: 0, duo: 0 }
+      { registrations: 0, participants: 0, solo: 0 }
     );
 
     return res.status(200).json({ registrations, totals });

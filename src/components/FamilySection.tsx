@@ -34,7 +34,7 @@ const members: Member[] = [
   {
     role: "President, Whitehat Club",
     dept: "Department of Cyber Security",
-    nickname: "Il Capo",
+    nickname: "Il Participant",
     duty: "Runs the table — the entire day answers to them.",
     photoFile: "president.jpg",
     initials: "PH",
@@ -94,7 +94,7 @@ function Portrait({ member }: { member: Member }) {
 
 export default function FamilySection() {
   return (
-    <section id="family" className="relative mx-auto max-w-6xl scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28">
+    <section id="participant" className="relative mx-auto max-w-6xl scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading
         eyebrow="Meet the Family"
         title={

@@ -25,7 +25,7 @@ const BORDER = "FFC7D3DD";
 const EVENT_NAME = "Reverse Hackathon 2026";
 const ORGANISER = "The Whitehatians, Department of Cyber Security";
 const COLLEGE = "SRM Valliammai Engineering College";
-const EVENT_DATE = "Tuesday, 13 October 2026";
+const EVENT_DATE = "Wednesday, 14 October 2026";
 
 const PARTICIPANT_KEYS = [
   "#",
@@ -51,14 +51,11 @@ const REGISTRATION_KEYS = [
   "Entry format",
   "Team / alias",
   "Headcount",
-  "Capo (Team Lead)",
-  "Capo email",
-  "Capo mobile",
-  "Capo dept / year",
-  "Capo register no.",
-  "Partner",
-  "Partner year",
-  "Partner register no.",
+  "Participant",
+  "Participant email",
+  "Participant mobile",
+  "Participant dept / year",
+  "Participant register no.",
   "Domain",
   "Heard about",
   "Submitted at",
@@ -122,10 +119,7 @@ function buildWorkbook(regs, totals) {
 
   for (const reg of regs) {
     const crew = [
-      { role: reg.headcount === 2 ? "Capo (Team Lead)" : "Solo Participant", fullName: reg.leader.fullName, email: reg.leader.email, mobile: reg.leader.phone, department: reg.leader.department, year: reg.leader.year, roll: reg.leader.rollNumber, gender: reg.leader.gender },
-      ...(reg.partner
-        ? [{ role: "Soldato (Partner)", fullName: reg.partner.fullName, email: "", mobile: "", department: "", year: reg.partner.year, roll: reg.partner.rollNumber, gender: "" }]
-        : []),
+      { role: "Solo Participant", fullName: reg.leader.fullName, email: reg.leader.email, mobile: reg.leader.phone, department: reg.leader.department, year: reg.leader.year, roll: reg.leader.rollNumber, gender: reg.leader.gender },
     ];
 
     for (const p of crew) {
@@ -133,7 +127,7 @@ function buildWorkbook(regs, totals) {
       peopleRows.push({
         "#": n,
         "Registration ID": reg.registrationId,
-        "Entry format": reg.entryFormat === "duo" ? "Duo" : "Solo",
+        "Entry format": "Solo",
         "Team / alias": reg.teamName,
         "Role": p.role,
         "Full name": p.fullName,
@@ -168,17 +162,14 @@ function buildWorkbook(regs, totals) {
   const regRows = regs.map((reg, i) => ({
     "#": i + 1,
     "Registration ID": reg.registrationId,
-    "Entry format": reg.entryFormat === "duo" ? "Duo" : "Solo",
+    "Entry format": "Solo",
     "Team / alias": reg.teamName,
     "Headcount": reg.headcount,
-    "Capo (Team Lead)": reg.leader.fullName,
-    "Capo email": reg.leader.email,
-    "Capo mobile": reg.leader.phone,
-    "Capo dept / year": `${reg.leader.department} / ${reg.leader.year}`,
-    "Capo register no.": reg.leader.rollNumber,
-    "Partner": reg.partner ? reg.partner.fullName : "-",
-    "Partner year": reg.partner ? reg.partner.year : "-",
-    "Partner register no.": reg.partner ? reg.partner.rollNumber : "-",
+    "Participant": reg.leader.fullName,
+    "Participant email": reg.leader.email,
+    "Participant mobile": reg.leader.phone,
+    "Participant dept / year": `${reg.leader.department} / ${reg.leader.year}`,
+    "Participant register no.": reg.leader.rollNumber,
     "Domain": reg.domain,
     "Heard about": reg.heardAbout,
     "Submitted at": reg.submittedAt,
@@ -193,7 +184,7 @@ function buildWorkbook(regs, totals) {
   styleHeader(sheet, REGISTRATION_KEYS.length);
   sheet.getColumn(at(REGISTRATION_KEYS, "Submitted at")).numFmt = "dd-mmm-yyyy hh:mm";
   finishSheet(sheet, REGISTRATION_KEYS, [
-    5, 22, 12, 24, 11, 24, 26, 14, 26, 18, 20, 12, 19, 26, 18, 20,
+    5, 22, 12, 24, 11, 24, 26, 14, 26, 18, 26, 18, 20,
   ]);
 
   /* ---- Summary ---- */
@@ -210,7 +201,7 @@ function buildWorkbook(regs, totals) {
     ["Total registrations", totals.registrations],
     ["Total participants", totals.participants],
     ["Solo entries", totals.solo],
-    ["Duo entries", totals.duo],
+
     ["", ""],
     ["Generated at", new Date()],
   ];
@@ -255,12 +246,11 @@ module.exports = async function handler(req, res) {
     const totals = regs.reduce(
       (acc, r) => {
         acc.registrations += 1;
-        acc.participants += r.headcount;
-        if (r.entryFormat === "duo") acc.duo += 1;
-        else acc.solo += 1;
+        acc.participants += 1;
+        acc.solo += 1;
         return acc;
       },
-      { registrations: 0, participants: 0, solo: 0, duo: 0 }
+      { registrations: 0, participants: 0, solo: 0 }
     );
 
     const buffer = await buildWorkbook(regs, totals).xlsx.writeBuffer();

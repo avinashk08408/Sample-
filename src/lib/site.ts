@@ -20,13 +20,13 @@ export const siteConfig = {
   tagline:
     "They hand you the system. You find the weakness, mend the wound, and answer for it before the Family.",
   /** Single working date — EDIT-ME: DD MMMM YYYY */
-  eventDateLabel: "13 March 2026",
+  eventDateLabel: "14 October 2026",
   /** Used by the countdown clock. Keep in Asia/Kolkata offset. EDIT-ME */
-  eventDateTimeISO: "2026-03-13T09:00:00+05:30",
+  eventDateTimeISO: "2026-10-14T09:00:00+05:30",
   /** EDIT-ME: registration deadline shown on the form. */
-  registrationDeadlineLabel: "11 March 2026, 11:59 PM IST",
+  registrationDeadlineLabel: "14 October 2026, 07:00 AM IST",
   /** Used to close the form. EDIT-ME */
-  registrationDeadlineISO: "2026-03-11T23:59:00+05:30",
+  registrationDeadlineISO: "2026-10-14T07:00:00+05:30",
   /** EDIT-ME: when registration opens (form unlocks). */
   registrationOpenISO: "2026-01-10T09:00:00+05:30",
 
@@ -41,7 +41,7 @@ export const siteConfig = {
   organizer: "Whitehat Club, Department of Cyber Security",
   college: "SRM Valliammai Engineering College",
 
-  teamSize: { min: 2, max: 4 as const },
+  teamSize: { min: 1, max: 1 as const },
 
   /** EDIT-ME: The Cut (prizes). Update amounts/currencies freely. */
   prizes: [
